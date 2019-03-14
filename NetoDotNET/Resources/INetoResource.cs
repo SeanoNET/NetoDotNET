@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace NetoAPI.NET
+namespace NetoDotNET.Resources
 {
     internal interface INetoResource
     {

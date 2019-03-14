@@ -2,7 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace NetoAPI.NET
+namespace NetoDotNET
 {
     public class RestClient
     {
@@ -22,7 +22,8 @@ namespace NetoAPI.NET
         /// </summary>
         /// <param name="method"></param>
         /// <returns></returns>
-        private HttpRequestMessage PrepareHTTPMessage(HttpMethod method) {
+        private HttpRequestMessage PrepareHTTPMessage(HttpMethod method)
+        {
             var requestMessage = new HttpRequestMessage();
             requestMessage.Method = method;
             return requestMessage;
@@ -32,8 +33,9 @@ namespace NetoAPI.NET
         /// Sends the request and handles the response
         /// </summary>
         /// <returns></returns>
-        public async Task<HttpResponseMessage> ExecuteRequestAsync(HttpRequestMessage requestMessage) {
-            return await _httpClient.SendAsync(requestMessage); 
+        public async Task<HttpResponseMessage> ExecuteRequestAsync(HttpRequestMessage requestMessage)
+        {
+            return await _httpClient.SendAsync(requestMessage);
         }
     }
 }

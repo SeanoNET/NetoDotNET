@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NetoAPI.NET\NetoAPI.NET.csproj" />
+    <ProjectReference Include="..\NetoDotNET\NetoDotNET.csproj" />
   </ItemGroup>
 
 </Project>

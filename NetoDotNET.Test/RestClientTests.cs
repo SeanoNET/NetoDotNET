@@ -1,5 +1,5 @@
+using NetoDotNET;
 using NUnit.Framework;
-using NetoAPI.NET;
 using System.Net.Http;
 
 namespace Tests
@@ -25,7 +25,7 @@ namespace Tests
 
 
 
-            var response =  _restClient.ExecuteRequestAsync(message).Result;
+            var response = _restClient.ExecuteRequestAsync(message).Result;
             System.Console.WriteLine(response.IsSuccessStatusCode);
 
             Assert.AreEqual(true, response.IsSuccessStatusCode);
