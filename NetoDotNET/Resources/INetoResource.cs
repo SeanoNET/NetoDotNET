@@ -4,10 +4,13 @@ using System.Text;
 
 namespace NetoDotNET.Resources
 {
-    internal interface INetoResource
+     public interface INetoResource<T>
     {
 
+   
         Uri BuildURI();
+
+        T Get(string id);
 
 
     }

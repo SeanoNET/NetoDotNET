@@ -1,24 +1,29 @@
-﻿using System;
+﻿using NetoDotNET.Objects;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace NetoDotNET.Resources
 {
-    class ProductResource
+    public class ProductResource : INetoResource<Product>
     {
-        private readonly StoreController storeConnection;
+        private readonly StoreConfiguration _configuration;
 
-        public ProductResource(StoreController storeConnection)
+        public ProductResource(StoreConfiguration configuration) 
         {
-            this.storeConnection = storeConnection;
+            this._configuration = configuration;
         }
 
-
-        public void GetProducts() {
-
-
+        public Uri BuildURI()
+        {
+            throw new NotImplementedException();
         }
 
+        public Product Get(string productID)
+        {
+            Console.WriteLine("Getting product resource");
+            return new Product();
+        }
 
     }
 }
