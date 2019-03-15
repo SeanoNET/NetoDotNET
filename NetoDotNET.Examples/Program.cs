@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
+using NetoDotNET.Resources;
+using Newtonsoft.Json;
 using System;
 using System.IO;
 
@@ -21,14 +23,12 @@ namespace NetoDotNET.Examples
                 $"Neto API Key: {config.GetSection("NETO_API_KEY").Value}" + Environment.NewLine +
                 $"Neto Username: {config.GetSection("NETO_USERNAME").Value}");
 
-            var myNetoStore = new StoreConfiguration(config.GetSection("NETO_STORENAME").Value, config.GetSection("NETO_API_KEY").Value, config.GetSection("NETO_USERNAME").Value);
+            var neto = new StoreManager(config.GetSection("NETO_STORENAME").Value, config.GetSection("NETO_API_KEY").Value, config.GetSection("NETO_USERNAME").Value);
 
-            var neto = new StoreController(myNetoStore);
+            var result = neto.Products.GetItem(new ProductFilter());
 
-            var product = neto.Products.Get("123");
+            Console.WriteLine(result);
 
-
-            Console.WriteLine(product.Name);
         }
     }
 }
