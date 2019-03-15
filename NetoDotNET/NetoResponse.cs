@@ -6,6 +6,12 @@ namespace NetoDotNET
 {
     public class NetoResponse
     {
+        public NetoResponse(string body)
+        {
+            Body = body;
+        }
+
+        public string Body { get; }
     }
 
 }
