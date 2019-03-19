@@ -29,7 +29,7 @@ namespace NetoDotNET.Resources
             return new Uri($"https://{_storeConfiguration.StoreName}.neto.com.au{_storeConfiguration.BaseEndpoint}");
         }
 
-        protected abstract string Get(INetoFilter filter);
+        protected abstract string Get(NetoGetResourceFilter filter);
 
 
         /// <summary>

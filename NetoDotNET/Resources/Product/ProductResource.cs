@@ -20,15 +20,18 @@ namespace NetoDotNET.Resources
         /// <summary>
         /// Use this call to get product data.
         /// </summary>
-        /// <param name="productFilter">You must specify at least one filter and one OutputSelector. These will determine the results returned.</param>
+        /// <param name="NetoGetResourceFilter">You must specify at least one filter and one OutputSelector. These will determine the results returned.</param>
         /// <returns>string</returns>
-        public string GetItem(INetoFilter productFilter)
+        public string GetItem(NetoGetResourceFilter productFilter)
         {
-            // TODO: Validate filter
+            // Make sure the GetItem filter is valid
+            if (!productFilter.isValid())
+                throw new Exception("GetItem filter is not valid.");
+
             return Get(productFilter);
         }
 
-        protected override string Get(INetoFilter productFilter)
+        protected override string Get(NetoGetResourceFilter productFilter)
         {
             var nRequest = new NetoRequest();
             nRequest.NetoAPIAction = "GetItem";

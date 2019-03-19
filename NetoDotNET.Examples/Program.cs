@@ -3,6 +3,7 @@ using NetoDotNET.Resources;
 using Newtonsoft.Json;
 using System;
 using System.IO;
+using static NetoDotNET.Resources.GetItemFilter;
 
 namespace NetoDotNET.Examples
 {
@@ -24,8 +25,13 @@ namespace NetoDotNET.Examples
                 $"Neto Username: {config.GetSection("NETO_USERNAME").Value}");
 
             var neto = new StoreManager(config.GetSection("NETO_STORENAME").Value, config.GetSection("NETO_API_KEY").Value, config.GetSection("NETO_USERNAME").Value);
+            var filter = new GetItemFilter(1);
+            filter.OutputSelector = new GetItemFilterOutputSelector[] { GetItemFilterOutputSelector.ID, GetItemFilterOutputSelector.ParentSKU, GetItemFilterOutputSelector.DateAdded };
 
-            var result = neto.Products.GetItem(new ProductFilter());
+          
+
+
+            var result = neto.Products.GetItem(filter);
 
             Console.WriteLine(result);
 
