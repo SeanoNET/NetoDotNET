@@ -8,7 +8,7 @@ namespace NetoDotNET.Resources
     {
 
         /// <summary>
-        /// Checks for at least one filter in the GetItem request. 
+        /// Validates the get resource filter. 
         /// </summary>
         /// <returns>bool</returns>
         internal abstract bool isValid();

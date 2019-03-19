@@ -598,7 +598,11 @@ namespace NetoDotNET.Resources
             return outputSelectors.ToArray();
         }
 
-   
+
+        /// <summary>
+        /// Checks for at least one filter in the GetItem request. 
+        /// </summary>
+        /// <returns>bool</returns>
         internal override bool isValid()
         {
 
