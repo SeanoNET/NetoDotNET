@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 namespace NetoDotNET.Resources
 {
+  
     [JsonObject(Title = "Filter")]
     public class GetItemFilter : NetoGetResourceFilter
     {
@@ -581,7 +582,11 @@ namespace NetoDotNET.Resources
             Misc44,
             Misc45,
             Misc46,
-            Misc47,            Misc48,            Misc49,            Misc50,            Misc51,
+            Misc47,
+            Misc48,
+            Misc49,
+            Misc50,
+            Misc51,
             Misc52,
         }
 
@@ -640,7 +645,8 @@ namespace NetoDotNET.Resources
             if(requiredFilterCount != 0)
                 return true;
 
-            return false;
+            // TODO: Implement NetoRequestException
+            throw new Exception("At least one filter is required in the GetItem request");
         }
     }
 }

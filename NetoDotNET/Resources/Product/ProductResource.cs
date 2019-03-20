@@ -5,13 +5,13 @@ using System.Text;
 
 namespace NetoDotNET.Resources
 {
-    public class ProductResource : NetoResourceBase<Product>
+    public class ProductResource : NetoResourceBase
     {
         private readonly StoreConfiguration _storeConfiguration;
         private const string PRODUCT_ENDPOINT = "/products";
 
-        public ProductResource(StoreConfiguration storeCongfiguration) 
-            : base(storeCongfiguration, PRODUCT_ENDPOINT, null)
+        public ProductResource(StoreConfiguration storeCongfiguration, IRestClient restClient) 
+            : base(storeCongfiguration, PRODUCT_ENDPOINT, restClient)
         {
             this._storeConfiguration = storeCongfiguration;
         }
@@ -20,24 +20,19 @@ namespace NetoDotNET.Resources
         /// <summary>
         /// Use this call to get product data.
         /// </summary>
-        /// <param name="NetoGetResourceFilter">You must specify at least one filter and one OutputSelector. These will determine the results returned.</param>
+        /// <param name="GetItemFilter">You must specify at least one filter and one OutputSelector. These will determine the results returned.</param>
         /// <returns>string</returns>
-        public string GetItem(NetoGetResourceFilter productFilter)
+        public Item[] GetItem(GetItemFilter productFilter)
         {
-            // Make sure the GetItem filter is valid
-            if (!productFilter.isValid())
-                throw new Exception("GetItem filter is not valid.");
-
-            return Get(productFilter);
+            var resp = (GetItemResponse)Get(productFilter);
+            return resp.Item;
         }
 
-        protected override string Get(NetoGetResourceFilter productFilter)
+        protected override INetoResponse Get(NetoGetResourceFilter productFilter)
         {
-            var nRequest = new NetoRequest();
-            nRequest.NetoAPIAction = "GetItem";
-            nRequest.Body = productFilter.ToJSON();
-
-            return GetResource(nRequest).Body;    
+            var nRequest = new GetItemRequest((GetItemFilter)productFilter);
+           
+            return GetResource<GetItemResponse>(nRequest);    
         }
 
     }
