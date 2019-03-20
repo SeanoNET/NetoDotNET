@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using NetoDotNET.Objects;
 using NetoDotNET.Resources;
 using Newtonsoft.Json;
 using System;
@@ -25,15 +26,20 @@ namespace NetoDotNET.Examples
                 $"Neto Username: {config.GetSection("NETO_USERNAME").Value}");
 
             var neto = new StoreManager(config.GetSection("NETO_STORENAME").Value, config.GetSection("NETO_API_KEY").Value, config.GetSection("NETO_USERNAME").Value);
-            var filter = new GetItemFilter(1);
-            filter.OutputSelector = new GetItemFilterOutputSelector[] { GetItemFilterOutputSelector.ID, GetItemFilterOutputSelector.ParentSKU, GetItemFilterOutputSelector.DateAdded };
+            var filter = new GetItemFilter(new int[] { 1, 2, 3});
+            //filter.OutputSelector = new GetItemFilterOutputSelector[] { GetItemFilterOutputSelector.ID, GetItemFilterOutputSelector.ParentSKU, GetItemFilterOutputSelector.DateAdded };
 
           
 
 
-            var result = neto.Products.GetItem(filter);
+            Item[] result = neto.Products.GetItem(filter);
 
-            Console.WriteLine(result);
+            foreach(Item i in result)
+            {
+                Console.WriteLine($"{i.ID} - {i.Name}");
+            }
+
+            
 
         }
     }
