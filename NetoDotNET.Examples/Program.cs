@@ -4,7 +4,6 @@ using NetoDotNET.Resources;
 using Newtonsoft.Json;
 using System;
 using System.IO;
-using static NetoDotNET.Resources.GetItemFilter;
 
 namespace NetoDotNET.Examples
 {
@@ -26,20 +25,65 @@ namespace NetoDotNET.Examples
                 $"Neto Username: {config.GetSection("NETO_USERNAME").Value}");
 
             var neto = new StoreManager(config.GetSection("NETO_STORENAME").Value, config.GetSection("NETO_API_KEY").Value, config.GetSection("NETO_USERNAME").Value);
-            var filter = new GetItemFilter(new int[] { 1, 2, 3});
-            //filter.OutputSelector = new GetItemFilterOutputSelector[] { GetItemFilterOutputSelector.ID, GetItemFilterOutputSelector.ParentSKU, GetItemFilterOutputSelector.DateAdded };
 
-          
+            // Get Items
+            //GetItems(neto);
 
+            // Add Item
+            Item[] item = new Item[] {
+                new Item {
+                    Name = "Test Item",
+                    SKU = "1234",
+                    DefaultPrice = "1.00"
+                },
+                // new Item {
+                //    Name = "Test Item 2",
+                //    SKU = "12345",
+                //    DefaultPrice = "1.00"
+                //}
+            };
+ 
+            var result = neto.Products.AddItem(item);
+
+            switch (result.Ack)
+            {
+                case "Success":
+                    foreach (var i in result.Item) {
+                        Console.WriteLine($"Created ID:{i.InventoryID} SKU: {i.SKU} at {result.CurrentTime}");
+                    }
+                    break;
+
+                case "Warning":
+                    foreach (var warn in result.Messages.Warning)
+                    {
+                        Console.WriteLine($"Warning: {warn.Message}");
+                    }
+                  
+                    break;
+
+                case "Error":
+                    foreach (var err in result.Messages.Error)
+                    {
+                        Console.WriteLine($"Error: {err.Message}");
+                    }
+                    break;
+
+                default:
+                    Console.WriteLine("Unknown Ack");
+                    break;
+            }
+
+        }
+
+        static void GetItems(StoreManager neto) {         
+            var filter = new GetItemFilter(new int[] { 1, 2, 3 });
 
             Item[] result = neto.Products.GetItem(filter);
 
-            foreach(Item i in result)
+            foreach (Item i in result)
             {
                 Console.WriteLine($"{i.ID} - {i.Name}");
             }
-
-            
 
         }
     }

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 
 namespace NetoDotNET.Resources
 {
-  
     [JsonObject(Title = "Filter")]
     public class GetItemFilter : NetoGetResourceFilter
     {

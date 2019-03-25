@@ -18,7 +18,7 @@ namespace NetoDotNET.Resources
 
 
         /// <summary>
-        /// Use this call to get product data.
+        /// Use this method to get product data.
         /// </summary>
         /// <param name="GetItemFilter">You must specify at least one filter and one OutputSelector. These will determine the results returned.</param>
         /// <returns>string</returns>
@@ -28,6 +28,18 @@ namespace NetoDotNET.Resources
             return resp.Item;
         }
 
+        /// <summary>
+        /// Use this method to add a new product.
+        /// </summary>
+        /// <param name="Item">New item to add.</param>
+        /// <returns>returns the unique identifier (SKU) for the product, and the date and time the product was added (CurrentTime)</returns>
+        public AddItemResponse AddItem(Item[] item)
+        {
+            AddItemFilter addItemFilter = new AddItemFilter(item);
+            var resp = (AddItemResponse)Add(addItemFilter);
+            return resp;
+        }
+
         protected override INetoResponse Get(NetoGetResourceFilter productFilter)
         {
             var nRequest = new GetItemRequest((GetItemFilter)productFilter);
@@ -35,5 +47,11 @@ namespace NetoDotNET.Resources
             return GetResource<GetItemResponse>(nRequest);    
         }
 
+        protected override INetoResponse Add(NetoAddResourceFilter filter)
+        {
+            var nRequest = new AddItemRequest((AddItemFilter)filter);
+
+            return AddResource<AddItemResponse>(nRequest);
+        }
     }
 }
