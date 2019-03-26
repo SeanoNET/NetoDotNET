@@ -30,8 +30,8 @@ namespace NetoDotNET.Resources
             return new Uri($"https://{_storeConfiguration.StoreName}.neto.com.au{_storeConfiguration.BaseEndpoint}");
         }
 
-        protected abstract INetoResponse Get(NetoGetResourceFilter filter);
-        protected abstract INetoResponse Add(NetoAddResourceFilter filter);
+        protected abstract NetoResponseBase Get(NetoGetResourceFilter filter);
+        protected abstract NetoResponseBase Add(NetoAddResourceFilter filter);
 
         /// <summary>
         /// Builds the raw GET HTTP request for <see cref="IRestClient" />.
@@ -62,7 +62,7 @@ namespace NetoDotNET.Resources
 
 
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
                 throw ex;
             }
@@ -93,7 +93,7 @@ namespace NetoDotNET.Resources
 
 
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
                 throw ex;
             }

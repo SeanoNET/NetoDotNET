@@ -645,7 +645,7 @@ namespace NetoDotNET.Resources
                 return true;
 
             // TODO: Implement NetoRequestException
-            throw new Exception("At least one filter is required in the GetItem request");
+            throw new System.Exception("At least one filter is required in the GetItem request");
         }
     }
 }

@@ -40,18 +40,30 @@ namespace NetoDotNET.Resources
             return resp;
         }
 
-        protected override INetoResponse Get(NetoGetResourceFilter productFilter)
+        protected override NetoResponseBase Get(NetoGetResourceFilter productFilter)
         {
             var nRequest = new GetItemRequest((GetItemFilter)productFilter);
+
            
-            return GetResource<GetItemResponse>(nRequest);    
+            var nResponse = GetResource<GetItemResponse>(nRequest);
+
+            nResponse.ThrowOnError();
+
+
+
+            return nResponse;    
         }
 
-        protected override INetoResponse Add(NetoAddResourceFilter filter)
+        protected override NetoResponseBase Add(NetoAddResourceFilter filter)
         {
             var nRequest = new AddItemRequest((AddItemFilter)filter);
 
-            return AddResource<AddItemResponse>(nRequest);
+            var nResponse = AddResource<AddItemResponse>(nRequest);
+
+            nResponse.ThrowOnError();
+
+
+            return nResponse;
         }
     }
 }

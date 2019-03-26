@@ -230,7 +230,9 @@ namespace NetoDotNET.Objects
 
     public class Category
     {
-        // public Category1 Category { get; set; }
+        public string CategoryID { get; set; }
+        public string Priority { get; set; }
+        public string CategoryName { get; set; }
     }
 
     //public class Category1
