@@ -680,7 +680,7 @@ namespace Tests
         public void CanDeSerializeGetItemResponse()
         {
 
-            var netoResponse = new INetoResponse();
+            var netoResponse = new NetoResponseBase();
 
             Assert.AreEqual("2019-03-20 13:07:25", netoResponse.CurrentTime);
 

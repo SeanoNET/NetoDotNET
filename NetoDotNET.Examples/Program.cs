@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using NetoDotNET.Objects;
 using NetoDotNET.Resources;
-using Newtonsoft.Json;
 using System;
 using System.IO;
 
@@ -34,7 +33,8 @@ namespace NetoDotNET.Examples
                 new Item {
                     Name = "Test Item",
                     SKU = "1234",
-                    DefaultPrice = "1.00"
+                    DefaultPrice = "1.00",
+Virtual = "sdf"                 
                 },
                 // new Item {
                 //    Name = "Test Item 2",
@@ -47,29 +47,18 @@ namespace NetoDotNET.Examples
 
             switch (result.Ack)
             {
-                case "Success":
-                    foreach (var i in result.Item) {
+                case Ack.Success:
+                    foreach (var i in result.Item)
+                    {
                         Console.WriteLine($"Created ID:{i.InventoryID} SKU: {i.SKU} at {result.CurrentTime}");
                     }
                     break;
 
-                case "Warning":
+                case Ack.Warning:
                     foreach (var warn in result.Messages.Warning)
                     {
                         Console.WriteLine($"Warning: {warn.Message}");
                     }
-                  
-                    break;
-
-                case "Error":
-                    foreach (var err in result.Messages.Error)
-                    {
-                        Console.WriteLine($"Error: {err.Message}");
-                    }
-                    break;
-
-                default:
-                    Console.WriteLine("Unknown Ack");
                     break;
             }
 
