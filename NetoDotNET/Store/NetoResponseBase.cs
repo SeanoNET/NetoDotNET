@@ -24,7 +24,7 @@ namespace NetoDotNET
         internal void ThrowOnError() {
             if (this.Ack == Ack.Error)
             {
-                throw new NetoRequestException(this.Messages.Error[0].Message);
+                throw new NetoResponseException(this.Messages.Error[0].Message);
             }
         }
 
