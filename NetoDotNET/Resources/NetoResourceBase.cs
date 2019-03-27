@@ -33,6 +33,8 @@ namespace NetoDotNET.Resources
         protected abstract NetoResponseBase Get(NetoGetResourceFilter filter);
         protected abstract NetoResponseBase Add(NetoAddResourceFilter filter);
 
+        protected abstract NetoResponseBase Update(NetoAddResourceFilter filter);
+
         /// <summary>
         /// Builds the raw GET HTTP request for <see cref="IRestClient" />.
         /// </summary>
@@ -70,6 +72,37 @@ namespace NetoDotNET.Resources
         }
 
         protected T AddResource<T>(INetoRequest request)
+        {
+            try
+            {
+                // TODO: How to implement this exception throw if not valid?
+                request.isValidRequest();
+
+                var httpRequest = _restClient.PrepareHTTPMessage(HttpMethod.Post, request.NetoAPIAction, request.GetBody());
+
+                var httpResponse = _restClient.ExecuteRequestAsync(httpRequest);
+
+                if (httpResponse.IsSuccessStatusCode)
+                {
+                    var content = httpResponse.Content.ReadAsStringAsync().Result;
+                    var response = DeSerializeNetoResponse<T>(content);
+                    return response;
+                }
+                else
+                {
+                    throw new HttpRequestException($"Failed to get resource: {httpResponse.Content}");
+                }
+
+
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        protected T UpdateResource<T>(INetoRequest request)
         {
             try
             {

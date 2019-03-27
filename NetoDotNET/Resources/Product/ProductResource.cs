@@ -1,4 +1,5 @@
 ﻿using NetoDotNET.Objects;
+using NetoDotNET.Resources.Product.UpdateItem;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -40,6 +41,18 @@ namespace NetoDotNET.Resources
             return resp;
         }
 
+        /// <summary>
+        /// Use this method to update a product.
+        /// </summary>
+        /// <param name="Item">Item to update.</param>
+        /// <returns>returns the unique identifier (SKU) for the product, and the date and time the product was updated (CurrentTime)</returns>
+        public UpdateItemResponse UpdateItem(Item[] item)
+        {
+            UpdateItemFilter updateItemFilter = new UpdateItemFilter(item);
+            var resp = (UpdateItemResponse)Update(updateItemFilter);
+            return resp;
+        }
+
         protected override NetoResponseBase Get(NetoGetResourceFilter productFilter)
         {
             var nRequest = new GetItemRequest((GetItemFilter)productFilter);
@@ -64,6 +77,11 @@ namespace NetoDotNET.Resources
 
 
             return nResponse;
+        }
+
+        protected override NetoResponseBase Update(NetoAddResourceFilter filter)
+        {
+            throw new NotImplementedException();
         }
     }
 }
