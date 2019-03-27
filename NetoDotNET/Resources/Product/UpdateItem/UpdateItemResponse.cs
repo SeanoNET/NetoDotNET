@@ -1,4 +1,5 @@
-﻿using NetoDotNET.Objects;
+﻿using NetoDotNET.Extensions;
+using NetoDotNET.Objects;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,8 @@ namespace NetoDotNET.Resources.Product.UpdateItem
     public class UpdateItemResponse : NetoResponseBase
     {
         [JsonProperty("Item")]
-        public Item[] Item { get; set; }
+        [JsonConverter(typeof(SingleOrArrayConverter<UpdatedItem>))]
+        public List<UpdatedItem> Item { get; private set; }
 
     }
 }

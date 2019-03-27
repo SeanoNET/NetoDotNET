@@ -33,7 +33,7 @@ namespace NetoDotNET.Resources
         protected abstract NetoResponseBase Get(NetoGetResourceFilter filter);
         protected abstract NetoResponseBase Add(NetoAddResourceFilter filter);
 
-        protected abstract NetoResponseBase Update(NetoAddResourceFilter filter);
+        protected abstract NetoResponseBase Update(NetoUpdateResourceFilter filter);
 
         /// <summary>
         /// Builds the raw GET HTTP request for <see cref="IRestClient" />.

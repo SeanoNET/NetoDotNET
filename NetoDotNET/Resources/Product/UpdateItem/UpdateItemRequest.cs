@@ -10,6 +10,10 @@ namespace NetoDotNET.Resources.Product.UpdateItem
 
         public string NetoAPIAction => "UpdateItem";
 
+        public UpdateItemRequest(UpdateItemFilter updateItemFilter)
+        {
+            this._updateItemFilter = updateItemFilter;
+        }
         public string GetBody()
         {
             return _updateItemFilter.ToJSON();

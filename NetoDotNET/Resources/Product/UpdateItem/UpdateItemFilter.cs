@@ -2,7 +2,7 @@
 
 namespace NetoDotNET.Resources.Product.UpdateItem
 {
-    public class UpdateItemFilter : NetoAddResourceFilter
+    public class UpdateItemFilter : NetoUpdateResourceFilter
     {
         public Item[] Item { get; set; }
 

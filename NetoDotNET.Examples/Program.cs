@@ -29,20 +29,48 @@ namespace NetoDotNET.Examples
             //GetItems(neto);
 
             // Add Item
+            //AddItems(neto);
+
+            // Update Item
+            Item[] item = new Item[] {
+                new Item {
+                    Name = "Test Item - Updated",
+                    SKU = "1234"
+                }
+            };
+
+            var result = neto.Products.UpdateItem(item);
+
+            switch (result.Ack)
+            {
+                case Ack.Success:
+                    foreach (var i in result.Item)
+                    {
+                        Console.WriteLine($"Updated ID:{i.InventoryID} SKU: {i.SKU} at {result.CurrentTime}");
+                    }
+                    break;
+
+                case Ack.Warning:
+                    foreach (var warn in result.Messages.Warning)
+                    {
+                        Console.WriteLine($"Warning: {warn.Message}");
+                    }
+                    break;
+            }
+
+        }
+
+        static void AddItems(StoreManager neto)
+        {
             Item[] item = new Item[] {
                 new Item {
                     Name = "Test Item",
                     SKU = "1234",
                     DefaultPrice = "1.00",
-Virtual = "sdf"                 
-                },
-                // new Item {
-                //    Name = "Test Item 2",
-                //    SKU = "12345",
-                //    DefaultPrice = "1.00"
-                //}
+                    Virtual = "sdf"
+                }
             };
- 
+
             var result = neto.Products.AddItem(item);
 
             switch (result.Ack)
@@ -62,9 +90,10 @@ Virtual = "sdf"
                     break;
             }
 
-        }
 
-        static void GetItems(StoreManager neto) {         
+        }
+        static void GetItems(StoreManager neto)
+        {
             var filter = new GetItemFilter(new int[] { 1, 2, 3 });
 
             Item[] result = neto.Products.GetItem(filter);

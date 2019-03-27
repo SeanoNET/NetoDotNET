@@ -79,9 +79,16 @@ namespace NetoDotNET.Resources
             return nResponse;
         }
 
-        protected override NetoResponseBase Update(NetoAddResourceFilter filter)
+        protected override NetoResponseBase Update(NetoUpdateResourceFilter filter)
         {
-            throw new NotImplementedException();
+            var nRequest = new UpdateItemRequest((UpdateItemFilter)filter);
+
+            var nResponse = AddResource<UpdateItemResponse>(nRequest);
+
+            nResponse.ThrowOnError();
+
+
+            return nResponse;
         }
     }
 }
