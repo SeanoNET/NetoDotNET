@@ -95,7 +95,7 @@ namespace NetoDotNET.Examples
         static void GetItems(StoreManager neto)
         {
             var filter = new GetItemFilter(new int[] { 1, 2, 3 });
-
+    
             Item[] result = neto.Products.GetItem(filter);
 
             foreach (Item i in result)
