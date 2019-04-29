@@ -9,10 +9,10 @@ namespace NetoDotNET.Resources
     public class ProductResource : NetoResourceBase
     {
         private readonly StoreConfiguration _storeConfiguration;
-        private const string BASE_ENDPOINT = "/products";
+        private const string RESOURCE_ENDPOINT = "/products";
 
         public ProductResource(StoreConfiguration storeCongfiguration, IRestClient restClient) 
-            : base(storeCongfiguration, BASE_ENDPOINT, restClient)
+            : base(storeCongfiguration, RESOURCE_ENDPOINT, restClient)
         {
             this._storeConfiguration = storeCongfiguration;
         }
