@@ -2,19 +2,18 @@
 using NetoDotNET.Resources.Product.UpdateItem;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
 
 namespace NetoDotNET.Resources
 {
-    public class ProductResource : NetoResourceBase
+    public class ProductResource : NetoResourceBase, IProductResource
     {
-        private readonly StoreConfiguration _storeConfiguration;
-        private const string RESOURCE_ENDPOINT = "/products";
+        private const string RESOURCE_ENDPOINT = "/products"; // Not needed
 
-        public ProductResource(StoreConfiguration storeCongfiguration, IRestClient restClient) 
+        public ProductResource(StoreConfiguration storeCongfiguration, IRestClient restClient)
             : base(storeCongfiguration, RESOURCE_ENDPOINT, restClient)
         {
-            this._storeConfiguration = storeCongfiguration;
         }
 
 
@@ -24,9 +23,14 @@ namespace NetoDotNET.Resources
         /// <param name="GetItemFilter">You must specify at least one filter and one OutputSelector. These will determine the results returned.</param>
         /// <returns>string</returns>
         public Item[] GetItem(GetItemFilter productFilter)
-        {
-            var resp = (GetItemResponse)Get(productFilter);
-            return resp.Item;
+        {    
+            // Build Neto Request
+            var nRequest = new GetItemRequest(productFilter);
+       
+            // Get Neto Response
+            var nResponse = GetResponse<GetItemResponse>(nRequest);
+
+            return nResponse.Item;
         }
 
         /// <summary>
@@ -37,8 +41,15 @@ namespace NetoDotNET.Resources
         public AddItemResponse AddItem(Item[] item)
         {
             AddItemFilter addItemFilter = new AddItemFilter(item);
-            var resp = (AddItemResponse)Add(addItemFilter);
-            return resp;
+
+            // Build Neto Request
+            var nRequest = new AddItemRequest(addItemFilter);
+
+            // Get Neto Response
+            var nResponse = GetResponse<AddItemResponse>(nRequest);
+
+
+            return nResponse;
         }
 
         /// <summary>
@@ -49,46 +60,14 @@ namespace NetoDotNET.Resources
         public UpdateItemResponse UpdateItem(Item[] item)
         {
             UpdateItemFilter updateItemFilter = new UpdateItemFilter(item);
-            var resp = (UpdateItemResponse)Update(updateItemFilter);
-            return resp;
-        }
 
-        protected override NetoResponseBase Get(NetoGetResourceFilter productFilter)
-        {
-            var nRequest = new GetItemRequest((GetItemFilter)productFilter);
+            // Build Neto Request
+            var nRequest = new UpdateItemRequest(updateItemFilter);
 
-           
-            var nResponse = GetResource<GetItemResponse>(nRequest);
-
-            nResponse.ThrowOnError();
-
-
-
-            return nResponse;    
-        }
-
-        protected override NetoResponseBase Add(NetoAddResourceFilter filter)
-        {
-            var nRequest = new AddItemRequest((AddItemFilter)filter);
-
-            var nResponse = AddResource<AddItemResponse>(nRequest);
-
-            nResponse.ThrowOnError();
-
+            // Get Neto Response
+            var nResponse = GetResponse<UpdateItemResponse>(nRequest);
 
             return nResponse;
-        }
-
-        protected override NetoResponseBase Update(NetoUpdateResourceFilter filter)
-        {
-            var nRequest = new UpdateItemRequest((UpdateItemFilter)filter);
-
-            var nResponse = AddResource<UpdateItemResponse>(nRequest);
-
-            nResponse.ThrowOnError();
-
-
-            return nResponse;
-        }
+        }      
     }
 }

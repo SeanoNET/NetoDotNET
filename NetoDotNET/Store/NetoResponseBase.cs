@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace NetoDotNET
 {
 
-    public class NetoResponseBase
+    public class NetoResponseBase 
     {
         [JsonProperty("Messages")]
         public ResponseMessage Messages { get; private set; }
@@ -21,13 +21,13 @@ namespace NetoDotNET
         /// </summary>
         /// <exception cref="System.NetoRequestException">Thrown when Neto response Ack has Error status.</exception>
         /// <returns>false on valid response</returns>
-        internal void ThrowOnError() {
+       internal void ThrowOnError()
+        {
             if (this.Ack == Ack.Error)
             {
                 throw new NetoResponseException(this.Messages.Error[0].Message);
             }
         }
-
     }
 
 }

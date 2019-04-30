@@ -15,7 +15,7 @@ namespace NetoDotNET
         public string BaseEndpoint => _baseEndpoint;
 
         /// <summary>
-        /// Create a new instance of <see cref="StoreConfiguration" />.
+        /// Your Neto store details <see cref="StoreConfiguration" />.
         /// </summary>
         /// <param name="storeName">The name of the Neto store https://www.*storeName*.com.au</param>
         /// <param name="APIKey">Your Neto API Secure Key (generate this in your Neto control panel).</param>

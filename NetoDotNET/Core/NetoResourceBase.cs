@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using NetoDotNET.Helpers;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -30,17 +31,14 @@ namespace NetoDotNET.Resources
             return new Uri($"https://{_storeConfiguration.StoreName}.neto.com.au{_storeConfiguration.BaseEndpoint}");
         }
 
-        protected abstract NetoResponseBase Get(NetoGetResourceFilter filter);
-        protected abstract NetoResponseBase Add(NetoAddResourceFilter filter);
-
-        protected abstract NetoResponseBase Update(NetoUpdateResourceFilter filter);
 
         /// <summary>
-        /// Builds the raw GET HTTP request for <see cref="IRestClient" />.
+        /// Prepares and executes a Http request in <see cref="IRestClient"/> from INetoRequest <see cref="INetoRequest"/>.
         /// </summary>
         /// <param name="request"></param>
-        /// <returns></returns>
-        protected T GetResource<T>(INetoRequest request)
+        /// <returns>INetoResponse see <see cref="NetoResponseBase"</returns>
+        public T GetResponse<T>(INetoRequest request) 
+            where T : NetoResponseBase
         {
             try
             {
@@ -51,97 +49,20 @@ namespace NetoDotNET.Resources
 
                 var httpResponse = _restClient.ExecuteRequestAsync(httpRequest);
 
-                if (httpResponse.IsSuccessStatusCode)
-                {
-                    var content = httpResponse.Content.ReadAsStringAsync().Result;
-                    var response = DeSerializeNetoResponse<T>(content);
-                    return response;
-                }
-                else
-                {
-                    throw new HttpRequestException($"Failed to get resource: {httpResponse.Content}");
-                }
+                httpResponse.EnsureSuccessStatusCode();
 
-
+                var content = httpResponse.Content.ReadAsStringAsync().Result;
+                var response = JsonHelper.DeSerializeNetoResponse<T>(content);
+                response.ThrowOnError();
+                return response;
             }
             catch (System.Exception ex)
             {
                 throw ex;
             }
-
         }
 
-        protected T AddResource<T>(INetoRequest request)
-        {
-            try
-            {
-                // TODO: How to implement this exception throw if not valid?
-                request.isValidRequest();
-
-                var httpRequest = _restClient.PrepareHTTPMessage(HttpMethod.Post, request.NetoAPIAction, request.GetBody());
-
-                var httpResponse = _restClient.ExecuteRequestAsync(httpRequest);
-
-                if (httpResponse.IsSuccessStatusCode)
-                {
-                    var content = httpResponse.Content.ReadAsStringAsync().Result;
-                    var response = DeSerializeNetoResponse<T>(content);
-                    return response;
-                }
-                else
-                {
-                    throw new HttpRequestException($"Failed to get resource: {httpResponse.Content}");
-                }
-
-
-            }
-            catch (System.Exception ex)
-            {
-                throw ex;
-            }
-
-        }
-
-        protected T UpdateResource<T>(INetoRequest request)
-        {
-            try
-            {
-                // TODO: How to implement this exception throw if not valid?
-                request.isValidRequest();
-
-                var httpRequest = _restClient.PrepareHTTPMessage(HttpMethod.Post, request.NetoAPIAction, request.GetBody());
-
-                var httpResponse = _restClient.ExecuteRequestAsync(httpRequest);
-
-                if (httpResponse.IsSuccessStatusCode)
-                {
-                    var content = httpResponse.Content.ReadAsStringAsync().Result;
-                    var response = DeSerializeNetoResponse<T>(content);
-                    return response;
-                }
-                else
-                {
-                    throw new HttpRequestException($"Failed to get resource: {httpResponse.Content}");
-                }
-
-
-            }
-            catch (System.Exception ex)
-            {
-                throw ex;
-            }
-
-        }
-
-        // TODO: Relocate
-        private T DeSerializeNetoResponse<T>(string content)
-        {
-            var settings = new JsonSerializerSettings();
-            settings.NullValueHandling = NullValueHandling.Ignore;
-            settings.DefaultValueHandling = DefaultValueHandling.Ignore;
-
-            return JsonConvert.DeserializeObject<T>(content, settings: settings);
-        }
+ 
 
     }
 }

@@ -29,9 +29,14 @@ namespace NetoDotNET.Examples
             //GetItems(neto);
 
             // Add Item
-            //AddItems(neto);
+            // AddItems(neto);
 
             // Update Item
+            UpdateItems(neto);
+
+        }
+        static void UpdateItems(StoreManager neto)
+        {
             Item[] item = new Item[] {
                 new Item {
                     Name = "Test Item - Updated",
@@ -58,8 +63,8 @@ namespace NetoDotNET.Examples
                     break;
             }
 
-        }
 
+        }
         static void AddItems(StoreManager neto)
         {
             Item[] item = new Item[] {
@@ -67,7 +72,7 @@ namespace NetoDotNET.Examples
                     Name = "Test Item",
                     SKU = "1234",
                     DefaultPrice = "1.00",
-                    Virtual = "sdf"
+                    //Virtual = "sdf"
                 }
             };
 

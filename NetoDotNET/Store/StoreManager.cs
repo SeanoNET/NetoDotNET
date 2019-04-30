@@ -10,7 +10,7 @@ namespace NetoDotNET
         private protected const string _baseEndpoint = @"/do/WS/NetoAPI";
         private readonly StoreConfiguration _configuration;
 
-        public ProductResource Products { get; }
+        public IProductResource Products { get; }
    
 
         /// <summary>
