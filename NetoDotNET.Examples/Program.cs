@@ -11,7 +11,7 @@ namespace NetoDotNET.Examples
 
         static void Main(string[] args)
         {
-            // Load configuration
+            // Load from configuration
             var configBuilder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", true, true);
@@ -39,7 +39,7 @@ namespace NetoDotNET.Examples
         {
             Item[] item = new Item[] {
                 new Item {
-                    Name = "Test Item - Updated",
+                    Name = "My New Item - Updated",
                     SKU = "1234"
                 }
             };
@@ -69,7 +69,7 @@ namespace NetoDotNET.Examples
         {
             Item[] item = new Item[] {
                 new Item {
-                    Name = "Test Item",
+                    Name = "My New Item",
                     SKU = "1234",
                     DefaultPrice = "1.00"
                 }
