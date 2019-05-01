@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
-using NetoDotNET.Objects;
+using NetoDotNET.Entities;
 using NetoDotNET.Resources;
 using System;
 using System.IO;
@@ -71,8 +71,7 @@ namespace NetoDotNET.Examples
                 new Item {
                     Name = "Test Item",
                     SKU = "1234",
-                    DefaultPrice = "1.00",
-                    //Virtual = "sdf"
+                    DefaultPrice = "1.00"
                 }
             };
 

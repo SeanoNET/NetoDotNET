@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace NetoDotNET.Objects
+namespace NetoDotNET.Entities
 {
     public enum Ack
     {

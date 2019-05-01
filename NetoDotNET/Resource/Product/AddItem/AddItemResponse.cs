@@ -1,7 +1,7 @@
-﻿using NetoDotNET.Extensions;
-
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System.Collections.Generic;
+using NetoDotNET.Extensions;
+using NetoDotNET.Entities;
 
 namespace NetoDotNET
 {

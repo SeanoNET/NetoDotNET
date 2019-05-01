@@ -1,4 +1,4 @@
-﻿using NetoDotNET.Objects;
+﻿using NetoDotNET.Entities;
 using Newtonsoft.Json;
 using System;
 

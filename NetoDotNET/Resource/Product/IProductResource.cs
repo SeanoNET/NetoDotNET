@@ -1,4 +1,4 @@
-﻿using NetoDotNET.Objects;
+﻿using NetoDotNET.Entities;
 using NetoDotNET.Resources.Product.UpdateItem;
 
 namespace NetoDotNET.Resources

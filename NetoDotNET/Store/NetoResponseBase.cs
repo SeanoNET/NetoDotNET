@@ -1,5 +1,5 @@
 ﻿using NetoDotNET.Exceptions;
-using NetoDotNET.Objects;
+using NetoDotNET.Entities;
 using Newtonsoft.Json;
 
 namespace NetoDotNET
