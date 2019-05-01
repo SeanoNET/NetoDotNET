@@ -33,10 +33,10 @@ namespace NetoDotNET.Resources
 
 
         /// <summary>
-        /// Prepares and executes a Http request in <see cref="IRestClient"/> from INetoRequest <see cref="INetoRequest"/>.
+        /// Prepares and executes a Http request in <see cref="IRestClient"/> from an INetoRequest <see cref="INetoRequest"/>.
         /// </summary>
         /// <param name="request"></param>
-        /// <returns>INetoResponse see <see cref="NetoResponseBase"</returns>
+        /// <returns><see cref="NetoResponseBase"/></returns>
         public T GetResponse<T>(INetoRequest request) 
             where T : NetoResponseBase
         {

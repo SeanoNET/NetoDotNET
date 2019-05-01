@@ -2,11 +2,14 @@
 
 namespace NetoDotNET.Resources
 {
+    /// <summary>
+    /// Generic update Neto resource filter
+    /// </summary>
     public abstract class NetoUpdateResourceFilter
     {
 
         /// <summary>
-        /// Validates the get resource filter. 
+        /// Validates the resource filter. 
         /// </summary>
         /// <returns>bool</returns>
         internal abstract bool isValid();

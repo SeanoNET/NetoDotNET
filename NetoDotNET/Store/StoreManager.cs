@@ -5,39 +5,32 @@ using System.Text;
 
 namespace NetoDotNET
 {
+    /// <summary>
+    /// Manages your Neto store resources
+    /// </summary>
     public class StoreManager
     {
         private protected const string _baseEndpoint = @"/do/WS/NetoAPI";
         private readonly StoreConfiguration _configuration;
 
+        /// <summary>
+        /// Manage product resources
+        /// </summary>
         public IProductResource Products { get; }
-   
+
 
         /// <summary>
-        /// Create a new instance of <see cref="StoreManager" />.
+        /// Manage your Neto store resources.
         /// </summary>
-        /// <param name="configuration">Neto store configuration <see cref="StoreConfiguration"</param>
+        /// <param name="storeName">The name of the Neto store https://www.*storeName*.com.au</param>
+        /// <param name="APIKey">Your Neto API Secure Key (generate this in your Neto control panel).</param>
+        /// <param name="username">Your Neto API username (managed under Staff Users in the Neto control panel). Not required if using a key.</param>
         public StoreManager(string storeName, string APIKey, string username)
-        {
-            if (string.IsNullOrEmpty(storeName))
-            {
-                throw new ArgumentException("Missing Neto store name.", nameof(storeName));
-            }
-
-            if (string.IsNullOrEmpty(APIKey))
-            {
-                throw new ArgumentException("Missing Neto store API key.", nameof(APIKey));
-            }
-
-            if (string.IsNullOrEmpty(username))
-            {
-                throw new ArgumentException("Missing Neto username", nameof(username));
-            }
-
-           
-
+        {                
             this._configuration = new StoreConfiguration(storeName, APIKey, username, _baseEndpoint);
-            Products = new ProductResource(this._configuration, null);
+
+
+            this.Products = new ProductResource(this._configuration, null);
         }
 
 

@@ -20,8 +20,24 @@ namespace NetoDotNET
         /// <param name="storeName">The name of the Neto store https://www.*storeName*.com.au</param>
         /// <param name="APIKey">Your Neto API Secure Key (generate this in your Neto control panel).</param>
         /// <param name="username">Your Neto API username (managed under Staff Users in the Neto control panel). Not required if using a key.</param>
+        /// <param name="baseEndpoint">API base endpoint e.g /do/WS/NetoAPI</param>
         public StoreConfiguration(string storeName, string APIKey, string username, string baseEndpoint)
         {
+            if (string.IsNullOrEmpty(storeName))
+            {
+                throw new ArgumentException("Missing Neto store name.", nameof(storeName));
+            }
+
+            if (string.IsNullOrEmpty(APIKey))
+            {
+                throw new ArgumentException("Missing Neto store API key.", nameof(APIKey));
+            }
+
+            if (string.IsNullOrEmpty(username))
+            {
+                throw new ArgumentException("Missing Neto username", nameof(username));
+            }
+
             if (string.IsNullOrEmpty(baseEndpoint))
             {
                 throw new ArgumentException("Missing base endpoint", nameof(baseEndpoint));
