@@ -1,17 +1,17 @@
 # NetoDotNET
 A .NET Client wrapper for the Neto API.
 
-Currently WIP
+**Currently WIP**
 
 ## Getting Started
 
-### Configure `StoreManager`
+### Configure StoreManager
 
 ```csharp
 var neto = new StoreManager("STORE_NAME", "NETO_API_KEY", "NETO_USERNAME");
 ```
 
-Using `appsettings.json`
+#### Using `appsettings.json`
 
 1. Copy `appsettings.example.json` and rename it to `appsettings.json`
 2. Set your `NETO_STORENAME`, `NETO_API_KEY`, `NETO_USERNAME`
