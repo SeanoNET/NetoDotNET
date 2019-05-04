@@ -75,7 +75,7 @@ Item[] item = new Item[] {
     new Item {
         Name = "My New Item",
         SKU = "1234",
-        DefaultPrice = "1.00"
+        DefaultPrice = 1.00m
     }
 };
 

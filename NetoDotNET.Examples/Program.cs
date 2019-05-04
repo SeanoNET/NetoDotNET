@@ -26,13 +26,13 @@ namespace NetoDotNET.Examples
             var neto = new StoreManager(config.GetSection("NETO_STORENAME").Value, config.GetSection("NETO_API_KEY").Value, config.GetSection("NETO_USERNAME").Value);
 
             // Get Items
-            //GetItems(neto);
+            GetItems(neto);
 
             // Add Item
             // AddItems(neto);
 
             // Update Item
-            UpdateItems(neto);
+            //UpdateItems(neto);
 
         }
         static void UpdateItems(StoreManager neto)
@@ -71,7 +71,7 @@ namespace NetoDotNET.Examples
                 new Item {
                     Name = "My New Item",
                     SKU = "1234",
-                    DefaultPrice = "1.00"
+                    DefaultPrice = 1.00m
                 }
             };
 
@@ -98,7 +98,7 @@ namespace NetoDotNET.Examples
         }
         static void GetItems(StoreManager neto)
         {
-            var filter = new GetItemFilter(new int[] { 1, 2, 3 });
+            var filter = new GetItemFilter(new int[] { 1, 2, 3, 50 });
     
             Item[] result = neto.Products.GetItem(filter);
 
