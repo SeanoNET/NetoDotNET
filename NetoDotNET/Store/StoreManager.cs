@@ -29,7 +29,6 @@ namespace NetoDotNET
         {                
             this._configuration = new StoreConfiguration(storeName, APIKey, username, _baseEndpoint);
 
-
             this.Products = new ProductResource(this._configuration, null);
         }
 

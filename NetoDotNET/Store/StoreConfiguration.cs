@@ -25,22 +25,22 @@ namespace NetoDotNET
         {
             if (string.IsNullOrEmpty(storeName))
             {
-                throw new ArgumentException("Missing Neto store name.", nameof(storeName));
+                throw new ArgumentNullException("Missing Neto store name.", nameof(storeName));
             }
 
             if (string.IsNullOrEmpty(APIKey))
             {
-                throw new ArgumentException("Missing Neto store API key.", nameof(APIKey));
+                throw new ArgumentNullException("Missing Neto store API key.", nameof(APIKey));
             }
 
             if (string.IsNullOrEmpty(username))
             {
-                throw new ArgumentException("Missing Neto username", nameof(username));
+                throw new ArgumentNullException("Missing Neto username", nameof(username));
             }
 
             if (string.IsNullOrEmpty(baseEndpoint))
             {
-                throw new ArgumentException("Missing base endpoint", nameof(baseEndpoint));
+                throw new ArgumentNullException("Missing base endpoint", nameof(baseEndpoint));
             }
 
             this._storeName = storeName;

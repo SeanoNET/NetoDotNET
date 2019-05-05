@@ -26,7 +26,8 @@ namespace NetoDotNET.Examples
             var neto = new StoreManager(config.GetSection("NETO_STORENAME").Value, config.GetSection("NETO_API_KEY").Value, config.GetSection("NETO_USERNAME").Value);
 
             // Get Items
-            GetItems(neto);
+            //GetItems(neto);
+            GetItemsFromDate(neto);
 
             // Add Item
             // AddItems(neto);
@@ -106,7 +107,20 @@ namespace NetoDotNET.Examples
             {
                 Console.WriteLine($"{i.ID} - {i.Name}");
             }
+        }
 
+        static void GetItemsFromDate(StoreManager neto)
+        {
+            var filter = new GetItemFilter();
+            filter.DateAddedFrom = DateTime.Now.Add(-TimeSpan.FromDays(100));
+            filter.Limit = 2;
+
+            Item[] result = neto.Products.GetItem(filter);
+
+            foreach (Item i in result)
+            {
+                Console.WriteLine($"{i.ID} - {i.Name}");
+            }
         }
     }
 }

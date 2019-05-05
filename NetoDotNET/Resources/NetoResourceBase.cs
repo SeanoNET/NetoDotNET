@@ -15,6 +15,9 @@ namespace NetoDotNET.Resources
 
         public NetoResourceBase(StoreConfiguration storeConfiguration, string resourceEndpoint, IRestClient restClient)
         {
+            if (storeConfiguration == null)
+                throw new ArgumentNullException("Must provide a store configuration.");
+
             this._storeConfiguration = storeConfiguration;
 
             if (restClient == null)

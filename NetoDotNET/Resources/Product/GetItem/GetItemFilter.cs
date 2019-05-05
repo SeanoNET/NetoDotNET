@@ -1,4 +1,5 @@
-﻿using NetoDotNET.Extensions;
+﻿using NetoDotNET.Exceptions;
+using NetoDotNET.Extensions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 
 namespace NetoDotNET.Resources
 {
+
     [JsonObject(Title = "Filter")]
     public class GetItemFilter : NetoGetResourceFilter
     {
@@ -19,15 +21,15 @@ namespace NetoDotNET.Resources
         private string[] _name;
         private string[] _primarySupplier;
         private bool[] _approved;
-        private GetItemFilterApprovedForPOS[] _approvedForPOS;
-        private GetItemFilterApprovedForMobileStore[] _approvedForMobileStore;
+        private bool[] _approvedForPOS;
+        private bool[] _approvedForMobileStore;
         private GetItemFilterSalesChannel[] _salesChannels;
         private bool[] _visible;
         private bool[] _isActive;
-        private System.DateTime _dateAddedFrom;
-        private System.DateTime _dateAddedTo;
-        private System.DateTime _dateUpdatedFrom;
-        private System.DateTime _dateUpdatedTo;
+        private DateTime _dateAddedFrom;
+        private DateTime _dateAddedTo;
+        private DateTime _dateUpdatedFrom;
+        private DateTime _dateUpdatedTo;
         private int[] _categoryID;
         private int _priority;
         private int _page;
@@ -36,16 +38,25 @@ namespace NetoDotNET.Resources
         private GetItemFilterOrderDirection _orderDirection;
         private GetItemFilterOutputSelector[] _outputSelector;
 
+        /// <summary>
+        /// You must specify at least one filter and one OutputSelector in your GetItem request. These will determine the results returned.
+        /// </summary>
         public GetItemFilter()
         {
 
         }
 
+        /// <summary>
+        /// You must specify at least one filter and one OutputSelector in your GetItem request. These will determine the results returned.
+        /// </summary>
         public GetItemFilter(int[] inventoryID) : base()
         {
             this._inventoryID = inventoryID;
         }
 
+        /// <summary>
+        /// You must specify at least one filter and one OutputSelector in your GetItem request. These will determine the results returned.
+        /// </summary>
         public GetItemFilter(int inventoryID) 
             : this(new int[] { inventoryID })
         {
@@ -160,7 +171,7 @@ namespace NetoDotNET.Resources
             }
         }
 
-        public GetItemFilterApprovedForPOS[] ApprovedForPOS
+        public bool[] ApprovedForPOS
         {
             get
             {
@@ -172,7 +183,7 @@ namespace NetoDotNET.Resources
             }
         }
 
-        public GetItemFilterApprovedForMobileStore[] ApprovedForMobileStore
+        public bool[] ApprovedForMobileStore
         {
             get
             {
@@ -220,7 +231,7 @@ namespace NetoDotNET.Resources
             }
         }
 
-        public System.DateTime DateAddedFrom
+        public DateTime DateAddedFrom
         {
             get
             {
@@ -232,7 +243,7 @@ namespace NetoDotNET.Resources
             }
         }
 
-        public System.DateTime DateAddedTo
+        public DateTime DateAddedTo
         {
             get
             {
@@ -244,7 +255,7 @@ namespace NetoDotNET.Resources
             }
         }
 
-        public System.DateTime DateUpdatedFrom
+        public DateTime DateUpdatedFrom
         {
             get
             {
@@ -256,7 +267,7 @@ namespace NetoDotNET.Resources
             }
         }
 
-        public System.DateTime DateUpdatedTo
+        public DateTime DateUpdatedTo
         {
             get
             {
@@ -605,6 +616,7 @@ namespace NetoDotNET.Resources
 
         /// <summary>
         /// Checks for at least one filter in the GetItem request. 
+        /// See GetItem Post https://developers.neto.com.au/documentation/engineers/api-documentation/products/getitem
         /// </summary>
         /// <returns>bool</returns>
         internal override bool isValid()
@@ -644,8 +656,7 @@ namespace NetoDotNET.Resources
             if(requiredFilterCount != 0)
                 return true;
 
-            // TODO: Implement NetoRequestException
-            throw new System.Exception("At least one filter is required in the GetItem request");
+            throw new NetoRequestException("At least one filter is required in the GetItem request");
         }
     }
 }
