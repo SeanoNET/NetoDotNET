@@ -130,3 +130,11 @@ switch (result.Ack)
         break;
 }
 ```
+
+## Contributing
+
+### Running Tests
+
+Add `appsettings.json` to `NetoDotNET.Test` see [Using `appsettings.json`](#using-`appsettings.json`)
+
+> Integration tests use real data inside of your Neto store. If tests fail it may be because the resource not longer exists or is out of sync
