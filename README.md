@@ -11,7 +11,7 @@ A .NET Client wrapper for the Neto API.
 var neto = new StoreManager("STORE_NAME", "NETO_API_KEY", "NETO_USERNAME");
 ```
 
-#### Using `appsettings.json`
+#### Using appsettings.json
 
 1. Copy `appsettings.example.json` and rename it to `appsettings.json`
 2. Set your `NETO_STORENAME`, `NETO_API_KEY`, `NETO_USERNAME`
@@ -135,6 +135,6 @@ switch (result.Ack)
 
 ### Running Tests
 
-Add `appsettings.json` to `NetoDotNET.Test` see [Using `appsettings.json`](#using-`appsettings.json`)
+Add `appsettings.json` to `NetoDotNET.Test` see [Using appsettings.json](#using-appsettings.json)
 
 > Integration tests use real data inside of your Neto store. If tests fail it may be because the resource not longer exists or is out of sync
