@@ -46,15 +46,13 @@ See [Microsoft.Extensions.Configuration](https://docs.microsoft.com/en-us/dotnet
 
 ## Implementation Status
 
-Implemented resources status
-
 |Resource| Complete|
 |---|---|
 |Accounting System| 0%|
 | Orders / Invoices| 0%|
 |Payments| 0%|
 |RMA| 0%|
-| Products |**100%**|
+|[Products](https://developers.neto.com.au/documentation/engineers/api-documentation/products) |**100%**|
 |Categories |0%|
 |Warehouses |0%|
 |Content |0%|
