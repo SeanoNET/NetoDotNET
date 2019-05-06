@@ -1,5 +1,5 @@
 # NetoDotNET
-A .NET Client wrapper for the Neto API.
+A .NET Client wrapper for the Neto API. See [Neto API Documentation](https://developers.neto.com.au/documentation/engineers/api-documentation)
 
 **Currently WIP**
 
@@ -135,6 +135,6 @@ switch (result.Ack)
 
 ### Running Tests
 
-Add `appsettings.json` to `NetoDotNET.Test` see [Using appsettings.json](#using-appsettings.json)
+Add `appsettings.json` to `NetoDotNET.Test` see [Using appsettingsjson](#using-appsettings.json)
 
 > Integration tests use real data inside of your Neto store. If tests fail it may be because the resource not longer exists or is out of sync
