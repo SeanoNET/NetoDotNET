@@ -44,6 +44,28 @@ var neto = new StoreManager(config.GetSection("NETO_STORENAME").Value, config.Ge
 
 See [Microsoft.Extensions.Configuration](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration?view=aspnetcore-2.2)
 
+## Implementation Status
+
+Implemented resources status
+
+|Resource| Complete|
+|---|---|
+|Accounting System| 0%|
+| Orders / Invoices| 0%|
+|Payments| 0%|
+|RMA| 0%|
+| Products |**100%**|
+|Categories |0%|
+|Warehouses |0%|
+|Content |0%|
+|Currency| 0%|
+|Customers |0%|
+|Shipping |0%|
+|Suppliers |0%|
+|Voucher |0%|
+|Cart |0%|
+|Notification Events (Webhooks) |0%|
+
 ## Examples
 
 - [Products](#products)
