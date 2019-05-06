@@ -11,33 +11,6 @@ namespace NetoDotNET.Resources
     [JsonObject(Title = "Filter")]
     public class GetItemFilter : NetoGetResourceFilter
     {
-
-        private string[] _SKU;
-        private string[] _accountingCode;
-        private int[] _inventoryID;
-        private string _parentSKU;
-        private string[] _brand;
-        private string[] _model;
-        private string[] _name;
-        private string[] _primarySupplier;
-        private bool[] _approved;
-        private bool[] _approvedForPOS;
-        private bool[] _approvedForMobileStore;
-        private GetItemFilterSalesChannel[] _salesChannels;
-        private bool[] _visible;
-        private bool[] _isActive;
-        private DateTime _dateAddedFrom;
-        private DateTime _dateAddedTo;
-        private DateTime _dateUpdatedFrom;
-        private DateTime _dateUpdatedTo;
-        private int[] _categoryID;
-        private int _priority;
-        private int _page;
-        private int _limit;
-        private GetItemFilterOrderBy _orderBy;
-        private GetItemFilterOrderDirection _orderDirection;
-        private GetItemFilterOutputSelector[] _outputSelector;
-
         /// <summary>
         /// You must specify at least one filter and one OutputSelector in your GetItem request. These will determine the results returned.
         /// </summary>
@@ -51,307 +24,45 @@ namespace NetoDotNET.Resources
         /// </summary>
         public GetItemFilter(int[] inventoryID) : base()
         {
-            this._inventoryID = inventoryID;
+            this.InventoryID = inventoryID;
         }
 
         /// <summary>
         /// You must specify at least one filter and one OutputSelector in your GetItem request. These will determine the results returned.
         /// </summary>
-        public GetItemFilter(int inventoryID) 
+        public GetItemFilter(int inventoryID)
             : this(new int[] { inventoryID })
         {
         }
 
+        public string[] SKU { get; set; }
+        public string[] AccountingCode { get; set; }
 
-        public string[] SKU
-        {
-            get
-            {
-                return this._SKU;
-            }
-            set
-            {
-                this._SKU = value;
-            }
-        }
+        public int[] InventoryID { get; set; }
+        public string ParentSKU { get; set; }
 
-        public string[] AccountingCode
-        {
-            get
-            {
-                return this._accountingCode;
-            }
-            set
-            {
-                this._accountingCode = value;
-            }
-        }
+        public string[] Brand { get; set; }
+        public string[] Model { get; set; }
+        public string[] Name { get; set; }
+        public string[] PrimarySupplier { get; set; }
+        public bool[] Approved { get; set; }
+        public bool[] ApprovedForPOS { get; set; }
+        public bool[] ApprovedForMobileStore { get; set; }
+        public GetItemFilterSalesChannel[] SalesChannels { get; set; }
+        public bool[] Visible { get; set; }
+        public bool[] IsActive { get; set; }
+        public DateTime DateAddedFrom { get; set; }
+        public DateTime DateAddedTo { get; set; }
+        public DateTime DateUpdatedFrom { get; set; }
+        public DateTime DateUpdatedTo { get; set; }
+        public int[] CategoryID { get; set; }
+        public int Priority { get; set; }
+        public int Page { get; set; }
+        public int Limit { get; set; }
+        public GetItemFilterOrderBy OrderBy { get; set; }
+        public GetItemFilterOrderDirection OrderDirection { get; set; }
 
-        public int[] InventoryID
-        {
-            get
-            {
-                return this._inventoryID;
-            }
-            set
-            {
-                this._inventoryID = value;
-            }
-        }
-
-        public string ParentSKU
-        {
-            get
-            {
-                return this._parentSKU;
-            }
-            set
-            {
-                this._parentSKU = value;
-            }
-        }
-
-        public string[] Brand
-        {
-            get
-            {
-                return this._brand;
-            }
-            set
-            {
-                this._brand = value;
-            }
-        }
-
-        public string[] Model
-        {
-            get
-            {
-                return this._model;
-            }
-            set
-            {
-                this._model = value;
-            }
-        }
-
-        public string[] Name
-        {
-            get
-            {
-                return this._name;
-            }
-            set
-            {
-                this._name = value;
-            }
-        }
-
-        public string[] PrimarySupplier
-        {
-            get
-            {
-                return this._primarySupplier;
-            }
-            set
-            {
-                this._primarySupplier = value;
-            }
-        }
-
-        public bool[] Approved
-        {
-            get
-            {
-                return this._approved;
-            }
-            set
-            {
-                this._approved = value;
-            }
-        }
-
-        public bool[] ApprovedForPOS
-        {
-            get
-            {
-                return this._approvedForPOS;
-            }
-            set
-            {
-                this._approvedForPOS = value;
-            }
-        }
-
-        public bool[] ApprovedForMobileStore
-        {
-            get
-            {
-                return this._approvedForMobileStore;
-            }
-            set
-            {
-                this._approvedForMobileStore = value;
-            }
-        }
-
-        public GetItemFilterSalesChannel[] SalesChannels
-        {
-            get
-            {
-                return this._salesChannels;
-            }
-            set
-            {
-                this._salesChannels = value;
-            }
-        }
-
-        public bool[] Visible
-        {
-            get
-            {
-                return this._visible;
-            }
-            set
-            {
-                this._visible = value;
-            }
-        }
-
-        public bool[] IsActive
-        {
-            get
-            {
-                return this._isActive;
-            }
-            set
-            {
-                this._isActive = value;
-            }
-        }
-
-        public DateTime DateAddedFrom
-        {
-            get
-            {
-                return this._dateAddedFrom;
-            }
-            set
-            {
-                this._dateAddedFrom = value;
-            }
-        }
-
-        public DateTime DateAddedTo
-        {
-            get
-            {
-                return this._dateAddedTo;
-            }
-            set
-            {
-                this._dateAddedTo = value;
-            }
-        }
-
-        public DateTime DateUpdatedFrom
-        {
-            get
-            {
-                return this._dateUpdatedFrom;
-            }
-            set
-            {
-                this._dateUpdatedFrom = value;
-            }
-        }
-
-        public DateTime DateUpdatedTo
-        {
-            get
-            {
-                return this._dateUpdatedTo;
-            }
-            set
-            {
-                this._dateUpdatedTo = value;
-            }
-        }
-
-        public int[] CategoryID
-        {
-            get
-            {
-                return this._categoryID;
-            }
-            set
-            {
-                this._categoryID = value;
-            }
-        }
-
-        public int Priority
-        {
-            get
-            {
-                return this._priority;
-            }
-            set
-            {
-                this._priority = value;
-            }
-        }
-
-        public int Page
-        {
-            get
-            {
-                return this._page;
-            }
-            set
-            {
-                this._page = value;
-            }
-        }
-
-        public int Limit
-        {
-            get
-            {
-                return this._limit;
-            }
-            set
-            {
-                this._limit = value;
-            }
-        }
-
-        public GetItemFilterOrderBy OrderBy
-        {
-            get
-            {
-                return this._orderBy;
-            }
-            set
-            {
-                this._orderBy = value;
-            }
-        }
-
-
-        public GetItemFilterOrderDirection OrderDirection
-        {
-            get
-            {
-                return this._orderDirection;
-            }
-            set
-            {
-                this._orderDirection = value;
-            }
-        }
-
+        private GetItemFilterOutputSelector[] _outputSelector;
         public GetItemFilterOutputSelector[] OutputSelector
         {
             get
@@ -364,48 +75,10 @@ namespace NetoDotNET.Resources
             }
         }
 
-
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum GetItemFilterApprovedForPOS
-        {
-            True,
-            False,
-        }
-
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum GetItemFilterApprovedForMobileStore
-        {
-            True,
-            False,
-        }
         public partial class GetItemFilterSalesChannel
         {
-            private int salesChannelIDField;
-            private bool isApprovedField;
-
-            public int SalesChannelID
-            {
-                get
-                {
-                    return this.salesChannelIDField;
-                }
-                set
-                {
-                    this.salesChannelIDField = value;
-                }
-            }
-
-            public bool IsApproved
-            {
-                get
-                {
-                    return this.isApprovedField;
-                }
-                set
-                {
-                    this.isApprovedField = value;
-                }
-            }
+            public int SalesChannelID { get; set; }
+            public bool IsApproved { get; set; }
         }
 
         [JsonConverter(typeof(StringEnumConverter))]
@@ -622,35 +295,35 @@ namespace NetoDotNET.Resources
         internal override bool isValid()
         {
 
-            if (!string.IsNullOrWhiteSpace(_parentSKU))
+            if (!string.IsNullOrWhiteSpace(ParentSKU))
                 return true;
 
-            if(_dateAddedFrom != DateTime.MinValue)
+            if(DateAddedFrom != DateTime.MinValue)
                 return true;
 
-            if (_dateAddedTo != DateTime.MinValue)
+            if (DateAddedTo != DateTime.MinValue)
                 return true;
 
-            if (_dateUpdatedFrom != DateTime.MinValue)
+            if (DateUpdatedFrom != DateTime.MinValue)
                 return true;
 
-            if (_dateUpdatedTo != DateTime.MinValue)
+            if (DateUpdatedTo != DateTime.MinValue)
                 return true;
 
-            int requiredFilterCount = _SKU.NullSafeLength() +
-                            _accountingCode.NullSafeLength() +
-                            _inventoryID.NullSafeLength() +
-                            _brand.NullSafeLength() +
-                            _model.NullSafeLength() +
-                            _name.NullSafeLength() +
-                            _primarySupplier.NullSafeLength() +
-                            _approved.NullSafeLength() +
-                            _approvedForPOS.NullSafeLength() +
-                            _approvedForMobileStore.NullSafeLength() +
-                            _salesChannels.NullSafeLength() +
-                            _visible.NullSafeLength() +
-                            _isActive.NullSafeLength() +
-                            _categoryID.NullSafeLength();
+            int requiredFilterCount = SKU.NullSafeLength() +
+                            AccountingCode.NullSafeLength() +
+                            InventoryID.NullSafeLength() +
+                            Brand.NullSafeLength() +
+                            Model.NullSafeLength() +
+                            Name.NullSafeLength() +
+                            PrimarySupplier.NullSafeLength() +
+                            Approved.NullSafeLength() +
+                            ApprovedForPOS.NullSafeLength() +
+                            ApprovedForMobileStore.NullSafeLength() +
+                            SalesChannels.NullSafeLength() +
+                            Visible.NullSafeLength() +
+                            IsActive.NullSafeLength() +
+                            CategoryID.NullSafeLength();
 
 
             if(requiredFilterCount != 0)
