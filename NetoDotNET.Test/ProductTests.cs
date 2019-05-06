@@ -11,15 +11,42 @@ namespace NetoDotNET.Test
     class ProductTests : NetoTest
     {
 
-        private Item GetTestProduct()
+        private Item GetTestAddProduct()
         {
+            Random random = new Random();
             return new Item
             {
-                Name = "NetoDotNET.Test - Test Item",
-                SKU = "DEFAULT1234"
+                Name = "NetoDotNET.Test - Test Add Item",
+                SKU = random.Next(1000, 9999).ToString(),
+                DefaultPrice = 1.00m
             };
         }
 
+        private Item[] GetTestAddVariableProduct()
+        {
+            Random random = new Random();
+            string parentSKU = random.Next(10000, 99999).ToString();
+
+            return new Item[] {
+                new Item {
+                    Name = "NetoDotNET.Test - Test Add Variable Item",
+                    SKU = parentSKU,
+                    DefaultPrice = 1.00m,
+                },
+                new Item {
+                    Name = "NetoDotNET.Test - Test Add Variable Item",
+                    SKU = random.Next(1000, 9999).ToString(),
+                    DefaultPrice = 1.00m,
+                    ParentSKU = parentSKU
+                },
+                new Item {
+                    Name = "NetoDotNET.Test - Test Add Variable Item",
+                    SKU = random.Next(1000, 9999).ToString(),
+                    DefaultPrice = 1.00m,
+                    ParentSKU = parentSKU
+                }
+            };
+        }
 
         #region Filters
         /// <summary>
@@ -32,10 +59,6 @@ namespace NetoDotNET.Test
             Assert.Throws<NetoRequestException>(() => netoStore.Products.GetItem(filter));
         }
         #endregion
-
-
-
-
 
         #region GetItems
 
@@ -75,6 +98,83 @@ namespace NetoDotNET.Test
         }
         #endregion
 
+        #region AddItem
+
+        /// <summary>
+        /// Test add a product
+        /// </summary>
+        [Test]
+        public void Should_Add_Product()
+        {
+            Item[] item = new Item[] {
+               GetTestAddProduct()
+            };
+
+            var result = netoStore.Products.AddItem(item);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(Ack.Success, result.Ack);
+        }
+
+        /// <summary>
+        /// Test add multiple products
+        /// </summary>
+        [Test]
+        public void Should_Add_Multiple_Products()
+        {
+            Item[] item = new Item[] {
+               GetTestAddProduct(),
+               GetTestAddProduct(),
+               GetTestAddProduct()
+            };
+
+            var result = netoStore.Products.AddItem(item);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(Ack.Success, result.Ack);
+            Assert.AreEqual(result.Item.Count, 3);
+        }
+
+        /// <summary>
+        /// Test add variable product
+        /// </summary>
+        [Test]
+        public void Should_Add_Variable_Product()
+        {
+            Item[] item = GetTestAddVariableProduct();
+
+            var result = netoStore.Products.AddItem(item);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(Ack.Success, result.Ack);
+            Assert.AreEqual(result.Item.Count, 3);
+        }
+
+        #endregion
+
+        #region UpdateItem
+
+        /// <summary>
+        /// Test update a product
+        /// </summary>
+        /// <param name="sku"></param>
+        [Test]
+        [TestCase("12345")]
+        public void Should_Update_Product(string sku)
+        {
+            Item[] item = new Item[] {
+                new Item {
+                    Name = "My New Item - Updated",
+                    SKU = sku
+                }
+            };
+
+            var result = netoStore.Products.UpdateItem(item);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(Ack.Success, result.Ack);
+        }
+        #endregion
 
     }
 }
