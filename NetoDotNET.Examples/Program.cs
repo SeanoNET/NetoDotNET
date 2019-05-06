@@ -27,10 +27,11 @@ namespace NetoDotNET.Examples
 
             // Get Items
             //GetItems(neto);
-            GetItemsFromDate(neto);
+            //GetItemsFromDate(neto);
 
             // Add Item
             // AddItems(neto);
+            AddVariableItems(neto);
 
             // Update Item
             //UpdateItems(neto);
@@ -94,8 +95,48 @@ namespace NetoDotNET.Examples
                     }
                     break;
             }
+        }
 
+        static void AddVariableItems(StoreManager neto)
+        {
+            Item[] variableProduct = new Item[] {
+                new Item {
+                    Name = "Variable Item",
+                    SKU = "VAR",
+                    DefaultPrice = 1.00m,
+                },
+                new Item {
+                    Name = "Variable Item",
+                    SKU = "VAR1",
+                    DefaultPrice = 1.00m,
+                    ParentSKU = "VAR"
+                },
+                new Item {
+                    Name = "Variable Item",
+                    SKU = "VAR2",
+                    DefaultPrice = 1.00m,
+                    ParentSKU = "VAR"
+                }
+            };
 
+            var result = neto.Products.AddItem(variableProduct);
+
+            switch (result.Ack)
+            {
+                case Ack.Success:
+                    foreach (var i in result.Item)
+                    {
+                        Console.WriteLine($"Created ID:{i.InventoryID} SKU: {i.SKU} at {result.CurrentTime}");
+                    }
+                    break;
+
+                case Ack.Warning:
+                    foreach (var warn in result.Messages.Warning)
+                    {
+                        Console.WriteLine($"Warning: {warn.Message}");
+                    }
+                    break;
+            }
         }
         static void GetItems(StoreManager neto)
         {
