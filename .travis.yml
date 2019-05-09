@@ -6,11 +6,11 @@ script:
   - dotnet build -c Release
   - dotnet test
 before_deploy:
-  - dotnet pack NetoDotNET/NetoDotNET.csproj --output ../package/
+  - dotnet pack NetoDotNET/NetoDotNET.csproj --output ../package/ -c Release /p:Version=TRAVIS_TAG
 deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
-  file: package/NetoDotNET.Core.0.0.1.nupkg
+  file: package/NetoDotNET.Core.TRAVIS_TAG.nupkg
   skip_cleanup: true
   draft: true
   on:
