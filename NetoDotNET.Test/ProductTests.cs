@@ -10,7 +10,7 @@ using System.IO;
 
 namespace NetoDotNET.Test
 {
-    class ProductTests : NetoTest
+    class ProductTests
     {
         public StoreManager GetStoreManager()
         {
@@ -40,14 +40,7 @@ namespace NetoDotNET.Test
             return new StoreManager(NETO_STORENAME, NETO_API_KEY, NETO_USERNAME);
 
         }
-        [Test]
-        public void HasStoreEnvVariable()
-        {
-            string testKey = Environment.GetEnvironmentVariable("NetoStoreName");
 
-            Assert.IsNotNull(testKey, "Key not set as environment variable");
-            Assert.AreNotEqual(testKey, "");
-        }
         private Item GetTestAddProduct()
         {
             Random random = new Random();
@@ -83,6 +76,15 @@ namespace NetoDotNET.Test
                     ParentSKU = parentSKU
                 }
             };
+        }
+
+        [Test]
+        public void HasStoreEnvVariable()
+        {
+            string testKey = Environment.GetEnvironmentVariable("NetoStoreName");
+
+            Assert.IsNotNull(testKey, "Key not set as environment variable");
+            Assert.AreNotEqual(testKey, "");
         }
 
         #region Filters

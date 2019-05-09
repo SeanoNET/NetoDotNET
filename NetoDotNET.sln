@@ -12,7 +12,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{23032DDC-AD65-4B7A-A004-1F48DBD09D27}"
 	ProjectSection(SolutionItems) = preProject
 		.travis.yml = .travis.yml
-		azure-pipelines.yml = azure-pipelines.yml
 	EndProjectSection
 EndProject
 Global
