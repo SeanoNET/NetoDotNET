@@ -5,3 +5,14 @@ script:
   - dotnet restore
   - dotnet build -c Release
   - dotnet test
+  - dotnet pack NetoDotNET/NetoDotNET.csproj
+before_deploy:
+  - dotnet pack NetoDotNET/NetoDotNET.csproj --output package/
+deploy:
+  provider: releases
+  api_key: $GITHUB_TOKEN
+  file: package/NetoDotNET.Core.0.0.1.nupkg
+  skip_cleanup: true
+  on:
+    tags: true
+    
