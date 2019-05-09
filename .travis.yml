@@ -5,9 +5,8 @@ script:
   - dotnet restore
   - dotnet build -c Release
   - dotnet test
-  - dotnet pack NetoDotNET/NetoDotNET.csproj
 before_deploy:
-  - dotnet pack NetoDotNET/NetoDotNET.csproj --output package/
+  - dotnet pack NetoDotNET/NetoDotNET.csproj --output ../package/
 deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
