@@ -12,6 +12,7 @@ deploy:
   api_key: $GITHUB_TOKEN
   file: package/NetoDotNET.Core.0.0.1.nupkg
   skip_cleanup: true
+  draft: true
   on:
     tags: true
-    
+    branch: master
