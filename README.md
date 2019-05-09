@@ -1,5 +1,7 @@
-# NetoDotNET
+# NetoDotNET [![Build Status](https://dev.azure.com/SeanoNET/NetoDotNET/_apis/build/status/SeanoNET.NetoDotNET?branchName=master)](https://dev.azure.com/SeanoNET/NetoDotNET/_build/latest?definitionId=1&branchName=master)
 A .NET Client wrapper for the Neto API. See [Neto API Documentation](https://developers.neto.com.au/documentation/engineers/api-documentation)
+
+
 
 **Currently WIP**
 

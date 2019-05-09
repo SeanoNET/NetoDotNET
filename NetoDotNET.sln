@@ -3,11 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28705.295
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetoDotNET", "NetoDotNET\NetoDotNET.csproj", "{821AA9F4-76DD-4B1B-8A98-0E7F8C0E7AF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetoDotNET", "NetoDotNET\NetoDotNET.csproj", "{821AA9F4-76DD-4B1B-8A98-0E7F8C0E7AF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetoDotNET.Test", "NetoDotNET.Test\NetoDotNET.Test.csproj", "{85EEF48B-F030-40F1-8C90-D022A11D7314}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetoDotNET.Test", "NetoDotNET.Test\NetoDotNET.Test.csproj", "{85EEF48B-F030-40F1-8C90-D022A11D7314}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetoDotNET.Examples", "NetoDotNET.Examples\NetoDotNET.Examples.csproj", "{5E0694E1-1337-4434-A8F6-8DFD7AAA1529}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetoDotNET.Examples", "NetoDotNET.Examples\NetoDotNET.Examples.csproj", "{5E0694E1-1337-4434-A8F6-8DFD7AAA1529}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{23032DDC-AD65-4B7A-A004-1F48DBD09D27}"
+	ProjectSection(SolutionItems) = preProject
+		.travis.yml = .travis.yml
+		azure-pipelines.yml = azure-pipelines.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

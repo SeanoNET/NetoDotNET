@@ -5,12 +5,49 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.Extensions.Configuration;
+using System.IO;
 
 namespace NetoDotNET.Test
 {
     class ProductTests : NetoTest
     {
+        public StoreManager GetStoreManager()
+        {
+            string NETO_STORENAME = Environment.GetEnvironmentVariable("NetoStoreName");
+            string NETO_API_KEY = Environment.GetEnvironmentVariable("NetoApiKey");
+            string NETO_USERNAME = Environment.GetEnvironmentVariable("NetoUsername");
 
+            if (String.IsNullOrEmpty(NETO_STORENAME) || String.IsNullOrEmpty(NETO_API_KEY) || String.IsNullOrEmpty(NETO_USERNAME))
+            {
+                // Load from configuration
+                var configBuilder = new ConfigurationBuilder()
+                    .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.json", true, true);
+
+                var config = configBuilder.Build();
+
+                NETO_STORENAME = config.GetSection("NETO_STORENAME").Value;
+                NETO_API_KEY = config.GetSection("NETO_API_KEY").Value;
+                NETO_USERNAME = config.GetSection("NETO_USERNAME").Value;
+
+                Console.WriteLine($"Loaded Configuration:" + Environment.NewLine +
+                    $"Neto Store Name: {NETO_STORENAME}" + Environment.NewLine +
+                    $"Neto API Key: {NETO_API_KEY}" + Environment.NewLine +
+                    $"Neto Username: {NETO_USERNAME}");
+            }
+
+            return new StoreManager(NETO_STORENAME, NETO_API_KEY, NETO_USERNAME);
+
+        }
+        [Test]
+        public void HasStoreEnvVariable()
+        {
+            string testKey = Environment.GetEnvironmentVariable("NetoStoreName");
+
+            Assert.IsNotNull(testKey, "Key not set as environment variable");
+            Assert.AreNotEqual(testKey, "");
+        }
         private Item GetTestAddProduct()
         {
             Random random = new Random();
@@ -55,6 +92,7 @@ namespace NetoDotNET.Test
         [Test]
         public void Should_Throw_On_InValid_GetItemFilter()
         {
+            var netoStore = GetStoreManager();
             var filter = new GetItemFilter();
             Assert.Throws<NetoRequestException>(() => netoStore.Products.GetItem(filter));
         }
@@ -65,11 +103,13 @@ namespace NetoDotNET.Test
         /// <summary>
         /// Test retrieval of single product using ID
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name = "id" ></ param >
         [Test]
         [TestCase(1)]
         public void Should_Get_Single_Product_From_ID(int id)
         {
+            var netoStore = GetStoreManager();
+
             var filter = new GetItemFilter(id);
 
             Item[] result = netoStore.Products.GetItem(filter);
@@ -87,6 +127,8 @@ namespace NetoDotNET.Test
         [TestCase(3)]
         public void Should_Get_N_Limit_Products(int limit)
         {
+            var netoStore = GetStoreManager();
+
             var filter = new GetItemFilter();
             filter.DateAddedFrom = DateTime.Now.Add(-TimeSpan.FromDays(100));
             filter.Limit = limit;
@@ -106,6 +148,8 @@ namespace NetoDotNET.Test
         [Test]
         public void Should_Add_Product()
         {
+            var netoStore = GetStoreManager();
+
             Item[] item = new Item[] {
                GetTestAddProduct()
             };
@@ -122,6 +166,8 @@ namespace NetoDotNET.Test
         [Test]
         public void Should_Add_Multiple_Products()
         {
+            var netoStore = GetStoreManager();
+
             Item[] item = new Item[] {
                GetTestAddProduct(),
                GetTestAddProduct(),
@@ -141,6 +187,8 @@ namespace NetoDotNET.Test
         [Test]
         public void Should_Add_Variable_Product()
         {
+            var netoStore = GetStoreManager();
+
             Item[] item = GetTestAddVariableProduct();
 
             var result = netoStore.Products.AddItem(item);
@@ -162,6 +210,8 @@ namespace NetoDotNET.Test
         [TestCase("12345")]
         public void Should_Update_Product(string sku)
         {
+            var netoStore = GetStoreManager();
+
             Item[] item = new Item[] {
                 new Item {
                     Name = "My New Item - Updated",
