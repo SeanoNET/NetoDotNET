@@ -78,14 +78,6 @@ namespace NetoDotNET.Test
             };
         }
 
-        [Test]
-        public void HasStoreEnvVariable()
-        {
-            string testKey = Environment.GetEnvironmentVariable("NetoStoreName");
-
-            Assert.IsNotNull(testKey, "Key not set as environment variable");
-            Assert.AreNotEqual(testKey, "");
-        }
 
         #region Filters
         /// <summary>
