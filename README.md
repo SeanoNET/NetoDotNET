@@ -7,6 +7,10 @@ A .NET Client wrapper for the Neto API. See [Neto API Documentation](https://dev
 
 ## Getting Started
 
+Install the [NuGet package](https://www.nuget.org/packages/NetoDotNET.Core/)
+
+`Install-Package NetoDotNET.Core`
+
 ### Configure StoreManager
 
 ```csharp
