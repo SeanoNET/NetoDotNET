@@ -1,4 +1,5 @@
 ﻿using NetoDotNET.Resources;
+using NetoDotNET.Resources.Categories;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,6 +19,8 @@ namespace NetoDotNET
         /// </summary>
         public IProductResource Products { get; }
 
+        public ICategoryResource Categories { get; }
+
 
         /// <summary>
         /// Manage your Neto store resources.
@@ -30,6 +33,7 @@ namespace NetoDotNET
             this._configuration = new StoreConfiguration(storeName, APIKey, username, _baseEndpoint);
 
             this.Products = new ProductResource(this._configuration, null);
+            this.Categories = new CategoryResource(this._configuration, null);
         }
 
 

@@ -1,4 +1,5 @@
 ﻿using NetoDotNET.Entities;
+using NetoDotNET.Entities.Products;
 using NetoDotNET.Resources.Product.UpdateItem;
 using System;
 using System.Collections.Generic;

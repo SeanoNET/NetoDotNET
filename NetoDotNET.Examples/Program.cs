@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using NetoDotNET.Entities;
+using NetoDotNET.Entities.Products;
 using NetoDotNET.Resources;
+using NetoDotNET.Resources.Categories;
 using System;
 using System.IO;
 
@@ -25,17 +27,33 @@ namespace NetoDotNET.Examples
 
             var neto = new StoreManager(config.GetSection("NETO_STORENAME").Value, config.GetSection("NETO_API_KEY").Value, config.GetSection("NETO_USERNAME").Value);
 
+            #region Products
             // Get Items
             //GetItems(neto);
             //GetItemsFromDate(neto);
 
             // Add Item
             // AddItems(neto);
-            AddVariableItems(neto);
+            //AddVariableItems(neto);
 
             // Update Item
             //UpdateItems(neto);
+            #endregion
 
+            #region Categories
+            GetCategories(neto);
+            #endregion
+        }
+        static void GetCategories(StoreManager neto)
+        {
+            var filter = new GetCategoryFilter(new int[] { 98, 99, 100, 101 });
+
+            NetoDotNET.Entities.Categories.Category[] result = neto.Categories.GetCategory(filter);
+
+            foreach (NetoDotNET.Entities.Categories.Category i in result)
+            {
+                Console.WriteLine($"{i.CategoryID} - {i.CategoryName}");
+            }
         }
         static void UpdateItems(StoreManager neto)
         {

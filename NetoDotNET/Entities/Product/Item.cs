@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace NetoDotNET.Entities
+namespace NetoDotNET.Entities.Products
 {
     public class Item
     {
