@@ -7,10 +7,11 @@ using System.Text;
 
 namespace NetoDotNET.Resources.Categories
 {
-    public class AddCategoryResponse : NetoResponseBase
+    public class UpdateCategoryResponse : NetoResponseBase
     {
         [JsonProperty("Category")]
-        [JsonConverter(typeof(SingleOrArrayConverter<AddedCategory>))]
-        public List<AddedCategory> Category { get; private set; }
+        [JsonConverter(typeof(SingleOrArrayConverter<UpdatedCategory>))]
+        public List<UpdatedCategory> Category { get; private set; }
+
     }
 }

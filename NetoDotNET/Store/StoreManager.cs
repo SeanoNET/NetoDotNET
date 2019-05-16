@@ -1,4 +1,4 @@
-﻿using NetoDotNET.Resources;
+﻿using NetoDotNET.Resources.Products;
 using NetoDotNET.Resources.Categories;
 using System;
 using System.Collections.Generic;

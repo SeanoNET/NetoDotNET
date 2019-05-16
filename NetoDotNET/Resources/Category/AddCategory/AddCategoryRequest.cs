@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace NetoDotNET.Resources
+namespace NetoDotNET.Resources.Categories
 {
     public class AddCategoryRequest : INetoRequest
     {

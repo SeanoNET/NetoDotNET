@@ -1,6 +1,6 @@
 ﻿using NetoDotNET.Entities;
 
-namespace NetoDotNET.Resources.Product.UpdateItem
+namespace NetoDotNET.Resources.Products
 {
     public class UpdateItemFilter : NetoUpdateResourceFilter
     {

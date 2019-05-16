@@ -12,5 +12,7 @@ namespace NetoDotNET.Resources.Categories
 
         AddCategoryResponse AddCategory(Category[] category);
 
+        UpdateCategoryResponse UpdateCategory(Category[] category);
+
     }
 }

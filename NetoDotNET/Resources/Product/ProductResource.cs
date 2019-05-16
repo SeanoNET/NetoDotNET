@@ -1,11 +1,10 @@
 ﻿using NetoDotNET.Entities;
-using NetoDotNET.Resources.Product.UpdateItem;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 
-namespace NetoDotNET.Resources
+namespace NetoDotNET.Resources.Products
 {
     public class ProductResource : NetoResourceBase, IProductResource
     {

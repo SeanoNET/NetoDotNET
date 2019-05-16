@@ -59,7 +59,7 @@ See [Microsoft.Extensions.Configuration](https://docs.microsoft.com/en-us/dotnet
 |Payments| 0%|
 |RMA| 0%|
 |[Products](https://developers.neto.com.au/documentation/engineers/api-documentation/products) |**100%**|
-|[Categories](https://developers.neto.com.au/documentation/engineers/api-documentation/categories) |66.66%|
+|[Categories](https://developers.neto.com.au/documentation/engineers/api-documentation/categories) |**100%**|
 |Warehouses |0%|
 |Content |0%|
 |Currency| 0%|
@@ -211,6 +211,38 @@ switch (result.Ack)
 }
 ```
 
+#### Update a category
+
+Update an existing category.
+
+```csharp
+var updateCategory = new Category[] {
+    new Category
+    {
+        CategoryID = 105,
+        CategoryName = "Clothing Updated"
+    }
+};
+
+var result = neto.Categories.UpdateCategory(updateCategory);
+
+switch (result.Ack)
+{
+    case Ack.Success:
+        foreach (var i in result.Category)
+        {
+            Console.WriteLine($"Updated ID: {i.CategoryID}");
+        }
+        break;
+
+    case Ack.Warning:
+        foreach (var warn in result.Messages.Warning)
+        {
+            Console.WriteLine($"Warning: {warn.Message}");
+        }
+        break;
+}
+```
 ## Contributing
 
 ### Running Tests

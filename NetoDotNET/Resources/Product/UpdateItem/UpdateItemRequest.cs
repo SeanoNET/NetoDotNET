@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace NetoDotNET.Resources.Product.UpdateItem
+namespace NetoDotNET.Resources.Products
 {
     class UpdateItemRequest : INetoRequest
     {

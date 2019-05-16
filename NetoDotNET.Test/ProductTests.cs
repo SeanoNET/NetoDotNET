@@ -1,13 +1,8 @@
 ﻿using NetoDotNET.Entities;
 using NetoDotNET.Exceptions;
-using NetoDotNET.Resources;
+using NetoDotNET.Resources.Products;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Extensions.Configuration;
-using System.IO;
-using NetoDotNET.Entities;
 
 namespace NetoDotNET.Test
 {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using NetoDotNET.Extensions;
 using NetoDotNET.Entities;
 
-namespace NetoDotNET
+namespace NetoDotNET.Resources.Products
 {
     public class AddItemResponse : NetoResponseBase
     {

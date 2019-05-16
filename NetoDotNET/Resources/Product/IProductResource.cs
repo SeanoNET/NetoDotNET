@@ -1,7 +1,5 @@
 ﻿using NetoDotNET.Entities;
-using NetoDotNET.Resources.Product.UpdateItem;
-
-namespace NetoDotNET.Resources
+namespace NetoDotNET.Resources.Products
 {
     public interface IProductResource
     {

@@ -62,7 +62,7 @@ namespace NetoDotNET.Resources
             }
             catch (System.Exception ex)
             {
-                throw new NetoResponseException(ex.Message);
+                throw ex;
             }
         }
 

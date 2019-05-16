@@ -33,7 +33,6 @@ namespace NetoDotNET.Test
             Assert.Throws<NetoRequestException>(() => netoStore.Categories.GetCategory(filter));
         }
         #endregion
-
         #region GetCategory 
         /// <summary>
         /// Test retrieval of single category using ID
@@ -76,6 +75,9 @@ namespace NetoDotNET.Test
         #region AddCategory
 
         [Test]
+        /// <summary>
+        /// Test add category
+        /// </summary>
         public void Should_Add_Single_Category()
         {
             var netoStore = GetStoreManager();
@@ -90,6 +92,10 @@ namespace NetoDotNET.Test
             Assert.AreEqual(Ack.Success, result.Ack);
             Assert.AreEqual(result.Category.Count, 1);
         }
+
+        /// <summary>
+        /// Test add multiple categories
+        /// </summary>
         public void Should_Add_Multiple_Categories()
         {
             var netoStore = GetStoreManager();
@@ -105,6 +111,34 @@ namespace NetoDotNET.Test
             Assert.IsNotNull(result);
             Assert.AreEqual(Ack.Success, result.Ack);
             Assert.AreEqual(result.Category.Count, 3);
+        }
+
+
+        #endregion
+        #region UpdateCategory
+        /// <summary>
+        /// Test update a category
+        /// </summary>
+        /// <param name="categoryID"></param>
+        [Test]
+        [TestCase(105)]
+        public void Should_Update_Category(int categoryID)
+        {
+            var netoStore = GetStoreManager();
+
+            var category = new Category[] {
+               new Category
+               {
+                   CategoryID = categoryID,
+                   CategoryName = "Clothing Updated"
+               }
+            };
+
+            var result = netoStore.Categories.UpdateCategory(category);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(Ack.Success, result.Ack);
+            Assert.AreEqual(result.Category.Count, 1);
         }
         #endregion
 

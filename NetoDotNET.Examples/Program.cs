@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using NetoDotNET.Entities;
-using NetoDotNET.Resources;
+using NetoDotNET.Resources.Products;
 using NetoDotNET.Resources.Categories;
 using System;
 using System.IO;
@@ -41,8 +41,38 @@ namespace NetoDotNET.Examples
 
             #region Categories
             //GetCategories(neto);
-            AddCategory(neto);
+            //AddCategory(neto);
+            UpdateCategory(neto);
             #endregion
+        }
+        static void UpdateCategory(StoreManager neto)
+        {
+            var updateCategory = new Category[] {
+               new Category
+               {
+                   CategoryID = 105,
+                   CategoryName = "Clothing Updated"
+               }
+            };
+
+            var result = neto.Categories.UpdateCategory(updateCategory);
+
+            switch (result.Ack)
+            {
+                case Ack.Success:
+                    foreach (var i in result.Category)
+                    {
+                        Console.WriteLine($"Updated ID: {i.CategoryID}");
+                    }
+                    break;
+
+                case Ack.Warning:
+                    foreach (var warn in result.Messages.Warning)
+                    {
+                        Console.WriteLine($"Warning: {warn.Message}");
+                    }
+                    break;
+            }
         }
         static void AddCategory(StoreManager neto)
         {

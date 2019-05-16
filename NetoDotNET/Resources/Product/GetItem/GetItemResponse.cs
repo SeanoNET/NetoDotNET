@@ -1,7 +1,7 @@
 ﻿using NetoDotNET.Entities;
 using Newtonsoft.Json;
 
-namespace NetoDotNET
+namespace NetoDotNET.Resources.Products
 {
     public class GetItemResponse : NetoResponseBase
     {

@@ -1,21 +1,18 @@
 ﻿using NetoDotNET.Entities;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace NetoDotNET.Resources.Categories
 {
-    [JsonObject(Title = "AddCategory")]
-    public class AddCategoryFilter : NetoAddResourceFilter
+    public class UpdateCategoryFilter : NetoUpdateResourceFilter
     {
         public Category[] Category { get; set; }
 
-        public AddCategoryFilter(Category[] category)
+        public UpdateCategoryFilter(Category[] category)
         {
             this.Category = category;
         }
-
 
         internal override bool isValid()
         {

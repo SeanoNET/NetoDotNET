@@ -31,5 +31,15 @@ namespace NetoDotNET.Resources.Categories
 
             return nResponse.Category;
         }
+
+        public UpdateCategoryResponse UpdateCategory(Category[] category)
+        {
+            var updateCategoryFilter = new UpdateCategoryFilter(category);
+
+            var nRequest = new UpdateCategoryRequest(updateCategoryFilter);
+            var nResponse = GetResponse<UpdateCategoryResponse>(nRequest);
+
+            return nResponse;
+        }
     }
 }

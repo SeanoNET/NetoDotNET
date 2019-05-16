@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using System;
 
-namespace NetoDotNET.Resources
+namespace NetoDotNET.Resources.Products
 {
     [JsonObject(Title = "AddItem")]
     public class AddItemFilter : NetoAddResourceFilter

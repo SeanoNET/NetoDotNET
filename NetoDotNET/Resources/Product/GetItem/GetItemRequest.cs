@@ -1,6 +1,6 @@
 ﻿using System.Net.Http;
 
-namespace NetoDotNET.Resources
+namespace NetoDotNET.Resources.Products
 {
     public class GetItemRequest : INetoRequest
     {

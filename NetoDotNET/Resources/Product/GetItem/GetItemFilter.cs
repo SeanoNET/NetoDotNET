@@ -5,7 +5,7 @@ using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 
-namespace NetoDotNET.Resources
+namespace NetoDotNET.Resources.Products
 {
 
     [JsonObject(Title = "Filter")]

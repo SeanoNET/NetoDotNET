@@ -1,4 +1,4 @@
-﻿namespace NetoDotNET.Resources
+﻿namespace NetoDotNET.Resources.Products
 {
     public class AddItemRequest : INetoRequest
     {
