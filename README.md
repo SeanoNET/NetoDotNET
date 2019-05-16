@@ -59,7 +59,7 @@ See [Microsoft.Extensions.Configuration](https://docs.microsoft.com/en-us/dotnet
 |Payments| 0%|
 |RMA| 0%|
 |[Products](https://developers.neto.com.au/documentation/engineers/api-documentation/products) |**100%**|
-|[Categories](https://developers.neto.com.au/documentation/engineers/api-documentation/categories) |33.33%|
+|[Categories](https://developers.neto.com.au/documentation/engineers/api-documentation/categories) |66.66%|
 |Warehouses |0%|
 |Content |0%|
 |Currency| 0%|
@@ -174,11 +174,40 @@ var filter = new GetCategoryFilter("[Sample] Product Category");
 ```
 
 ```csharp
-NetoDotNET.Entities.Categories.Category[] result = neto.Categories.GetCategory(filter);
+Category[] result = neto.Categories.GetCategory(filter);
 
-foreach (NetoDotNET.Entities.Categories.Category i in result)
+foreach (Category i in result)
 {
     Console.WriteLine($"{i.CategoryID} - {i.CategoryName}");
+}
+```
+#### Create a new category
+
+```csharp
+var newCategory = new Category[] {
+            new Category
+            {
+                CategoryName = "Clothing"
+            }
+};
+
+var result = neto.Categories.AddCategory(newCategory);
+
+switch (result.Ack)
+{
+    case Ack.Success:
+        foreach (var i in result.Category)
+        {
+            Console.WriteLine($"Created ID: {i.CategoryID}");
+        }
+        break;
+
+    case Ack.Warning:
+        foreach (var warn in result.Messages.Warning)
+        {
+            Console.WriteLine($"Warning: {warn.Message}");
+        }
+        break;
 }
 ```
 

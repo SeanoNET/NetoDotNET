@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using NetoDotNET.Entities;
-using NetoDotNET.Entities.Categories;
 
 namespace NetoDotNET.Resources.Categories
 {
@@ -14,6 +13,17 @@ namespace NetoDotNET.Resources.Categories
         : base(storeCongfiguration, RESOURCE_ENDPOINT, restClient)
         {
         }
+
+        public AddCategoryResponse AddCategory(Category[] category)
+        {
+            var addCategoryFilter = new AddCategoryFilter(category);
+
+            var nRequest = new AddCategoryRequest(addCategoryFilter);
+            var nResponse = GetResponse<AddCategoryResponse>(nRequest);
+
+            return nResponse;
+        }
+
         public Category[] GetCategory(GetCategoryFilter categoryFilter)
         {
             var nRequest = new GetCategoryRequest(categoryFilter);

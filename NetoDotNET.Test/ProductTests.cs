@@ -1,4 +1,4 @@
-﻿using NetoDotNET.Entities.Products;
+﻿using NetoDotNET.Entities;
 using NetoDotNET.Exceptions;
 using NetoDotNET.Resources;
 using NUnit.Framework;
@@ -126,6 +126,7 @@ namespace NetoDotNET.Test
 
             Assert.IsNotNull(result);
             Assert.AreEqual(Ack.Success, result.Ack);
+            Assert.AreEqual(result.Item.Count, 1);
         }
 
         /// <summary>

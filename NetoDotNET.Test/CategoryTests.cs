@@ -1,4 +1,4 @@
-﻿using NetoDotNET.Entities.Categories;
+﻿using NetoDotNET.Entities;
 using NetoDotNET.Exceptions;
 using NetoDotNET.Resources;
 using NetoDotNET.Resources.Categories;
@@ -11,6 +11,15 @@ namespace NetoDotNET.Test
 {
     class CategoryTests : NetoBaseTests
     {
+        private Category GetTestAddCategory()
+        {
+            Random random = new Random();
+            return new Category
+            {
+                CategoryName = $"NetoDotNET.Test - New Category {random.Next(0, 999).ToString()}",
+                Description1 = "New category description"
+            };
+        }
 
         #region Filters
         /// <summary>
@@ -62,6 +71,40 @@ namespace NetoDotNET.Test
 
             Assert.IsNotNull(result);
             Assert.AreEqual(limit, result.Length);
+        }
+        #endregion
+        #region AddCategory
+
+        [Test]
+        public void Should_Add_Single_Category()
+        {
+            var netoStore = GetStoreManager();
+
+            Category[] category = new Category[] {
+               GetTestAddCategory()
+            };
+
+            var result = netoStore.Categories.AddCategory(category);
+
+            Assert.IsNotNull(result);            
+            Assert.AreEqual(Ack.Success, result.Ack);
+            Assert.AreEqual(result.Category.Count, 1);
+        }
+        public void Should_Add_Multiple_Categories()
+        {
+            var netoStore = GetStoreManager();
+
+            Category[] category = new Category[] {
+               GetTestAddCategory(),
+               GetTestAddCategory(),
+               GetTestAddCategory()
+            };
+
+            var result = netoStore.Categories.AddCategory(category);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(Ack.Success, result.Ack);
+            Assert.AreEqual(result.Category.Count, 3);
         }
         #endregion
 

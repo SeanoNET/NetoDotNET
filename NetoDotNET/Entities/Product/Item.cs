@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace NetoDotNET.Entities.Products
+namespace NetoDotNET.Entities
 {
     public class Item
     {
@@ -448,8 +448,8 @@ namespace NetoDotNET.Entities.Products
         [JsonConverter(typeof(SingleOrArrayConverter<PriceGroup>))]
         public List<PriceGroup> PriceGroups { get; set; }
 
-        [JsonConverter(typeof(SingleOrArrayConverter<Category>))]
-        public List<Category> Categories { get; set; }
+        [JsonConverter(typeof(SingleOrArrayConverter<CategoryProduct>))]
+        public List<CategoryProduct> Categories { get; set; }
 
         [JsonConverter(typeof(SingleOrArrayConverter<ItemSpecific>))]
         public List<ItemSpecific> ItemSpecifics { get; set; }
@@ -510,7 +510,7 @@ namespace NetoDotNET.Entities.Products
 
     }
 
-    public class Category
+    public class CategoryProduct
     {
         public string CategoryID { get; set; }
         public string Priority { get; set; }

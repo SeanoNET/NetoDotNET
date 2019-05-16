@@ -1,4 +1,5 @@
-﻿using NetoDotNET.Helpers;
+﻿using NetoDotNET.Exceptions;
+using NetoDotNET.Helpers;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -61,7 +62,7 @@ namespace NetoDotNET.Resources
             }
             catch (System.Exception ex)
             {
-                throw ex;
+                throw new NetoResponseException(ex.Message);
             }
         }
 

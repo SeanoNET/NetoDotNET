@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using NetoDotNET.Entities.Categories;
+using NetoDotNET.Entities;
 
 namespace NetoDotNET.Resources.Categories
 {
@@ -10,6 +10,7 @@ namespace NetoDotNET.Resources.Categories
 
         Category[] GetCategory(GetCategoryFilter categoryFilter);
 
+        AddCategoryResponse AddCategory(Category[] category);
 
     }
 }

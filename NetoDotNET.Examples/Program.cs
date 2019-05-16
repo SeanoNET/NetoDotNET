@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
 using NetoDotNET.Entities;
-using NetoDotNET.Entities.Products;
 using NetoDotNET.Resources;
 using NetoDotNET.Resources.Categories;
 using System;
@@ -41,16 +40,45 @@ namespace NetoDotNET.Examples
             #endregion
 
             #region Categories
-            GetCategories(neto);
+            //GetCategories(neto);
+            AddCategory(neto);
             #endregion
+        }
+        static void AddCategory(StoreManager neto)
+        {
+            var newCategory = new Category[] {
+               new Category
+               {
+                   CategoryName = "Clothing"
+               }
+            };
+       
+            var result = neto.Categories.AddCategory(newCategory);
+
+            switch (result.Ack)
+            {
+                case Ack.Success:
+                    foreach (var i in result.Category)
+                    {
+                        Console.WriteLine($"Created ID: {i.CategoryID}");
+                    }
+                    break;
+
+                case Ack.Warning:
+                    foreach (var warn in result.Messages.Warning)
+                    {
+                        Console.WriteLine($"Warning: {warn.Message}");
+                    }
+                    break;
+            }
         }
         static void GetCategories(StoreManager neto)
         {
             var filter = new GetCategoryFilter(new int[] { 98, 99, 100, 101 });
 
-            NetoDotNET.Entities.Categories.Category[] result = neto.Categories.GetCategory(filter);
+            Category[] result = neto.Categories.GetCategory(filter);
 
-            foreach (NetoDotNET.Entities.Categories.Category i in result)
+            foreach (Category i in result)
             {
                 Console.WriteLine($"{i.CategoryID} - {i.CategoryName}");
             }
