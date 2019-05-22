@@ -23,7 +23,7 @@ namespace NetoDotNET.Test
 
         #region Filters
         /// <summary>
-        /// Tests that <see cref="NetoRequestException"/> is thrown when an invalid <see cref="GetItemFilter"/> is provided
+        /// Tests that <see cref="NetoRequestException"/> is thrown when an invalid <see cref="GetCategoryFilter"/> is provided
         /// </summary>
         [Test]
         public void Should_Throw_On_InValid_GetItemFilter()
@@ -33,7 +33,9 @@ namespace NetoDotNET.Test
             Assert.Throws<NetoRequestException>(() => netoStore.Categories.GetCategory(filter));
         }
         #endregion
+
         #region GetCategory 
+
         /// <summary>
         /// Test retrieval of single category using ID
         /// </summary>
@@ -72,6 +74,7 @@ namespace NetoDotNET.Test
             Assert.AreEqual(limit, result.Length);
         }
         #endregion
+
         #region AddCategory
 
         [Test]
@@ -115,7 +118,9 @@ namespace NetoDotNET.Test
 
 
         #endregion
+
         #region UpdateCategory
+
         /// <summary>
         /// Test update a category
         /// </summary>
