@@ -4,6 +4,7 @@ using NetoDotNET.Resources.Products;
 using NetoDotNET.Resources.Categories;
 using System;
 using System.IO;
+using NetoDotNET.Resources.Customers;
 
 namespace NetoDotNET.Examples
 {
@@ -42,8 +43,24 @@ namespace NetoDotNET.Examples
             #region Categories
             //GetCategories(neto);
             //AddCategory(neto);
-            UpdateCategory(neto);
+            //UpdateCategory(neto);
             #endregion
+
+            #region Customers
+            GetCustomers(neto);
+            #endregion
+        }
+
+        static void GetCustomers(StoreManager neto)
+        {
+            var filter = new GetCustomerFilter("SAMPLE_John");
+
+            Customer[] result = neto.Customers.GetCustomer(filter);
+
+            foreach (Customer i in result)
+            {
+                Console.WriteLine($"{i.ID} - {i.Username}");
+            }
         }
         static void UpdateCategory(StoreManager neto)
         {

@@ -190,8 +190,9 @@ namespace NetoDotNET.Entities
         public DateTime? DateUpdatedLocal { get; set; }
         [JsonConverter(typeof(NetoDateNullConverter<DateTime>))]
         public DateTime? DateUpdatedUTC { get; set; }
-        [JsonConverter(typeof(SingleOrArrayConverter<SalesChannel>))]
-        public CustomerLogs[] CustomerLogs { get; set; }
+
+        [JsonConverter(typeof(SingleOrArrayConverter<CustomerLogs>))]
+        public List<CustomerLogs> CustomerLogs { get; set; }
     }
 }
 

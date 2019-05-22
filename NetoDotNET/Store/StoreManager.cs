@@ -3,6 +3,7 @@ using NetoDotNET.Resources.Categories;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using NetoDotNET.Resources.Customers;
 
 namespace NetoDotNET
 {
@@ -19,8 +20,15 @@ namespace NetoDotNET
         /// </summary>
         public IProductResource Products { get; }
 
+        /// <summary>
+        /// Manage product category resources, deprecated see content
+        /// </summary>
         public ICategoryResource Categories { get; }
 
+        /// <summary>
+        /// Manage customer resources
+        /// </summary>
+        public ICustomerResource Customers { get;  }
 
         /// <summary>
         /// Manage your Neto store resources.
@@ -34,6 +42,7 @@ namespace NetoDotNET
 
             this.Products = new ProductResource(this._configuration, null);
             this.Categories = new CategoryResource(this._configuration, null);
+            this.Customers = new CustomerResource(this._configuration, null);
         }
 
 
