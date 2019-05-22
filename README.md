@@ -74,6 +74,7 @@ See [Microsoft.Extensions.Configuration](https://docs.microsoft.com/en-us/dotnet
 
 - [Products](#products)
 - [Categories](#categories)
+- [Customers](#customers)
 
 ### Products
 
@@ -243,6 +244,24 @@ switch (result.Ack)
         break;
 }
 ```
+
+### Customers
+
+#### List customers
+
+Get a customer using a username
+
+```csharp
+var filter = new GetCustomerFilter("SAMPLE_John");
+
+Customer[] result = neto.Customers.GetCustomer(filter);
+
+foreach (Customer i in result)
+{
+    Console.WriteLine($"{i.ID} - {i.Username}");
+}
+```
+
 ## Contributing
 
 ### Running Tests
