@@ -11,13 +11,13 @@ namespace NetoDotNET.Test
     class CustomerTests : NetoBaseTests
     {
 
-        private Customer GetTestAddCategory()
+        private Customer GetTestAddCustomer()
         {
             Random random = new Random();
             return new Customer
             {
                 Username = $"NetoDotNET_Test_{random.Next(0, 999).ToString()}",
-                EmailAddress = "noemail@noemail.com"
+                EmailAddress = $"noemail{random.Next(0, 999).ToString()}@noemail.com"
             };
         }
 
@@ -41,7 +41,7 @@ namespace NetoDotNET.Test
         /// <param name = "username" ></ param >
         [Test]
         [TestCase("SAMPLE_John")]
-        public void Should_Get_Single_Category_From_ID(string username)
+        public void Should_Get_Single_Customer_From_Username(string username)
         {
             var netoStore = GetStoreManager();
 
@@ -51,6 +51,76 @@ namespace NetoDotNET.Test
 
             Assert.IsNotNull(result);
             Assert.AreEqual(1, result.Length);
+        }
+        #endregion
+
+        #region AddCustomer
+        /// <summary>
+        /// Test add a customer
+        /// </summary>
+        [Test]
+        public void Should_Add_Customer()
+        {
+            var netoStore = GetStoreManager();
+
+            Customer[] customer = new Customer[] {
+               GetTestAddCustomer()
+            };
+
+            var result = netoStore.Customers.AddCustomer(customer);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(Ack.Success, result.Ack);
+            Assert.AreEqual(result.Customer.Count, 1);
+        }
+
+        /// <summary>
+        /// Test add multiple customers
+        /// </summary>
+        [Test]
+        public void Should_Add_Multiple_Customers()
+        {
+            var netoStore = GetStoreManager();
+
+            Customer[] customers = new Customer[] {
+               GetTestAddCustomer(),
+               GetTestAddCustomer(),
+               GetTestAddCustomer()
+            };
+
+            var result = netoStore.Customers.AddCustomer(customers);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(Ack.Success, result.Ack);
+            Assert.AreEqual(result.Customer.Count, 3);
+        }
+        #endregion
+
+        #region UpdateCustomer
+        /// <summary>
+        /// Test update a customer
+        /// </summary>
+        /// <param name="username"></param>
+        [Test]
+        [TestCase("test")]
+        public void Should_Update_Customer(string username)
+        {
+            var netoStore = GetStoreManager();
+
+            Customer[] customer = new Customer[] {
+                new Customer {
+                   Username = username,
+                   BillingAddress = new BillingAddress
+                   {
+                       BillFirstName = "Test Updated"
+                   }
+                }
+            };
+
+            var result = netoStore.Customers.UpdateCustomer(customer);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(Ack.Success, result.Ack);
         }
         #endregion
     }

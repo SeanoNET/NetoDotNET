@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using NetoDotNET.Entities;
+using NetoDotNET.Entities.Customers.CustomerLog;
 
 namespace NetoDotNET.Resources.Customers
 {
@@ -15,6 +16,18 @@ namespace NetoDotNET.Resources.Customers
         }
         public AddCustomerResponse AddCustomer(Customer[] customer)
         {
+            AddCustomerFilter addCustomerFilter = new AddCustomerFilter(customer);
+
+
+            var nRequest = new AddCustomerRequest(addCustomerFilter);
+            var nResponse = GetResponse<AddCustomerResponse>(nRequest);
+
+
+            return nResponse;
+        }
+
+        public AddCustomerLogResponse AddCustomerLog(CustomerLog[] customerLog)
+        {
             throw new NotImplementedException();
         }
 
@@ -27,6 +40,16 @@ namespace NetoDotNET.Resources.Customers
         }
 
         public UpdateCustomerResponse UpdateCustomer(Customer[] customer)
+        {
+            UpdateCustomerFilter updateCustomerFilter = new UpdateCustomerFilter(customer);
+
+            var nRequest = new UpdateCustomerRequest(updateCustomerFilter);
+            var nResponse = GetResponse<UpdateCustomerResponse>(nRequest);
+
+            return nResponse;
+        }
+
+        public UpdateCustomerLogResponse UpdateCustomerLog(CustomerLog[] customerLog)
         {
             throw new NotImplementedException();
         }

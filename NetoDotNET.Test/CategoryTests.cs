@@ -26,7 +26,7 @@ namespace NetoDotNET.Test
         /// Tests that <see cref="NetoRequestException"/> is thrown when an invalid <see cref="GetCategoryFilter"/> is provided
         /// </summary>
         [Test]
-        public void Should_Throw_On_InValid_GetItemFilter()
+        public void Should_Throw_On_InValid_GetCategoryFilter()
         {
             var netoStore = GetStoreManager();
             var filter = new GetCategoryFilter();

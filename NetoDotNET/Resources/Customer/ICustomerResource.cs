@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using NetoDotNET.Entities;
+using NetoDotNET.Entities.Customers.CustomerLog;
 
 namespace NetoDotNET.Resources.Customers
 {
@@ -33,5 +34,26 @@ namespace NetoDotNET.Resources.Customers
         /// </typeparam>
         /// <returns>returns the unique identifier (Username) for the customer <see cref="AddCustomerResponse"/></returns>
         UpdateCustomerResponse UpdateCustomer(Customer[] customer);
+
+        /// <summary>
+        /// Use this call to update a customer log.
+        /// </summary>
+        /// <param name="customerLog">Customer log to update.<see cref="CustomerLog"/></param>
+        /// <typeparam name="CustomerLog">
+        /// </typeparam>
+        /// <returns>returns status of the update results <see cref="UpdateCustomerLogResponse"/></returns>
+        UpdateCustomerLogResponse UpdateCustomerLog(CustomerLog[] customerLog);
+
+        /// <summary>
+        /// Use this call to add a customer log.
+        /// </summary>
+        /// <param name="customerLog">Customer log to add.<see cref="CustomerLog"/></param>
+        /// <typeparam name="CustomerLog">
+        /// </typeparam>
+        /// <returns>returns the unique identifier (LogID) for the customer <see cref="AddCustomerLogResponse"/></returns>
+        AddCustomerLogResponse AddCustomerLog(CustomerLog[] customerLog);
+
+
+
     }
 }

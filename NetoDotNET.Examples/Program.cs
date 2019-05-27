@@ -47,10 +47,76 @@ namespace NetoDotNET.Examples
             #endregion
 
             #region Customers
-            GetCustomers(neto);
+            //GetCustomers(neto);
+            //AddCustomers(neto);
+            UpdateCustomer(neto);
             #endregion
         }
+        static void UpdateCustomer(StoreManager neto)
+        {
+            Customer[] customer = new Customer[] {
+                new Customer {
+                   Username = "test",
+                   BillingAddress = new BillingAddress
+                   {
+                       BillFirstName = "Test Updated"
+                   }
+                }
+            };
 
+            var result = neto.Customers.UpdateCustomer(customer);
+
+            switch (result.Ack)
+            {
+                case Ack.Success:
+                    foreach (var i in result.Item)
+                    {
+                        Console.WriteLine($"Updated Username:{i.Username} at {result.CurrentTime}");
+                    }
+                    break;
+
+                case Ack.Warning:
+                    foreach (var warn in result.Messages.Warning)
+                    {
+                        Console.WriteLine($"Warning: {warn.Message}");
+                    }
+                    break;
+            }
+        }
+        static void AddCustomers(StoreManager neto)
+        {
+            Customer[] customer = new Customer[] {
+                new Customer {
+                   Username = "test",
+                   EmailAddress = "test@test.com",
+                   ABN = "123412341234",
+                   BillingAddress = new BillingAddress
+                   {
+                       BillFirstName = "Test",
+                       BillLastName = "Customer"
+                   }               
+                }
+            };
+
+            var result = neto.Customers.AddCustomer(customer);
+
+            switch (result.Ack)
+            {
+                case Ack.Success:
+                    foreach (var i in result.Customer)
+                    {
+                        Console.WriteLine($"Created Username:{i.Username} at {result.CurrentTime}");
+                    }
+                    break;
+
+                case Ack.Warning:
+                    foreach (var warn in result.Messages.Warning)
+                    {
+                        Console.WriteLine($"Warning: {warn.Message}");
+                    }
+                    break;
+            }
+        }
         static void GetCustomers(StoreManager neto)
         {
             var filter = new GetCustomerFilter("SAMPLE_John");

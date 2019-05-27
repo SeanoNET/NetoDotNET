@@ -262,6 +262,75 @@ foreach (Customer i in result)
 }
 ```
 
+#### Create a new customer
+
+```csharp
+Customer[] customer = new Customer[] {
+    new Customer {
+        Username = "test",
+        EmailAddress = "test@test.com",
+        ABN = "123412341234",
+        BillingAddress = new BillingAddress
+        {
+            BillFirstName = "Test",
+            BillLastName = "Customer"
+        }       
+    }
+};
+
+var result = neto.Customers.AddCustomer(customer);
+
+switch (result.Ack)
+{
+    case Ack.Success:
+        foreach (var i in result.Customer)
+        {
+            Console.WriteLine($"Created Username:{i.Username} at {result.CurrentTime}");
+        }
+        break;
+
+    case Ack.Warning:
+        foreach (var warn in result.Messages.Warning)
+        {
+            Console.WriteLine($"Warning: {warn.Message}");
+        }
+        break;
+}
+```
+#### Update a customer
+
+Update an existing customer.
+
+```csharp
+Customer[] customer = new Customer[] {
+    new Customer {
+        Username = "test",
+        BillingAddress = new BillingAddress
+        {
+            BillFirstName = "Test Updated"
+        }
+    }
+};
+
+var result = neto.Customers.UpdateCustomer(customer);
+
+switch (result.Ack)
+{
+    case Ack.Success:
+        foreach (var i in result.Item)
+        {
+            Console.WriteLine($"Updated Username:{i.Username} at {result.CurrentTime}");
+        }
+        break;
+
+    case Ack.Warning:
+        foreach (var warn in result.Messages.Warning)
+        {
+            Console.WriteLine($"Warning: {warn.Message}");
+        }
+        break;
+}
+```
 ## Contributing
 
 ### Running Tests
