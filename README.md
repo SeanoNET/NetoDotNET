@@ -335,7 +335,7 @@ switch (result.Ack)
 
 ### Other Examples
 
-See [Program.cs](NetoDotNET.Examples\Program.cs) for more examples
+See [Program.cs](NetoDotNET.Examples/Program.cs) for more examples
 
 ## Contributing
 
