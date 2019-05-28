@@ -5,6 +5,7 @@ using NetoDotNET.Resources.Categories;
 using System;
 using System.IO;
 using NetoDotNET.Resources.Customers;
+using NetoDotNET.Entities.Customers.CustomerLog;
 
 namespace NetoDotNET.Examples
 {
@@ -49,8 +50,76 @@ namespace NetoDotNET.Examples
             #region Customers
             //GetCustomers(neto);
             //AddCustomers(neto);
-            UpdateCustomer(neto);
+            //UpdateCustomer(neto);
+            //AddCustomerLog(neto);
+            UpdateCustomerLog(neto);
             #endregion
+        }
+        static void UpdateCustomerLog(StoreManager neto)
+        {
+            Entities.Customers.CustomerLog.CustomerLogs customerLogs = new Entities.Customers.CustomerLog.CustomerLogs
+            {
+                CustomerLog = new CustomerLog[] {
+                    new CustomerLog {
+                        LogID = 1,
+                        Username = "test",
+                        DateRequiredFollowUp = DateTime.Now.AddDays(21),
+                        Notes = "Example customer log updated",
+                        Status = Status.RequireRecontact
+                    }
+                }
+            };
+
+
+            var result = neto.Customers.UpdateCustomerLog(customerLogs);
+
+            switch (result.Ack)
+            {
+                case Ack.Success:
+                    Console.WriteLine($"Updated Customer log at {result.CurrentTime}");
+                    break;
+
+                case Ack.Warning:
+                    foreach (var warn in result.Messages.Warning)
+                    {
+                        Console.WriteLine($"Warning: {warn.Message}");
+                    }
+                    break;
+            }
+        }
+        static void AddCustomerLog(StoreManager neto)
+        {
+            Entities.Customers.CustomerLog.CustomerLogs customerLogs = new Entities.Customers.CustomerLog.CustomerLogs
+            {
+                CustomerLog = new CustomerLog[] {
+                new CustomerLog {
+                    Username = "test",
+                    DateRequiredFollowUp = DateTime.Now.AddDays(14),
+                    Notes = "Example customer log",
+                    Status = Status.RequireRecontact
+                }
+            }
+            };
+
+
+            var result = neto.Customers.AddCustomerLog(customerLogs);
+
+            switch (result.Ack)
+            {
+                case Ack.Success:
+                    foreach (var i in result.CustomerLog)
+                    {
+                        Console.WriteLine($"Created LogId:{i.LogID} at {result.CurrentTime}");
+                    }
+                    break;
+
+                case Ack.Warning:
+                    foreach (var warn in result.Messages.Warning)
+                    {
+                        Console.WriteLine($"Warning: {warn.Message}");
+                    }
+                    break;
+            }
         }
         static void UpdateCustomer(StoreManager neto)
         {
@@ -94,7 +163,7 @@ namespace NetoDotNET.Examples
                    {
                        BillFirstName = "Test",
                        BillLastName = "Customer"
-                   }               
+                   }
                 }
             };
 
@@ -165,7 +234,7 @@ namespace NetoDotNET.Examples
                    CategoryName = "Clothing"
                }
             };
-       
+
             var result = neto.Categories.AddCategory(newCategory);
 
             switch (result.Ack)
@@ -300,7 +369,7 @@ namespace NetoDotNET.Examples
         static void GetItems(StoreManager neto)
         {
             var filter = new GetItemFilter(new int[] { 1, 2, 3, 50 });
-    
+
             Item[] result = neto.Products.GetItem(filter);
 
             foreach (Item i in result)

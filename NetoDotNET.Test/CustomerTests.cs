@@ -1,4 +1,5 @@
 ﻿using NetoDotNET.Entities;
+using NetoDotNET.Entities.Customers.CustomerLog;
 using NetoDotNET.Exceptions;
 using NetoDotNET.Resources.Customers;
 using NUnit.Framework;
@@ -18,6 +19,17 @@ namespace NetoDotNET.Test
             {
                 Username = $"NetoDotNET_Test_{random.Next(0, 999).ToString()}",
                 EmailAddress = $"noemail{random.Next(0, 999).ToString()}@noemail.com"
+            };
+        }
+
+        private CustomerLog GetTestAddCustomerLog()
+        {
+            return new CustomerLog
+            {
+                Username = "test",
+                DateRequiredFollowUp = DateTime.Now.AddDays(14),
+                Notes = "Example customer log",
+                Status = Status.RequireRecontact
             };
         }
 
@@ -118,6 +130,86 @@ namespace NetoDotNET.Test
             };
 
             var result = netoStore.Customers.UpdateCustomer(customer);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(Ack.Success, result.Ack);
+        }
+        #endregion
+
+        #region AddCustomerLog
+        /// <summary>
+        /// Test add a customer log to existing customer
+        /// </summary>
+        [Test]
+        public void Should_Add_CustomerLog()
+        {
+            var netoStore = GetStoreManager();
+
+            Entities.Customers.CustomerLog.CustomerLogs customerLogs = new Entities.Customers.CustomerLog.CustomerLogs
+            {
+                CustomerLog = new CustomerLog[] {
+                    GetTestAddCustomerLog()
+                }
+            };
+
+            var result = netoStore.Customers.AddCustomerLog(customerLogs);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(Ack.Success, result.Ack);
+            Assert.AreEqual(result.CustomerLog.Count, 1);
+        }
+
+        /// <summary>
+        /// Test add multiple customer logs to customer
+        /// </summary>
+        [Test]
+        public void Should_Add_Multiple_CustomerLogs_To_Customer()
+        {
+            var netoStore = GetStoreManager();
+
+            Entities.Customers.CustomerLog.CustomerLogs customerLogs = new Entities.Customers.CustomerLog.CustomerLogs
+            {
+                CustomerLog = new CustomerLog[] {
+                    GetTestAddCustomerLog(),
+                    GetTestAddCustomerLog(),
+                    GetTestAddCustomerLog()
+                }
+            };
+
+            var result = netoStore.Customers.AddCustomerLog(customerLogs);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(Ack.Success, result.Ack);
+            Assert.AreEqual(result.CustomerLog.Count, 3);
+        }
+        #endregion
+
+        #region UpdateCustomerLog
+        /// <summary>
+        /// Test update a customer log
+        /// </summary>
+        /// <param name="logid"></param>
+        [Test]
+        [TestCase(1)]
+        public void Should_Update_CustomerLog(int logid)
+        {
+            var netoStore = GetStoreManager();
+
+            Entities.Customers.CustomerLog.CustomerLogs customerLogs = new Entities.Customers.CustomerLog.CustomerLogs
+            {
+                CustomerLog = new CustomerLog[] {
+                    new CustomerLog {
+                        LogID = logid,
+                        Username = "test",
+                        DateRequiredFollowUp = DateTime.Now.AddDays(21),
+                        Notes = "Example customer log updated",
+                        Status = Status.RequireRecontact
+                    }
+                }
+            };
+
+
+            var result = netoStore.Customers.UpdateCustomerLog(customerLogs);
 
             Assert.IsNotNull(result);
             Assert.AreEqual(Ack.Success, result.Ack);

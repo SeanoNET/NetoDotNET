@@ -14,7 +14,7 @@ namespace NetoDotNET.Resources
         /// <returns>bool</returns>
         internal abstract bool isValid();
 
-        private string Serialize<NetoGetResourceFilter>(NetoGetResourceFilter Filter)
+        protected virtual string Serialize<NetoGetResourceFilter>(NetoGetResourceFilter Filter)
         {
             var settings = new JsonSerializerSettings();
             settings.NullValueHandling = NullValueHandling.Ignore;

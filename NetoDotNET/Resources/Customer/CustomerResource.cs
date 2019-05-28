@@ -26,9 +26,16 @@ namespace NetoDotNET.Resources.Customers
             return nResponse;
         }
 
-        public AddCustomerLogResponse AddCustomerLog(CustomerLog[] customerLog)
+        public AddCustomerLogResponse AddCustomerLog(Entities.Customers.CustomerLog.CustomerLogs customerLogs)
         {
-            throw new NotImplementedException();
+            AddCustomerLogFilter addCustomerLogFilter = new AddCustomerLogFilter(customerLogs);
+
+
+            var nRequest = new AddCustomerLogRequest(addCustomerLogFilter);
+            var nResponse = GetResponse<AddCustomerLogResponse>(nRequest);
+
+
+            return nResponse;
         }
 
         public Customer[] GetCustomer(GetCustomerFilter customerFilter)
@@ -49,9 +56,14 @@ namespace NetoDotNET.Resources.Customers
             return nResponse;
         }
 
-        public UpdateCustomerLogResponse UpdateCustomerLog(CustomerLog[] customerLog)
+        public UpdateCustomerLogResponse UpdateCustomerLog(Entities.Customers.CustomerLog.CustomerLogs customerLogs)
         {
-            throw new NotImplementedException();
+            UpdateCustomerLogFilter updateCustomerLogFilter = new UpdateCustomerLogFilter(customerLogs);
+
+            var nRequest = new UpdateCustomerLogRequest(updateCustomerLogFilter);
+            var nResponse = GetResponse<UpdateCustomerLogResponse>(nRequest);
+
+            return nResponse;
         }
     }
 }

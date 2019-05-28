@@ -1,6 +1,11 @@
-﻿namespace NetoDotNET.Resources.Customers
+﻿using NetoDotNET.Extensions;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+
+namespace NetoDotNET.Resources.Customers
 {
-    public class UpdateCustomerLogResponse
+    public class UpdateCustomerLogResponse : NetoResponseBase
     {
     }
+
 }

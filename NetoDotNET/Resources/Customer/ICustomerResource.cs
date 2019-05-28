@@ -38,20 +38,20 @@ namespace NetoDotNET.Resources.Customers
         /// <summary>
         /// Use this call to update a customer log.
         /// </summary>
-        /// <param name="customerLog">Customer log to update.<see cref="CustomerLog"/></param>
+        /// <param name="customerLog">Customer log to update.<see cref="Entities.Customers.CustomerLog.CustomerLogs"/></param>
         /// <typeparam name="CustomerLog">
         /// </typeparam>
         /// <returns>returns status of the update results <see cref="UpdateCustomerLogResponse"/></returns>
-        UpdateCustomerLogResponse UpdateCustomerLog(CustomerLog[] customerLog);
+        UpdateCustomerLogResponse UpdateCustomerLog(Entities.Customers.CustomerLog.CustomerLogs customerLogs);
 
         /// <summary>
         /// Use this call to add a customer log.
         /// </summary>
-        /// <param name="customerLog">Customer log to add.<see cref="CustomerLog"/></param>
+        /// <param name="customerLog">Customer log to add.<see cref="Entities.Customers.CustomerLog.CustomerLogs"/></param>
         /// <typeparam name="CustomerLog">
         /// </typeparam>
         /// <returns>returns the unique identifier (LogID) for the customer <see cref="AddCustomerLogResponse"/></returns>
-        AddCustomerLogResponse AddCustomerLog(CustomerLog[] customerLog);
+        AddCustomerLogResponse AddCustomerLog(Entities.Customers.CustomerLog.CustomerLogs customerLogs);
 
 
 

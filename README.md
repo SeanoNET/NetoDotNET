@@ -63,7 +63,7 @@ See [Microsoft.Extensions.Configuration](https://docs.microsoft.com/en-us/dotnet
 |Warehouses |0%|
 |Content |0%|
 |Currency| 0%|
-|Customers |0%|
+|[Customers](https://developers.neto.com.au/documentation/engineers/api-documentation/customers) |**100%**|
 |Shipping |0%|
 |Suppliers |0%|
 |Voucher |0%|
@@ -75,6 +75,7 @@ See [Microsoft.Extensions.Configuration](https://docs.microsoft.com/en-us/dotnet
 - [Products](#products)
 - [Categories](#categories)
 - [Customers](#customers)
+- [Other](#other-examples)
 
 ### Products
 
@@ -331,6 +332,11 @@ switch (result.Ack)
         break;
 }
 ```
+
+### Other Examples
+
+See [Program.cs](NetoDotNET.Examples\Program.cs) for more examples
+
 ## Contributing
 
 ### Running Tests
