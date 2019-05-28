@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using NetoDotNET.Entities;
-using NetoDotNET.Entities.Customers.CustomerLog;
 
 namespace NetoDotNET.Resources.Customers
 {
