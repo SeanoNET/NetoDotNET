@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using NetoDotNET.Resources.Customers;
+using NetoDotNET.Resources.Orders;
 
 namespace NetoDotNET
 {
@@ -31,6 +32,11 @@ namespace NetoDotNET
         public ICustomerResource Customers { get;  }
 
         /// <summary>
+        /// Manage order/invoice resources
+        /// </summary>
+        public IOrderResource Orders { get; }
+
+        /// <summary>
         /// Manage your Neto store resources.
         /// </summary>
         /// <param name="storeName">The name of the Neto store https://www.*storeName*.com.au</param>
@@ -43,6 +49,7 @@ namespace NetoDotNET
             this.Products = new ProductResource(this._configuration, null);
             this.Categories = new CategoryResource(this._configuration, null);
             this.Customers = new CustomerResource(this._configuration, null);
+            this.Orders = new OrderResource(this._configuration, null); 
         }
 
 

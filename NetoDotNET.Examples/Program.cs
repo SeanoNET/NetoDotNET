@@ -6,6 +6,7 @@ using System;
 using System.IO;
 using NetoDotNET.Resources.Customers;
 using NetoDotNET.Entities.Customers.CustomerLog;
+using NetoDotNET.Resources.Orders;
 
 namespace NetoDotNET.Examples
 {
@@ -52,8 +53,23 @@ namespace NetoDotNET.Examples
             //AddCustomers(neto);
             //UpdateCustomer(neto);
             //AddCustomerLog(neto);
-            UpdateCustomerLog(neto);
+            //UpdateCustomerLog(neto);
             #endregion
+
+            #region Orders
+            GetOrders(neto);
+            #endregion
+        }
+        static void GetOrders(StoreManager neto)
+        {
+            var filter = new GetOrderFilter("DEMO13-7");
+
+            Order[] result = neto.Orders.GetOrder(filter);
+
+            foreach (Order i in result)
+            {
+                Console.WriteLine($"{i.OrderID} - {i.GrandTotal}");
+            }
         }
         static void UpdateCustomerLog(StoreManager neto)
         {

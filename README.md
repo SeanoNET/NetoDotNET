@@ -75,6 +75,7 @@ See [Microsoft.Extensions.Configuration](https://docs.microsoft.com/en-us/dotnet
 - [Products](#products)
 - [Categories](#categories)
 - [Customers](#customers)
+- [Orders](#orders)
 - [Other](#other-examples)
 
 ### Products
@@ -330,6 +331,23 @@ switch (result.Ack)
             Console.WriteLine($"Warning: {warn.Message}");
         }
         break;
+}
+```
+
+### Orders
+
+#### List orders
+
+Get an order using an id
+
+```csharp
+var filter = new GetOrderFilter("DEMO13-7");
+
+Order[] result = neto.Orders.GetOrder(filter);
+
+foreach (Order i in result)
+{
+    Console.WriteLine($"{i.OrderID} - {i.GrandTotal}");
 }
 ```
 
