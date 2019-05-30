@@ -59,7 +59,7 @@ namespace NetoDotNET.Examples
             #region Orders
             //GetOrders(neto);
             //AddOrders(neto);
-            UpdateOrder(neto);
+            //UpdateOrder(neto);
             #endregion
         }
         static void UpdateOrder(StoreManager neto)
