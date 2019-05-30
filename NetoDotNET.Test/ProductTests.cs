@@ -171,7 +171,7 @@ namespace NetoDotNET.Test
         /// </summary>
         /// <param name="sku"></param>
         [Test]
-        [TestCase("12345")]
+        [TestCase("9397")]
         public void Should_Update_Product(string sku)
         {
             var netoStore = GetStoreManager();

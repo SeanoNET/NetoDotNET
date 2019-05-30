@@ -8,7 +8,6 @@
     <RepositoryUrl>https://github.com/SeanoNET/NetoDotNET</RepositoryUrl>
     <PackageTags>neto; api; ecommerce;</PackageTags>
     <Authors>Sean O.</Authors>
-    <Company>your_company</Company>
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>7.3</LangVersion>
     <PackageProjectUrl>https://github.com/SeanoNET/NetoDotNET</PackageProjectUrl>
