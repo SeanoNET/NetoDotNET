@@ -57,8 +57,79 @@ namespace NetoDotNET.Examples
             #endregion
 
             #region Orders
-            GetOrders(neto);
+            //GetOrders(neto);
+            //AddOrders(neto);
+            UpdateOrder(neto);
             #endregion
+        }
+        static void UpdateOrder(StoreManager neto)
+        {
+            Order[] order = new Order[] {
+                new Order {
+                    OrderID = "DEMO12-16",
+                    InternalOrderNotes = "Updated"
+                }
+            };
+
+            var result = neto.Orders.UpdateOrder(order);
+
+            switch (result.Ack)
+            {
+                case Ack.Success:
+                    foreach (var i in result.Order)
+                    {
+                        Console.WriteLine($"Updated ID:{i.OrderID} at {result.CurrentTime}");
+                    }
+                    break;
+
+                case Ack.Warning:
+                    foreach (var warn in result.Messages.Warning)
+                    {
+                        Console.WriteLine($"Warning: {warn.Message}");
+                    }
+                    break;
+            }
+        }
+        static void AddOrders(StoreManager neto)
+        {
+            AddOrder[] addOrder = new AddOrder[] {
+                new AddOrder {
+                    Username = "test",
+                    ShippingMethod = "Test",
+                    ShipStreet1 = "123 test street",
+                    ShipState = "ST",
+                    ShipCity = "City",
+                    BillState = "ST",
+                    ShipCountry = "AU",
+                    ShipFirstName = "Test",
+                    ShipLastName = "Order",
+                    BillPostCode = "1234",
+                    BillStreet1 = "123 test street",
+                    ShipPostCode = "1234",
+                    BillCity = "City",
+                    BillFirstName ="Test",
+                    BillLastName = "Order"
+                }
+            };
+
+            var result = neto.Orders.AddOrder(addOrder);
+
+            switch (result.Ack)
+            {
+                case Ack.Success:
+                    foreach (var i in result.Order)
+                    {
+                        Console.WriteLine($"Created ID:{i.OrderID} at {result.CurrentTime}");
+                    }
+                    break;
+
+                case Ack.Warning:
+                    foreach (var warn in result.Messages.Warning)
+                    {
+                        Console.WriteLine($"Warning: {warn.Message}");
+                    }
+                    break;
+            }
         }
         static void GetOrders(StoreManager neto)
         {

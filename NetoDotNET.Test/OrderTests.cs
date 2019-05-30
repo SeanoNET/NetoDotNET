@@ -10,13 +10,28 @@ namespace NetoDotNET.Test
 {
     class OrderTests : NetoBaseTests
     {
-        private Order GetTestAddOrder()
+        private AddOrder GetTestAddOrder()
         {
-            Random random = new Random();
-            return new Order
-            {
 
+            return new AddOrder
+            {
+                Username = "test",
+                ShippingMethod = "Test",
+                ShipStreet1 = "123 test street",
+                ShipState = "ST",
+                ShipCity = "City",
+                BillState = "ST",
+                ShipCountry = "AU",
+                ShipFirstName = "Test",
+                ShipLastName = "Order",
+                BillPostCode = "1234",
+                BillStreet1 = "123 test street",
+                ShipPostCode = "1234",
+                BillCity = "City",
+                BillFirstName = "Test",
+                BillLastName = "Order"
             };
+          
         }
 
 
@@ -72,6 +87,76 @@ namespace NetoDotNET.Test
 
             Assert.IsNotNull(result);
             Assert.AreEqual(limit, result.Length);
+        }
+        #endregion
+
+        #region AddOrder
+
+        /// <summary>
+        /// Test add a order
+        /// </summary>
+        [Test]
+        public void Should_Add_Order()
+        {
+            var netoStore = GetStoreManager();
+
+            AddOrder[] addOrder = new AddOrder[] {
+               GetTestAddOrder()
+            };
+
+            var result = netoStore.Orders.AddOrder(addOrder);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(Ack.Success, result.Ack);
+            Assert.AreEqual(result.Order.Count, 1);
+        }
+
+        /// <summary>
+        /// Test add multiple orders
+        /// </summary>
+        [Test]
+        public void Should_Add_Multiple_Orders()
+        {
+            var netoStore = GetStoreManager();
+
+            AddOrder[] addOrder = new AddOrder[] {
+               GetTestAddOrder(),
+               GetTestAddOrder(),
+               GetTestAddOrder()
+            };
+
+
+            var result = netoStore.Orders.AddOrder(addOrder);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(Ack.Success, result.Ack);
+            Assert.AreEqual(result.Order.Count, 3);
+        }
+
+        #endregion
+
+        #region UpdateOrder
+        /// <summary>
+        /// Test update an order
+        /// </summary>
+        /// <param name="id"></param>
+        [Test]
+        [TestCase("DEMO12-16")]
+        public void Should_Update_Order(string id)
+        {
+            var netoStore = GetStoreManager();
+
+            Order[] order = new Order[] {
+                new Order {
+                    OrderID = id,
+                    InternalOrderNotes = "Updated"
+                }
+            };
+
+            var result = netoStore.Orders.UpdateOrder(order);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(Ack.Success, result.Ack);
         }
         #endregion
     }

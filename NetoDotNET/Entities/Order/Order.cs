@@ -1,7 +1,10 @@
-﻿using NetoDotNET.Extensions;
+﻿using NetoDotNET.Entities;
+using NetoDotNET.Extensions;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace NetoDotNET.Entities
@@ -66,9 +69,9 @@ namespace NetoDotNET.Entities
 
         public string OrderStatus { get; set; }
 
-        public string OrderType { get; set; }
+        public OrderType OrderType { get; set; }
 
-        public string OnHoldType { get; set; }
+        public OnHoldType OnHoldType { get; set; }
 
         public string Email { get; set; }
 
@@ -261,3 +264,233 @@ namespace NetoDotNET.Entities
         public string Description { get; set; }
     }
 }
+
+[JsonConverter(typeof(StringEnumConverter))]
+//public enum GetOrderFilterOrderStatus.
+public enum OrderStatus
+{
+    Quote,
+    New,
+    [EnumMember(Value = "New Backorder")]
+    NewBackorder,
+    [EnumMember(Value = "Backorder Approved")]
+    BackorderApproved,
+    Pick,
+    Pack,
+    [EnumMember(Value = "Pending Pickup")]
+    PendingPickup,
+    [EnumMember(Value = "Pending Dispatch")]
+    PendingDispatch,
+    Dispatched,
+    Cancelled,
+    Uncommitted,
+    [EnumMember(Value = "On Hold")]
+    OnHold,
+}
+
+[JsonConverter(typeof(StringEnumConverter))]
+//public enum GetOrderFilterOrderType
+public enum OrderType
+{
+    Sales,
+    Dropshipping,
+    Quote,
+}
+
+[JsonConverter(typeof(StringEnumConverter))]
+//public enum GetOrderFilterOnHoldType
+public enum OnHoldType
+{
+    [EnumMember(Value = "On Hold")]
+    OnHold,
+    Layby,
+}
+
+
+#region AddedOrder
+
+[JsonObject(Title = "Order")]
+public class AddOrder
+{
+    public string OrderID { get; set; }
+
+    public string PurchaseOrderNumber { get; set; }
+
+    public OrderType OrderType { get; set; }
+
+    public OnHoldType OnHoldType { get; set; }
+
+    public string UserGroup { get; set; }
+
+    public string DocumentTemplate { get; set; }
+
+    public DateTime DatePlaced { get; set; }
+
+    public DateTime DateRequired { get; set; }
+
+    public DateTime DateInvoiced { get; set; }
+
+    public DateTime DateDue { get; set; }
+
+    public string Username { get; set; }
+
+    public string Email { get; set; }
+
+    public string BillFirstName { get; set; }
+
+    public string BillLastName { get; set; }
+
+    public string BillCompany { get; set; }
+
+    public string BillStreet1 { get; set; }
+
+    public string BillStreet2 { get; set; }
+
+    public string BillCity { get; set; }
+
+    public string BillState { get; set; }
+
+    public string BillPostCode { get; set; }
+
+    public string BillContactPhone { get; set; }
+
+    public string BillCountry { get; set; }
+
+    public string ShipFirstName { get; set; }
+
+    public string ShipLastName { get; set; }
+
+    public string ShipCompany { get; set; }
+
+    public string ShipStreet1 { get; set; }
+
+    public string ShipStreet2 { get; set; }
+
+    public string ShipCity { get; set; }
+
+    public string ShipState { get; set; }
+
+    public string ShipPostCode { get; set; }
+
+    public string ShipContactPhone { get; set; }
+
+    public string ShipCountry { get; set; }
+
+    public string SalesPerson { get; set; }
+
+    public string CustomerRef1 { get; set; }
+
+    public string CustomerRef2 { get; set; }
+
+    public string CustomerRef3 { get; set; }
+
+    public string CustomerRef4 { get; set; }
+
+    public string CustomerRef5 { get; set; }
+
+    public string CustomerRef6 { get; set; }
+
+    public string CustomerRef7 { get; set; }
+
+    public string CustomerRef8 { get; set; }
+
+    public string CustomerRef9 { get; set; }
+
+    public string CustomerRef10 { get; set; }
+
+    public string SalesChannel { get; set; }
+
+    public string ShipInstructions { get; set; }
+
+    public string InternalOrderNotes { get; set; }
+
+    public string StickyNoteTitle { get; set; }
+
+    public string StickyNote { get; set; }
+
+    public StickyNotes[] StickyNotes { get; set; }
+
+    public OrderStatus OrderStatus { get; set; }
+
+    public bool OrderApproval { get; set; }
+
+    public string PaymentMethod { get; set; }
+
+    public string PaymentTerms { get; set; }
+
+    public bool TaxInclusive { get; set; }
+
+    public bool TaxFreeShipping { get; set; }
+
+    public string BPAYCRN { get; set; }
+
+    public string ShippingMethod { get; set; }
+
+    public decimal ShippingCost { get; set; }
+
+    public bool SignatureRequired { get; set; }
+
+    public string CurrencyCode { get; set; }
+
+    public AddOrderLine[] orderLine { get; set; }
+
+    public decimal OrderRounding { get; set; }
+
+}
+
+
+[JsonObject(Title = "OrderLine")]
+public class AddOrderLine
+{
+    public string SKU { get; set; }
+
+    public string ItemNotes { get; set; }
+
+    public string ItemDescription { get; set; }
+
+    public string ItemSerialNumber { get; set; }
+
+    public string Dropshipper { get; set; }
+
+    public string WarehouseName { get; set; }
+
+    public string WarehouseReference { get; set; }
+
+    public bool TaxFree { get; set; }
+
+    public string WarehouseID { get; set; }
+
+    public string Quantity { get; set; }
+
+    public decimal UnitPrice { get; set; }
+
+    public decimal UnitCost { get; set; }
+
+    public decimal ShippingWeight { get; set; }
+
+    public string QuantityShipped { get; set; }
+
+    public decimal DiscountPercent { get; set; }
+
+    public decimal DiscountAmount { get; set; }
+
+    public decimal Cubic { get; set; }
+
+    public OrderLineKitComponents[] kitComponents { get; set; }
+
+    public string[] Text { get; set; }
+}
+
+
+[JsonObject(Title = "KitComponents")]
+public class OrderLineKitComponents
+{
+    public string ComponentSKU { get; set; }
+
+    public decimal ComponentValue { get; set; }
+
+    public string AssembleQuantity { get; set; }
+
+    public bool ComponentTaxFree { get; set; }
+}
+#endregion

@@ -55,7 +55,7 @@ See [Microsoft.Extensions.Configuration](https://docs.microsoft.com/en-us/dotnet
 |Resource| Complete|
 |---|---|
 |Accounting System| 0%|
-| Orders / Invoices| 0%|
+|[Orders / Invoices](https://developers.neto.com.au/documentation/engineers/api-documentation/orders-invoices)| **100%**|
 |Payments| 0%|
 |RMA| 0%|
 |[Products](https://developers.neto.com.au/documentation/engineers/api-documentation/products) |**100%**|
@@ -350,6 +350,82 @@ foreach (Order i in result)
     Console.WriteLine($"{i.OrderID} - {i.GrandTotal}");
 }
 ```
+
+#### Create a new order
+
+```csharp
+AddOrder[] addOrder = new AddOrder[] {
+    new AddOrder {
+        Username = "test",
+        ShippingMethod = "Test",
+        ShipStreet1 = "123 test street",
+        ShipState = "ST",
+        ShipCity = "City",
+        BillState = "ST",
+        ShipCountry = "AU",
+        ShipFirstName = "Test",
+        ShipLastName = "Order",
+        BillPostCode = "1234",
+        BillStreet1 = "123 test street",
+        ShipPostCode = "1234",
+        BillCity = "City",
+        BillFirstName ="Test",
+        BillLastName = "Order"
+    }
+};
+
+var result = neto.Orders.AddOrder(addOrder);
+
+switch (result.Ack)
+{
+    case Ack.Success:
+        foreach (var i in result.Order)
+        {
+            Console.WriteLine($"Created ID:{i.OrderID} at {result.CurrentTime}");
+        }
+        break;
+
+    case Ack.Warning:
+        foreach (var warn in result.Messages.Warning)
+        {
+            Console.WriteLine($"Warning: {warn.Message}");
+        }
+        break;
+}
+```
+
+#### Update an order
+
+Update an existing order.
+
+```csharp
+Order[] order = new Order[] {
+    new Order {
+        OrderID = "DEMO12-16",
+        InternalOrderNotes = "Updated"
+    }
+};
+
+var result = neto.Orders.UpdateOrder(order);
+
+switch (result.Ack)
+{
+    case Ack.Success:
+        foreach (var i in result.Order)
+        {
+            Console.WriteLine($"Updated ID:{i.OrderID} at {result.CurrentTime}");
+        }
+        break;
+
+    case Ack.Warning:
+        foreach (var warn in result.Messages.Warning)
+        {
+            Console.WriteLine($"Warning: {warn.Message}");
+        }
+        break;
+}
+```
+
 
 ### Other Examples
 

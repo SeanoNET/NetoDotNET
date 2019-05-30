@@ -45,11 +45,11 @@ namespace NetoDotNET.Resources.Orders
 
         public string[] Supplier { get; set; }
 
-        public GetOrderFilterOrderStatus[] OrderStatus { get; set; }
+        public OrderStatus[] OrderStatus { get; set; }
 
-        public GetOrderFilterOrderType[] OrderType { get; set; }
+        public OrderType[] OrderType { get; set; }
 
-        public GetOrderFilterOnHoldType[] OnHoldType { get; set; }
+        public OnHoldType[] OnHoldType { get; set; }
 
         public GetOrderFilterCompleteStatus[] CompleteStatus { get; set; }
 
@@ -113,40 +113,10 @@ namespace NetoDotNET.Resources.Orders
 
         public GetOrderFilterUpdateResults updateResults { get; set; }
 
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum GetOrderFilterOrderStatus
-        {
-            New,
-            [EnumMember(Value = "New Backorder")]
-            NewBackorder,
-            [EnumMember(Value = "Backorder Approved")]
-            BackorderApproved,
-            Pick,
-            Pack,
-            [EnumMember(Value = "Pending Pickup")]
-            PendingPickup,
-            [EnumMember(Value = "Pending Dispatch")]
-            PendingDispatch,
-            Dispatched,
-            Cancelled,
-            Uncommitted,
-            [EnumMember(Value = "On Hold")]
-            OnHold,
-        }
 
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum GetOrderFilterOrderType
-        {
-            sales,
-            dropshipping,
-        }
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum GetOrderFilterOnHoldType
-        {
-            [EnumMember(Value = "On Hold")]
-            OnHold,
-            Layby,
-        }
+
+     
+ 
 
         [JsonConverter(typeof(StringEnumConverter))]
         public enum GetOrderFilterCompleteStatus

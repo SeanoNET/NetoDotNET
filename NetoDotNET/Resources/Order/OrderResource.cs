@@ -14,12 +14,34 @@ namespace NetoDotNET.Resources.Orders
         {
         }
 
+        public AddOrderResponse AddOrder(AddOrder[] addOrder)
+        {
+            AddOrderFilter addOrderFilter = new AddOrderFilter(addOrder);
+
+
+            var nRequest = new AddOrderRequest(addOrderFilter);
+            var nResponse = GetResponse<AddOrderResponse>(nRequest);
+
+
+            return nResponse;
+        }
+
         public Order[] GetOrder(GetOrderFilter getOrderFilter)
         {
             var nRequest = new GetOrderRequest(getOrderFilter);
             var nResponse = GetResponse<GetOrderResponse>(nRequest);
 
             return nResponse.Order;
+        }
+
+        public UpdateOrderResponse UpdateOrder(Order[] order)
+        {
+            UpdateOrderFilter updateOrderFilter = new UpdateOrderFilter(order);
+
+            var nRequest = new UpdateOrderRequest(updateOrderFilter);
+            var nResponse = GetResponse<UpdateOrderResponse>(nRequest);
+
+            return nResponse;
         }
     }
 }
