@@ -63,10 +63,39 @@ namespace NetoDotNET.Examples
 
             #region Content
             //GetContent(neto);
-            AddContent(neto);
+            //AddContent(neto);
+            UpdateContent(neto);
             #endregion
         }
+        static void UpdateContent(StoreManager neto)
+        {
+            var updateContent = new Content[] {
+               new Content
+               {
+                   ContentID = "105",
+                   ContentName = "Clothing Updated"
+               }
+            };
 
+            var result = neto.Content.UpdateContent(updateContent);
+
+            switch (result.Ack)
+            {
+                case Ack.Success:
+                    foreach (var i in result.Content)
+                    {
+                        Console.WriteLine($"Updated ID: {i.ContentID}");
+                    }
+                    break;
+
+                case Ack.Warning:
+                    foreach (var warn in result.Messages.Warning)
+                    {
+                        Console.WriteLine($"Warning: {warn.Message}");
+                    }
+                    break;
+            }
+        }
         static void AddContent(StoreManager neto)
         {
             Content[] content = new Content[] {
@@ -95,7 +124,6 @@ namespace NetoDotNET.Examples
                     break;
             }
         }
-
         static void GetContent(StoreManager neto)
         {
             var filter = new GetContentFilter(new string[] { "105", "129", "128" });

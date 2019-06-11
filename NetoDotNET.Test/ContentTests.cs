@@ -121,5 +121,34 @@ namespace NetoDotNET.Test
             Assert.AreEqual(result.Content.Count, 2);
         }
         #endregion
+
+        #region UpdateContent
+
+
+        /// <summary>
+        /// Test update an existing content page
+        /// </summary>
+        /// <param name="contentID"></param>
+        [Test]
+        [TestCase("105")]
+        public void Should_Update_Content_Page(string contentID)
+        {
+            var netoStore = GetStoreManager();
+
+            var updateContent = new Content[] {
+               new Content
+               {
+                   ContentID = "105",
+                   ContentName = "Clothing Updated"
+               }
+            };
+
+            var result = netoStore.Content.UpdateContent(updateContent);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(Ack.Success, result.Ack);
+            Assert.AreEqual(result.Content.Count, 1);
+        }
+        #endregion
     }
 }

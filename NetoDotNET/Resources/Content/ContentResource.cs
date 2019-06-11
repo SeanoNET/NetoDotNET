@@ -36,7 +36,12 @@ namespace NetoDotNET.Resources.Contents
 
         public UpdateContentResponse UpdateContent(Content[] content)
         {
-            throw new NotImplementedException();
+            UpdateContentFilter updateContentFilter = new UpdateContentFilter(content);
+
+            var nRequest = new UpdateContentRequest(updateContentFilter);
+            var nResponse = GetResponse<UpdateContentResponse>(nRequest);
+
+            return nResponse;
         }
     }
 }
