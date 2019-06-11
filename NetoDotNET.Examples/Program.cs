@@ -72,7 +72,7 @@ namespace NetoDotNET.Examples
             var updateContent = new Content[] {
                new Content
                {
-                   ContentID = "105",
+                   ContentID = 105,
                    ContentName = "Clothing Updated"
                }
             };
@@ -132,7 +132,7 @@ namespace NetoDotNET.Examples
 
             foreach (Content i in result)
             {
-                Console.WriteLine($"{i.ID} - {i.ContentName}");
+                Console.WriteLine($"{i.ContentID} - {i.ContentName}");
             }
         }
         static void UpdateOrder(StoreManager neto)

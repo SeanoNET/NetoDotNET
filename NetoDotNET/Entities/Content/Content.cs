@@ -8,9 +8,7 @@ namespace NetoDotNET.Entities
 {
     public class Content
     {
-        public string ID { get; set; }
-
-        public string ContentID { get; set; }
+        public int ContentID { get; set; }
 
         public string ContentName { get; set; }
 
