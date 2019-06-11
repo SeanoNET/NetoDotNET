@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using NetoDotNET.Entities.Contents;
+using NetoDotNET.Entities;
 
 namespace NetoDotNET.Resources.Contents
 {
@@ -14,12 +14,29 @@ namespace NetoDotNET.Resources.Contents
         {
         }
 
+        public AddContentResponse AddContent(Content[] content)
+        {
+            AddContentFilter addItemFilter = new AddContentFilter(content);
+
+
+            var nRequest = new AddContentRequest(addItemFilter);
+            var nResponse = GetResponse<AddContentResponse>(nRequest);
+
+
+            return nResponse;
+        }
+
         public Content[] GetContent(GetContentFilter contentFilter)
         {
             var nRequest = new GetContentRequest(contentFilter);
             var nResponse = GetResponse<GetContentResponse>(nRequest);
 
             return nResponse.Content;
+        }
+
+        public UpdateContentResponse UpdateContent(Content[] content)
+        {
+            throw new NotImplementedException();
         }
     }
 }

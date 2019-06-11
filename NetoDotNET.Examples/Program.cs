@@ -7,8 +7,8 @@ using System.IO;
 using NetoDotNET.Resources.Customers;
 using NetoDotNET.Entities.Customers.CustomerLog;
 using NetoDotNET.Resources.Orders;
+using NetoDotNET.Entities;
 using NetoDotNET.Resources.Contents;
-using NetoDotNET.Entities.Contents;
 
 namespace NetoDotNET.Examples
 {
@@ -62,10 +62,41 @@ namespace NetoDotNET.Examples
             #endregion
 
             #region Content
-            GetConent(neto);
+            //GetContent(neto);
+            AddContent(neto);
             #endregion
         }
-        static void GetConent(StoreManager neto)
+
+        static void AddContent(StoreManager neto)
+        {
+            Content[] content = new Content[] {
+                new Content {
+                  ContentName = "New content category",
+                  ContentType = "Category"
+                }
+            };
+
+            var result = neto.Content.AddContent(content);
+
+            switch (result.Ack)
+            {
+                case Ack.Success:
+                    foreach (var i in result.Content)
+                    {
+                        Console.WriteLine($"Created ID:{i.ContentID} at {result.CurrentTime}");
+                    }
+                    break;
+
+                case Ack.Warning:
+                    foreach (var warn in result.Messages.Warning)
+                    {
+                        Console.WriteLine($"Warning: {warn.Message}");
+                    }
+                    break;
+            }
+        }
+
+        static void GetContent(StoreManager neto)
         {
             var filter = new GetContentFilter(new string[] { "105", "129", "128" });
 
@@ -76,7 +107,6 @@ namespace NetoDotNET.Examples
                 Console.WriteLine($"{i.ID} - {i.ContentName}");
             }
         }
-
         static void UpdateOrder(StoreManager neto)
         {
             Order[] order = new Order[] {

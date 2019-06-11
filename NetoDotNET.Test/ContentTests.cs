@@ -1,4 +1,4 @@
-﻿using NetoDotNET.Entities.Contents;
+﻿using NetoDotNET.Entities;
 using NetoDotNET.Exceptions;
 using NetoDotNET.Resources.Contents;
 using NUnit.Framework;
@@ -17,7 +17,9 @@ namespace NetoDotNET.Test
             Random random = new Random();
             return new Content
             {
-
+                ContentName = $"NetoDotNET.Test - New Content {random.Next(0, 999).ToString()}",
+                ContentType = "Category",
+                Description1 = "New category description"
             };
         }
 
@@ -77,5 +79,47 @@ namespace NetoDotNET.Test
 
         #endregion
 
+        #region AddContent
+
+
+        /// <summary>
+        /// Test add content page
+        /// </summary>
+        [Test]
+        public void Should_Add_Single_Content()
+        {
+            var netoStore = GetStoreManager();
+
+            Content[] content = new Content[] {
+               GetTestAddContent()
+            };
+
+            var result = netoStore.Content.AddContent(content);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(Ack.Success, result.Ack);
+            Assert.AreEqual(result.Content.Count, 1);
+        }
+
+        /// <summary>
+        /// Test add multiple content pages
+        /// </summary>
+        [Test]
+        public void Should_Add_Multiple_Content_Pages()
+        {
+            var netoStore = GetStoreManager();
+
+            Content[] content = new Content[] {
+               GetTestAddContent(),
+                GetTestAddContent()
+            };
+
+            var result = netoStore.Content.AddContent(content);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(Ack.Success, result.Ack);
+            Assert.AreEqual(result.Content.Count, 2);
+        }
+        #endregion
     }
 }

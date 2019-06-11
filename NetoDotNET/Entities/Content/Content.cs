@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace NetoDotNET.Entities.Contents
+namespace NetoDotNET.Entities
 {
     public class Content
     {
@@ -13,6 +13,11 @@ namespace NetoDotNET.Entities.Contents
         public string ContentID { get; set; }
 
         public string ContentName { get; set; }
+
+        /// <summary>
+        /// The type of content you are creating. You can add your own content types under the admin menu.
+        /// </summary>
+        public string ContentType { get; set; }
 
         public string ParentContentID { get; set; }
 
