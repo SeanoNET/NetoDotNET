@@ -9,6 +9,7 @@ using NetoDotNET.Entities.Customers.CustomerLog;
 using NetoDotNET.Resources.Orders;
 using NetoDotNET.Entities;
 using NetoDotNET.Resources.Contents;
+using NetoDotNET.Resources.RMA;
 
 namespace NetoDotNET.Examples
 {
@@ -66,6 +67,21 @@ namespace NetoDotNET.Examples
             //AddContent(neto);
             //UpdateContent(neto);
             #endregion
+
+            #region RMA
+            //GetRMA(neto);
+            #endregion
+        }
+        static void GetRMA(StoreManager neto)
+        {
+            var filter = new GetRMAFilter(1);
+
+            var result = neto.RMA.GetRMA(filter);
+
+            foreach (Rma i in result)
+            {
+                Console.WriteLine($"{i.RmaID}");
+            }
         }
         static void UpdateContent(StoreManager neto)
         {

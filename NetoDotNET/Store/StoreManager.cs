@@ -6,6 +6,7 @@ using System.Text;
 using NetoDotNET.Resources.Customers;
 using NetoDotNET.Resources.Orders;
 using NetoDotNET.Resources.Contents;
+using NetoDotNET.Resources.RMA;
 
 namespace NetoDotNET
 {
@@ -43,6 +44,11 @@ namespace NetoDotNET
         public IContentResource Content { get; }
 
         /// <summary>
+        /// Manage RMA resources
+        /// </summary>
+        public IRMAResource RMA { get; }
+
+        /// <summary>
         /// Manage your Neto store resources.
         /// </summary>
         /// <param name="storeName">The name of the Neto store https://www.*storeName*.com.au</param>
@@ -57,6 +63,7 @@ namespace NetoDotNET
             this.Customers = new CustomerResource(this._configuration, null);
             this.Orders = new OrderResource(this._configuration, null);
             this.Content = new ContentResource(this._configuration, null);
+            this.RMA = new RMAResource(this._configuration, null);
         }
 
 
