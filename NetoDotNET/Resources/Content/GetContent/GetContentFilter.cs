@@ -19,7 +19,7 @@ namespace NetoDotNET.Resources.Contents
         }
 
         /// <summary>
-        /// You must specify at least one filter and one OutputSelector in your GetItem request. These will determine the results returned.
+        /// You must specify at least one filter and one OutputSelector in your GetContent request. These will determine the results returned.
         /// </summary>
         public GetContentFilter(string[] contentId) : base()
         {
@@ -27,7 +27,7 @@ namespace NetoDotNET.Resources.Contents
         }
 
         /// <summary>
-        /// You must specify at least one filter and one OutputSelector in your GetItem request. These will determine the results returned.
+        /// You must specify at least one filter and one OutputSelector in your GetContent request. These will determine the results returned.
         /// </summary>
         public GetContentFilter(string contentId)
             : this(new string[] { contentId })

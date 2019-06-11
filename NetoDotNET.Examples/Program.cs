@@ -64,7 +64,7 @@ namespace NetoDotNET.Examples
             #region Content
             //GetContent(neto);
             //AddContent(neto);
-            UpdateContent(neto);
+            //UpdateContent(neto);
             #endregion
         }
         static void UpdateContent(StoreManager neto)

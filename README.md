@@ -61,7 +61,7 @@ See [Microsoft.Extensions.Configuration](https://docs.microsoft.com/en-us/dotnet
 |[Products](https://developers.neto.com.au/documentation/engineers/api-documentation/products) |**100%**|
 |[Categories](https://developers.neto.com.au/documentation/engineers/api-documentation/categories) **deprecated** see [Content](https://developers.neto.com.au/documentation/engineers/api-documentation/content)|**100%**|
 |Warehouses |0%|
-|Content |0%|
+|[Content](https://developers.neto.com.au/documentation/engineers/api-documentation/content) |**100%**|
 |Currency| 0%|
 |[Customers](https://developers.neto.com.au/documentation/engineers/api-documentation/customers) |**100%**|
 |Shipping |0%|
