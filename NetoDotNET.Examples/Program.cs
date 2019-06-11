@@ -7,6 +7,8 @@ using System.IO;
 using NetoDotNET.Resources.Customers;
 using NetoDotNET.Entities.Customers.CustomerLog;
 using NetoDotNET.Resources.Orders;
+using NetoDotNET.Resources.Contents;
+using NetoDotNET.Entities.Contents;
 
 namespace NetoDotNET.Examples
 {
@@ -30,15 +32,12 @@ namespace NetoDotNET.Examples
             var neto = new StoreManager(config.GetSection("NETO_STORENAME").Value, config.GetSection("NETO_API_KEY").Value, config.GetSection("NETO_USERNAME").Value);
 
             #region Products
-            // Get Items
             //GetItems(neto);
             //GetItemsFromDate(neto);
 
-            // Add Item
-            // AddItems(neto);
+            //AddItems(neto);
             //AddVariableItems(neto);
 
-            // Update Item
             //UpdateItems(neto);
             #endregion
 
@@ -61,7 +60,23 @@ namespace NetoDotNET.Examples
             //AddOrders(neto);
             //UpdateOrder(neto);
             #endregion
+
+            #region Content
+            GetConent(neto);
+            #endregion
         }
+        static void GetConent(StoreManager neto)
+        {
+            var filter = new GetContentFilter(new string[] { "105", "129", "128" });
+
+            Content[] result = neto.Content.GetContent(filter);
+
+            foreach (Content i in result)
+            {
+                Console.WriteLine($"{i.ID} - {i.ContentName}");
+            }
+        }
+
         static void UpdateOrder(StoreManager neto)
         {
             Order[] order = new Order[] {
@@ -411,7 +426,6 @@ namespace NetoDotNET.Examples
                     break;
             }
         }
-
         static void AddVariableItems(StoreManager neto)
         {
             Item[] variableProduct = new Item[] {
@@ -464,7 +478,6 @@ namespace NetoDotNET.Examples
                 Console.WriteLine($"{i.ID} - {i.Name}");
             }
         }
-
         static void GetItemsFromDate(StoreManager neto)
         {
             var filter = new GetItemFilter();
