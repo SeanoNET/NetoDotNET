@@ -1,4 +1,7 @@
-﻿namespace NetoDotNET.Entities
+﻿using NetoDotNET.Extensions;
+using Newtonsoft.Json;
+
+namespace NetoDotNET.Entities
 {
     public class Warehouse
     {

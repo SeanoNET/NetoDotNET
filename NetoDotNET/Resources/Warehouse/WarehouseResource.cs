@@ -16,7 +16,14 @@ namespace NetoDotNET.Resources.Warehouses
 
         public AddWarehouseResponse AddWarehouse(Warehouse[] warehouse)
         {
-            throw new NotImplementedException();
+            AddWarehouseFilter addWarehouseFilter = new AddWarehouseFilter(warehouse);
+
+
+            var nRequest = new AddWarehouseRequest(addWarehouseFilter);
+            var nResponse = GetResponse<AddWarehouseResponse>(nRequest);
+
+
+            return nResponse;
         }
 
         public Warehouse[] GetWarehouse(GetWarehouseFilter warehouseFilter)

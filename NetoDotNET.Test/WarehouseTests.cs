@@ -10,6 +10,19 @@ namespace NetoDotNET.Test
 {
     class WarehouseTests : NetoBaseTests
     {
+
+        private Warehouse GetTestAddWarehouse()
+        {
+            Random random = new Random();
+            string id = random.Next(1000, 9999).ToString();
+            return new Warehouse
+            {
+                WarehouseName = "A New Warehouse - " + id,
+                WarehouseReference = "W" + id,
+                IsPrimary = true
+            };
+        }
+
         #region Filters
         /// <summary>
         /// Tests that <see cref="NetoRequestException"/> is thrown when an invalid <see cref="GetWarehouseFilter"/> is provided
@@ -67,6 +80,27 @@ namespace NetoDotNET.Test
 
             Assert.IsNotNull(result);
             Assert.AreEqual(Ack.Success, result.Ack);
+        }
+        #endregion
+
+        #region AddWarehouse
+        /// <summary>
+        /// Test add a warehouse
+        /// </summary>
+        [Test]
+        public void Should_Add_Warehouse()
+        {
+            var netoStore = GetStoreManager();
+
+            Warehouse[] warehouse = new Warehouse[] {
+                GetTestAddWarehouse()
+            };
+
+            var result = netoStore.Warehouses.AddWarehouse(warehouse);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(Ack.Success, result.Ack);
+            Assert.AreEqual(result.Warehouse.Count, 1);
         }
         #endregion
     }

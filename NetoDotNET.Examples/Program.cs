@@ -7,7 +7,6 @@ using System.IO;
 using NetoDotNET.Resources.Customers;
 using NetoDotNET.Entities.Customers.CustomerLog;
 using NetoDotNET.Resources.Orders;
-using NetoDotNET.Entities;
 using NetoDotNET.Resources.Contents;
 using NetoDotNET.Resources.RMA;
 using System.Collections.Generic;
@@ -76,8 +75,38 @@ namespace NetoDotNET.Examples
 
             #region Warehouses
             //GetWarehouse(neto);
-            UpdateWarehouse(neto);
+            //UpdateWarehouse(neto);
+            AddWarehouse(neto);
             #endregion
+        }
+        static void AddWarehouse(StoreManager neto)
+        {
+            Warehouse[] warehouse = new Warehouse[] {
+                new Warehouse {
+                   WarehouseName = "A New Warehouse 4",
+                   WarehouseReference = "W4",
+                   IsPrimary = true
+                }
+            };
+
+            var result = neto.Warehouses.AddWarehouse(warehouse);
+
+            switch (result.Ack)
+            {
+                case Ack.Success:
+                    foreach (var i in result.Warehouse)
+                    {
+                        Console.WriteLine($"Created ID:{i.WarehouseID} WarehouseReference: {i.WarehouseReference} at {result.CurrentTime}");
+                    }
+                    break;
+
+                case Ack.Warning:
+                    foreach (var warn in result.Messages.Warning)
+                    {
+                        Console.WriteLine($"Warning: {warn.Message}");
+                    }
+                    break;
+            }
         }
         static void UpdateWarehouse(StoreManager neto)
         {
