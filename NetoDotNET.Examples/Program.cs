@@ -11,6 +11,7 @@ using NetoDotNET.Entities;
 using NetoDotNET.Resources.Contents;
 using NetoDotNET.Resources.RMA;
 using System.Collections.Generic;
+using NetoDotNET.Resources.Warehouses;
 
 namespace NetoDotNET.Examples
 {
@@ -72,6 +73,22 @@ namespace NetoDotNET.Examples
             #region RMA
             //GetRMA(neto);
             #endregion
+
+            #region Warehouses
+            GetWarehouse(neto);
+            #endregion
+        }
+
+        static void GetWarehouse(StoreManager neto)
+        {
+            var filter = new GetWarehouseFilter(1);
+
+            var result = neto.Warehouses.GetWarehouse(filter);
+
+            foreach (Warehouse i in result)
+            {
+                Console.WriteLine($"{i.WarehouseID} - {i.WarehouseName}");
+            }
         }
         static void GetRMA(StoreManager neto)
         {
