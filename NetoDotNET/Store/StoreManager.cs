@@ -44,7 +44,7 @@ namespace NetoDotNET
         public IContentResource Content { get; }
 
         /// <summary>
-        /// Manage RMA resources
+        /// Manage RMA (Return Merchadise Authorisation) resources
         /// </summary>
         public IRMAResource RMA { get; }
 

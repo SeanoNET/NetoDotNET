@@ -10,6 +10,7 @@ using NetoDotNET.Resources.Orders;
 using NetoDotNET.Entities;
 using NetoDotNET.Resources.Contents;
 using NetoDotNET.Resources.RMA;
+using System.Collections.Generic;
 
 namespace NetoDotNET.Examples
 {

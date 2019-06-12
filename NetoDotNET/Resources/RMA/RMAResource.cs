@@ -14,6 +14,18 @@ namespace NetoDotNET.Resources.RMA
         {
         }
 
+        public AddRMAResponse AddRma(Rma[] rma)
+        {
+            AddRMAFilter addRmaFilter = new AddRMAFilter(rma);
+
+
+            var nRequest = new AddRMARequest(addRmaFilter);
+            var nResponse = GetResponse<AddRMAResponse>(nRequest);
+
+
+            return nResponse;
+        }
+
         public List<Rma> GetRMA(GetRMAFilter rmaFilter)
         {
             var nRequest = new GetRMARequest(rmaFilter);
