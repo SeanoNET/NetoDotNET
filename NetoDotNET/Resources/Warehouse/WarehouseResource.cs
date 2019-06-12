@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NetoDotNET.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -28,7 +29,12 @@ namespace NetoDotNET.Resources.Warehouses
 
         public UpdateWarehouseResponse UpdateWarehouse(Warehouse[] warehouse)
         {
-            throw new NotImplementedException();
+            UpdateWarehouseFilter updateWarehouseFilter = new UpdateWarehouseFilter(warehouse);
+
+            var nRequest = new UpdateWarehouseRequest(updateWarehouseFilter);
+            var nResponse = GetResponse<UpdateWarehouseResponse>(nRequest);
+
+            return nResponse;
         }
     }
 }

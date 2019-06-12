@@ -1,4 +1,4 @@
-﻿namespace NetoDotNET.Resources.Warehouses
+﻿namespace NetoDotNET.Entities
 {
     public class Warehouse
     {
@@ -31,11 +31,8 @@
 
         public bool IsActive { get; set; }
 
-        public bool IsActiveFieldSpecified;
-
         public bool IsPrimary { get; set; }
 
-        public bool IsPrimaryFieldSpecified;
 
     }
 }

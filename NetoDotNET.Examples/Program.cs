@@ -75,10 +75,40 @@ namespace NetoDotNET.Examples
             #endregion
 
             #region Warehouses
-            GetWarehouse(neto);
+            //GetWarehouse(neto);
+            UpdateWarehouse(neto);
             #endregion
         }
+        static void UpdateWarehouse(StoreManager neto)
+        {
+            Warehouse[] warehouse = new Warehouse[] {
+                new Warehouse {
+                    WarehouseID = 1,
+                    WarehouseName = "NetoDotNET - Updated"
+                }
+            };
 
+            var result = neto.Warehouses.UpdateWarehouse(warehouse);
+
+            switch (result.Ack)
+            {
+                case Ack.Success:
+                    foreach (var i in result.Warehouse)
+                    {
+                        Console.WriteLine($"Updated ID:{i.WarehouseID} at {result.CurrentTime}");
+                    }
+                    break;
+
+                case Ack.Warning:
+                    foreach (var warn in result.Messages.Warning)
+                    {
+                        Console.WriteLine($"Warning: {warn.Message}");
+                    }
+                    break;
+            }
+
+
+        }
         static void GetWarehouse(StoreManager neto)
         {
             var filter = new GetWarehouseFilter(1);

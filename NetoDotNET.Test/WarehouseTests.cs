@@ -1,4 +1,5 @@
-﻿using NetoDotNET.Exceptions;
+﻿using NetoDotNET.Entities;
+using NetoDotNET.Exceptions;
 using NetoDotNET.Resources.Warehouses;
 using NUnit.Framework;
 using System;
@@ -40,6 +41,32 @@ namespace NetoDotNET.Test
 
             Assert.IsNotNull(result);
             Assert.AreEqual(1, result.Length);
+        }
+        #endregion
+
+        #region UpdateWarehouse
+
+        /// <summary>
+        /// Test update a warehouse
+        /// </summary>
+        /// <param name="id"></param>
+        [Test]
+        [TestCase(1)]
+        public void Should_Update_Warehouse(int id)
+        {
+            var netoStore = GetStoreManager();
+
+            Warehouse[] warehouse = new Warehouse[] {
+                new Warehouse {
+                    WarehouseID = 1,
+                    WarehouseName = "NetoDotNET - Updated"
+                }
+            };
+
+            var result = netoStore.Warehouses.UpdateWarehouse(warehouse);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(Ack.Success, result.Ack);
         }
         #endregion
     }
