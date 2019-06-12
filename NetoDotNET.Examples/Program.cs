@@ -11,6 +11,7 @@ using NetoDotNET.Resources.Contents;
 using NetoDotNET.Resources.RMA;
 using System.Collections.Generic;
 using NetoDotNET.Resources.Warehouses;
+using NetoDotNET.Resources.Payments;
 
 namespace NetoDotNET.Examples
 {
@@ -76,8 +77,55 @@ namespace NetoDotNET.Examples
             #region Warehouses
             //GetWarehouse(neto);
             //UpdateWarehouse(neto);
-            AddWarehouse(neto);
+            //AddWarehouse(neto);
             #endregion
+
+            #region Payments
+            //GetPayment(neto);
+            AddPayment(neto);
+            #endregion
+        }
+        static void AddPayment(StoreManager neto)
+        {
+            AddPayment[] payment = new AddPayment[] {
+                new AddPayment {
+                    OrderID = "DEMO15-9",
+                    CardAuthorisation = "1234",
+                    AmountPaid = 0.1M
+                }
+            };
+
+            var result = neto.Payment.AddPayment(payment);
+
+            switch (result.Ack)
+            {
+                case Ack.Success:
+                    foreach (var i in result.Payment)
+                    {
+                        Console.WriteLine($"Created ID:{i.PaymentID} PaymentMethodName: {i.PaymentMethodName} at {result.CurrentTime}");
+                    }
+                    break;
+
+                case Ack.Warning:
+                    foreach (var warn in result.Messages.Warning)
+                    {
+                        Console.WriteLine($"Warning: {warn.Message}");
+                    }
+                    break;
+            }
+        }
+
+        static void GetPayment(StoreManager neto)
+        {
+            var filter = new GetPaymentFilter();
+            filter.DatePaidFrom = DateTime.Now.Add(-TimeSpan.FromDays(5));
+
+            var result = neto.Payment.GetPayment(filter);
+
+            foreach (Payment i in result)
+            {
+                Console.WriteLine($"{i.PaymentID} - {i.PaymentMethodName}");
+            }
         }
         static void AddWarehouse(StoreManager neto)
         {
