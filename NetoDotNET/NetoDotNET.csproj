@@ -24,4 +24,8 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Entities\Shipping\" />
+  </ItemGroup>
+
 </Project>
