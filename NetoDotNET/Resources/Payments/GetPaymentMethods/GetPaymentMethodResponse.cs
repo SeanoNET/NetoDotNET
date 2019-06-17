@@ -1,10 +1,16 @@
-﻿using System;
+﻿using NetoDotNET.Entities;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace NetoDotNET.Resources.Payments.GetPaymentMethods
+namespace NetoDotNET.Resources.Payments
 {
-    class GetPaymentMethodResponse
+    public class GetPaymentMethodResponse : NetoResponseBase
     {
+        [JsonProperty("PaymentMethods")]
+        public PaymentMethods PaymentMethods { get; set; }
+
     }
+
 }

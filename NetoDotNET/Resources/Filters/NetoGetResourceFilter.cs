@@ -27,7 +27,7 @@ namespace NetoDotNET.Resources
 
             return JsonConvert.SerializeObject(root, settings: settings);
         }
-        public string ToJSON()
+        public virtual string ToJSON()
         {
             return Serialize(this);
         }

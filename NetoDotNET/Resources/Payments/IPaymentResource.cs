@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NetoDotNET.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -27,10 +28,7 @@ namespace NetoDotNET.Resources.Payments
         /// <summary>
         /// Use this call to get payment method data.
         /// </summary>
-        /// <param name="paymentMethodFilter">You must specify at least one filter and one OutputSelector. These will determine the results returned. <see cref="GetPaymentMethodFilter"/></param>
-        /// <typeparam name="GetPaymentMethodFilter">
-        /// </typeparam>
-        /// <returns>Payment methods matching the GetPaymentMethodFilter <see cref="PaymentMethod"/></returns>
-        PaymentMethod[] GetPaymentMethods(GetPaymentMethodFilter paymentMethodFilter);
+        /// <returns>Payment methods<see cref="PaymentMethods"/></returns>
+        PaymentMethods GetPaymentMethods();
     }
 }

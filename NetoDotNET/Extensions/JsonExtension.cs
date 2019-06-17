@@ -66,4 +66,35 @@ namespace NetoDotNET.Extensions
 
         }
     }
+
+    /// <summary>
+    /// Converts Neto's string Y/N objects into bool
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    class NetoBooleanConverter<T> : JsonConverter
+    {
+        public override bool CanConvert(Type objectType)
+        {
+            return (objectType == typeof(string));
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            JToken token = JToken.Load(reader);
+            string value = token.ToString();
+
+            if (value == "y")
+                return true;
+
+            if (value == "n")
+                return false;
+
+            return value;          
+        }
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+
+        }
+    }
 }

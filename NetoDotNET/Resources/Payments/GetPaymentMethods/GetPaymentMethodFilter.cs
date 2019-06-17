@@ -3,19 +3,21 @@
 namespace NetoDotNET.Resources.Payments
 {
     [JsonObject(Title = "Filter")]
-    public class GetPaymentMethodFilter : NetoGetResourceFilter
+    public class GetPaymentsMethodFilter : NetoGetResourceFilter
     {
-        /// <summary>
-        /// You must specify at least one filter and one OutputSelector in your GetPaymentMethods request. These will determine the results returned.
-        /// </summary>
-        public GetPaymentMethodFilter()
+        public GetPaymentsMethodFilter()
         {
 
         }
 
+        public override string ToJSON()
+        {
+            return "{}";
+        }
+
         internal override bool isValid()
         {
-            throw new System.NotImplementedException();
+            return true;
         }
     }
 }

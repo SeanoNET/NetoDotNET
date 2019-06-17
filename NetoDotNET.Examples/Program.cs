@@ -82,8 +82,18 @@ namespace NetoDotNET.Examples
 
             #region Payments
             //GetPayment(neto);
-            AddPayment(neto);
+            //AddPayment(neto);
+            //GetPaymentMethods(neto);
             #endregion
+        }
+        static void GetPaymentMethods(StoreManager neto)
+        {
+            var result = neto.Payment.GetPaymentMethods();
+
+            foreach (PaymentMethod i in result.PaymentMethod)
+            {
+                Console.WriteLine($"{i.ID} - {i.Name}");
+            }
         }
         static void AddPayment(StoreManager neto)
         {
@@ -114,7 +124,6 @@ namespace NetoDotNET.Examples
                     break;
             }
         }
-
         static void GetPayment(StoreManager neto)
         {
             var filter = new GetPaymentFilter();

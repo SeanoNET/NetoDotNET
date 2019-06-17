@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NetoDotNET.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -33,9 +34,12 @@ namespace NetoDotNET.Resources.Payments
             return nResponse.Payment;
         }
 
-        public PaymentMethod[] GetPaymentMethods(GetPaymentMethodFilter paymentMethodFilter)
+        public PaymentMethods GetPaymentMethods()
         {
-            throw new NotImplementedException();
+            var nRequest = new GetPaymentMethodsRequest(new GetPaymentsMethodFilter());
+            var nResponse = GetResponse<GetPaymentMethodResponse>(nRequest);
+
+            return nResponse.PaymentMethods;
         }
     }
 }
