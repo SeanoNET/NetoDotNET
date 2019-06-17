@@ -21,5 +21,15 @@ namespace NetoDotNET.Resources.Currency
 
             return nResponse.CurrencySettings;
         }
+
+        public UpdateCurrencySettingsResponse UpdateCurrencySettings(UpdateCurrencySettings currencySettings)
+        {
+            UpdateCurrencySettingsFilter updateCurrencySettingsFilter = new UpdateCurrencySettingsFilter(currencySettings);
+
+            var nRequest = new UpdateCurrencySettingsRequest(updateCurrencySettingsFilter);
+            var nResponse = GetResponse<UpdateCurrencySettingsResponse>(nRequest);
+
+            return nResponse;
+        }
     }
 }

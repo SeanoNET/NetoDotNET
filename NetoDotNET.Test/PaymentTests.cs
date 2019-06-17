@@ -21,7 +21,6 @@ namespace NetoDotNET.Test
             PaymentMethods result = netoStore.Payment.GetPaymentMethods();
 
             Assert.IsNotNull(result);
-           // Assert.AreEqual(Ack.Success, result.Ack);
             Assert.IsNotNull(result.PaymentMethod);
         }
         #endregion

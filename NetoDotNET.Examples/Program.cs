@@ -87,8 +87,37 @@ namespace NetoDotNET.Examples
             #endregion
 
             #region Currency
-            GetCurrenctSettings(neto);
+            //GetCurrenctSettings(neto);
+            UpdateCurrencySettings(neto);
             #endregion
+        }
+        static void UpdateCurrencySettings(StoreManager neto)
+        {
+            UpdateCurrencySettings settings = new UpdateCurrencySettings
+            {
+                    DefaultCountry = new string[] { "AU" },
+                    DefaultCurrency = new string[] { "AUD" }
+
+            };
+
+            var result = neto.Currency.UpdateCurrencySettings(settings);
+
+            switch (result.Ack)
+            {
+                case Ack.Success:
+                     Console.WriteLine($"Updated currency settings");
+                    
+                    break;
+
+                case Ack.Warning:
+                    foreach (var warn in result.Messages.Warning)
+                    {
+                        Console.WriteLine($"Warning: {warn.Message}");
+                    }
+                    break;
+            }
+
+
         }
         static void GetCurrenctSettings(StoreManager neto)
         {

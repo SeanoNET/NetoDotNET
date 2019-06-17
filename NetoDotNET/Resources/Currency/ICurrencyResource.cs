@@ -14,12 +14,12 @@ namespace NetoDotNET.Resources.Currency
         List<CurrencySettings> GetCurrencySettings();
 
         /// <summary>
-        /// Use this method to update a product.
+        /// Use this call to update currency settings.
         /// </summary>
-        /// <param name="item">Item to update. <see cref="Item"/></param>
-        /// <typeparam name="Item">
+        /// <param name="currencySettings">CurrencySettings to update. <see cref="CurrencySettings"/></param>
+        /// <typeparam name="CurrencySettings">
         /// </typeparam>
-        /// <returns>The unique identifier (SKU) for the product, and the date and time the product was updated (CurrentTime) <see cref="UpdateItemResponse"/></returns>
-        //UpdateItemResponse UpdateItem(Item[] item);
+        /// <returns>Neto resource response<see cref="UpdateCurrencySettingsResponse"/></returns>
+        UpdateCurrencySettingsResponse UpdateCurrencySettings(UpdateCurrencySettings currencySettings);
     }
 }

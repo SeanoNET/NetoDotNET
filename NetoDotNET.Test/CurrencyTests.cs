@@ -18,9 +18,32 @@ namespace NetoDotNET.Test
             var netoStore = GetStoreManager();
 
             List<CurrencySettings> result = netoStore.Currency.GetCurrencySettings();
-
             Assert.IsNotNull(result);
         }
+        #endregion
+
+        #region UpdateCurrencySettings
+        /// <summary>
+        /// Test update currency settings
+        /// </summary>
+        [Test]
+        public void Should_Update_Currency_Settings()
+        {
+            var netoStore = GetStoreManager();
+
+            UpdateCurrencySettings settings = new UpdateCurrencySettings
+            {
+                DefaultCountry = new string[] { "AU" },
+                DefaultCurrency = new string[] { "AUD" }
+
+            };
+
+            var result = netoStore.Currency.UpdateCurrencySettings(settings);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(Ack.Success, result.Ack);
+        }
+
         #endregion
     }
 }
