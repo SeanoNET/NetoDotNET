@@ -85,6 +85,19 @@ namespace NetoDotNET.Examples
             //AddPayment(neto);
             //GetPaymentMethods(neto);
             #endregion
+
+            #region Currency
+            GetCurrenctSettings(neto);
+            #endregion
+        }
+        static void GetCurrenctSettings(StoreManager neto)
+        {
+            var result = neto.Currency.GetCurrencySettings();
+
+            foreach (CurrencySettings i in result)
+            {
+                Console.WriteLine($"{i.DefaultCountry} - {i.DefaultCurrency}");
+            }
         }
         static void GetPaymentMethods(StoreManager neto)
         {

@@ -9,6 +9,7 @@ using NetoDotNET.Resources.Contents;
 using NetoDotNET.Resources.RMA;
 using NetoDotNET.Resources.Warehouses;
 using NetoDotNET.Resources.Payments;
+using NetoDotNET.Resources.Currency;
 
 namespace NetoDotNET
 {
@@ -61,6 +62,11 @@ namespace NetoDotNET
         public IPaymentResource Payment { get; }
 
         /// <summary>
+        /// Manage currency resources
+        /// </summary>
+        public ICurrencyResource Currency { get; }
+
+        /// <summary>
         /// Manage your Neto store resources.
         /// </summary>
         /// <param name="storeName">The name of the Neto store https://www.*storeName*.com.au</param>
@@ -78,6 +84,7 @@ namespace NetoDotNET
             this.RMA = new RMAResource(this._configuration, null);
             this.Warehouses = new WarehouseResource(this._configuration, null);
             this.Payment = new PaymentResource(this._configuration, null);
+            this.Currency = new CurrencyResource(this._configuration, null);
         }
 
 
