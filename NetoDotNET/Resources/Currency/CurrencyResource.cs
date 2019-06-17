@@ -14,6 +14,7 @@ namespace NetoDotNET.Resources.Currency
             : base(storeCongfiguration, RESOURCE_ENDPOINT, restClient)
         {
         }
+
         public List<CurrencySettings> GetCurrencySettings()
         {
             var nRequest = new GetCurrencySettingsRequest(new GetCurrencySettingsFilter());
