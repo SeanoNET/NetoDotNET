@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using NetoDotNET.Entities;
 
 namespace NetoDotNET.Resources.Shippings
 {
@@ -11,6 +12,14 @@ namespace NetoDotNET.Resources.Shippings
         public ShippingResource(StoreConfiguration storeCongfiguration, IRestClient restClient)
             : base(storeCongfiguration, RESOURCE_ENDPOINT, restClient)
         {
+        }
+
+        public ShippingMethods GetShippingMethods()
+        {
+            var nRequest = new GetShippingMethodsRequest(new GetShippingMethodsFilter());
+            var nResponse = GetResponse<GetShippingMethodsResponse>(nRequest);
+
+            return nResponse.ShippingMethods;
         }
     }
 }

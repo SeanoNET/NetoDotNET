@@ -88,8 +88,22 @@ namespace NetoDotNET.Examples
 
             #region Currency
             //GetCurrenctSettings(neto);
-            UpdateCurrencySettings(neto);
+            //UpdateCurrencySettings(neto);
             #endregion
+
+            #region Shipping
+            GetShippingMethods(neto);
+            #endregion
+        }
+
+        static void GetShippingMethods(StoreManager neto)
+        {
+            var result = neto.Shipping.GetShippingMethods();
+
+            foreach (ShippingMethod i in result.ShippingMethod)
+            {
+                Console.WriteLine($"{i.ID} - {i.Name}");
+            }
         }
         static void UpdateCurrencySettings(StoreManager neto)
         {
