@@ -11,6 +11,7 @@ using NetoDotNET.Resources.Warehouses;
 using NetoDotNET.Resources.Payments;
 using NetoDotNET.Resources.Currency;
 using NetoDotNET.Resources.Shippings;
+using NetoDotNET.Resources.Supplier;
 
 namespace NetoDotNET
 {
@@ -73,6 +74,11 @@ namespace NetoDotNET
         public IShippingResource Shipping { get; }
 
         /// <summary>
+        /// Manage shipping resources
+        /// </summary>
+        public ISupplierResource Suppliers { get; }
+
+        /// <summary>
         /// Manage your Neto store resources.
         /// </summary>
         /// <param name="storeName">The name of the Neto store https://www.*storeName*.com.au</param>
@@ -92,6 +98,7 @@ namespace NetoDotNET
             this.Payment = new PaymentResource(this._configuration, null);
             this.Currency = new CurrencyResource(this._configuration, null);
             this.Shipping = new ShippingResource(this._configuration, null);
+            this.Suppliers = new SupplierResource(this._configuration, null);
         }
 
 
