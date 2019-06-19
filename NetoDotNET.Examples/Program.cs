@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using NetoDotNET.Resources.Warehouses;
 using NetoDotNET.Resources.Payments;
 using NetoDotNET.Resources.Shippings;
+using NetoDotNET.Resources.Supplier;
 
 namespace NetoDotNET.Examples
 {
@@ -96,6 +97,22 @@ namespace NetoDotNET.Examples
             //GetShippingMethods(neto);
             //GetShippingQuote(neto);
             #endregion
+
+            #region Suppliers
+            GetSuppliers(neto);
+            #endregion
+        }
+
+        static void GetSuppliers(StoreManager neto)
+        {
+            var filter = new GetSupplierFilter(new string[] { "124" });
+
+            List<Suppliers> result = neto.Suppliers.GetSupplier(filter);
+
+            foreach (Suppliers i in result)
+            {
+                Console.WriteLine($"{i.SupplierID}");
+            }
         }
         static void GetShippingQuote(StoreManager neto)
         {
