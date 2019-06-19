@@ -12,6 +12,7 @@ using NetoDotNET.Resources.RMA;
 using System.Collections.Generic;
 using NetoDotNET.Resources.Warehouses;
 using NetoDotNET.Resources.Payments;
+using NetoDotNET.Resources.Shippings;
 
 namespace NetoDotNET.Examples
 {
@@ -92,10 +93,28 @@ namespace NetoDotNET.Examples
             #endregion
 
             #region Shipping
-            GetShippingMethods(neto);
+            //GetShippingMethods(neto);
+            //GetShippingQuote(neto);
             #endregion
         }
+        static void GetShippingQuote(StoreManager neto)
+        {
+            var quote = new GetShippingQuoteFilter
+            {
+                ShipPostCode = "",
+                ShipCountry = "",
+                ShipCity = "",
+                ShipState = "",
+                ShipPOBox = false
+            };
 
+            var result = neto.Shipping.GetShippingQuote(quote);
+
+            foreach (ShippingQuotes i in result)
+            {
+                Console.WriteLine($"{i.ShippingCost}");
+            }
+        }
         static void GetShippingMethods(StoreManager neto)
         {
             var result = neto.Shipping.GetShippingMethods();

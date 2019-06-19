@@ -21,5 +21,13 @@ namespace NetoDotNET.Resources.Shippings
 
             return nResponse.ShippingMethods;
         }
+
+        public List<ShippingQuotes> GetShippingQuote(GetShippingQuoteFilter filter)
+        {
+            var nRequest = new GetShippingQuoteRequest(filter);
+            var nResponse = GetResponse<GetShippingQuoteResponse>(nRequest);
+
+            return nResponse.ShippingQuotes;
+        }
     }
 }
