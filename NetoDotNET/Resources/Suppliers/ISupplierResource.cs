@@ -13,7 +13,7 @@ namespace NetoDotNET.Resources.Supplier
         /// <param name="supplierFilter">You must specify at least one filter and one OutputSelector. These will determine the results returned. <see cref="GetSupplierFilter"/></param>
         /// <typeparam name="GetSupplierFilter">
         /// </typeparam>
-        /// <returns>Suppliers matching the GetSupplierFilter <see cref="String"/></returns>
+        /// <returns>Suppliers matching the GetSupplierFilter <see cref="Suppliers"/></returns>
         List<Suppliers> GetSupplier(GetSupplierFilter supplierFilter);
     }
 

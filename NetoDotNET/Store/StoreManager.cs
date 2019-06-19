@@ -74,7 +74,7 @@ namespace NetoDotNET
         public IShippingResource Shipping { get; }
 
         /// <summary>
-        /// Manage shipping resources
+        /// Manage supplier resources
         /// </summary>
         public ISupplierResource Suppliers { get; }
 

@@ -34,7 +34,7 @@ namespace NetoDotNET.Test
         /// <param name = "id" ></ param >
         [Test]
         [TestCase("124")]
-        public void Should_Get_Single_Product_From_ID(string id)
+        public void Should_Get_Single_Supplier_From_ID(string id)
         {
             var netoStore = GetStoreManager();
 
@@ -43,6 +43,7 @@ namespace NetoDotNET.Test
             List<Suppliers> result = netoStore.Suppliers.GetSupplier(filter);
 
             Assert.IsNotNull(result);
+            Assert.AreEqual(1, result.Count);
         }
         #endregion
 
