@@ -64,7 +64,7 @@ See [Microsoft.Extensions.Configuration](https://docs.microsoft.com/en-us/dotnet
 |[Content](https://developers.neto.com.au/documentation/engineers/api-documentation/content) |**100%**|
 |[Currency](https://developers.neto.com.au/documentation/engineers/api-documentation/currency)| **100%**|
 |[Customers](https://developers.neto.com.au/documentation/engineers/api-documentation/customers) |**100%**|
-|Shipping |0%|
+|[Shipping](https://developers.neto.com.au/documentation/engineers/api-documentation/shipping) |**100%**|
 |Suppliers |0%|
 |Voucher |0%|
 |Cart |0%|

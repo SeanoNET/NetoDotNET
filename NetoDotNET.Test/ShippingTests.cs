@@ -7,13 +7,6 @@ namespace NetoDotNET.Test
 {
     class ShippingTests : NetoBaseTests
     {
-
-
-
-
-
-
-
         /// <summary>
         /// Test retrieval of shipping methods
         /// </summary>
