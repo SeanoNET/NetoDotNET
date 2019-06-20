@@ -99,10 +99,76 @@ namespace NetoDotNET.Examples
             #endregion
 
             #region Suppliers
-            GetSuppliers(neto);
+            //GetSuppliers(neto);
+            //UpdateSupplier(neto);
+            AddSupplier(neto);
             #endregion
         }
+        static void AddSupplier(StoreManager neto)
+        {
+            Suppliers[] supplier = new Suppliers[] {
+                new Suppliers {
+                    SupplierCompany = "Google",
+                    LeadTime1 = 2,
+                    LeadTime2 = 3,
+                    SupplierReference =  12345
+                }
+            };
 
+            var result = neto.Suppliers.AddSupplier(supplier);
+
+            switch (result.Ack)
+            {
+                case Ack.Success:
+                    foreach (var i in result.Supplier)
+                    {
+                        Console.WriteLine($"Updated ID:{i.SupplierID} at {result.CurrentTime}");
+                    }
+                    break;
+
+                case Ack.Warning:
+                    foreach (var warn in result.Messages.Warning)
+                    {
+                        Console.WriteLine($"Warning: {warn.Message}");
+                    }
+                    break;
+            }
+
+
+        }
+        static void UpdateSupplier(StoreManager neto)
+        {
+            Suppliers[] supplier = new Suppliers[] {
+                new Suppliers {
+                    SupplierID = "124",
+                    SupplierNotes = "Test - Updated",
+                    LeadTime1 = 2,
+                    LeadTime2 = 3,
+                    SupplierReference =  1234
+                }
+            };
+
+            var result = neto.Suppliers.UpdateSupplier(supplier);
+
+            switch (result.Ack)
+            {
+                case Ack.Success:
+                    foreach (var i in result.Supplier)
+                    {
+                        Console.WriteLine($"Updated ID:{i.SupplierID} at {result.CurrentTime}");
+                    }
+                    break;
+
+                case Ack.Warning:
+                    foreach (var warn in result.Messages.Warning)
+                    {
+                        Console.WriteLine($"Warning: {warn.Message}");
+                    }
+                    break;
+            }
+
+
+        }
         static void GetSuppliers(StoreManager neto)
         {
             var filter = new GetSupplierFilter(new string[] { "124" });

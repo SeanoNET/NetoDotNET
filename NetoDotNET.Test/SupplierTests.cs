@@ -11,7 +11,17 @@ namespace NetoDotNET.Test
     class SupplierTests : NetoBaseTests
     {
 
-
+        private Suppliers GetTestAddSupplier()
+        {
+            Random random = new Random();
+            return new Suppliers
+            {
+                SupplierCompany = "Google - " + random.Next(1000, 9999).ToString(),
+                LeadTime1 = 2,
+                LeadTime2 = 3,
+                SupplierReference = 12345
+            };
+        }
 
         #region Filters
         /// <summary>
@@ -44,6 +54,56 @@ namespace NetoDotNET.Test
 
             Assert.IsNotNull(result);
             Assert.AreEqual(1, result.Count);
+        }
+        #endregion
+
+        #region UpdateSupplier
+
+        /// <summary>
+        /// Test update an existing supplier
+        /// </summary>
+        /// <param name="id"></param>
+        [Test]
+        [TestCase("124")]
+        public void Should_Update_Supplier(string id)
+        {
+            var netoStore = GetStoreManager();
+
+            Suppliers[] supplier = new Suppliers[] {
+                new Suppliers {
+                    SupplierID = id,
+                    SupplierNotes = "Test - Updated",
+                    LeadTime1 = 2,
+                    LeadTime2 = 3,
+                    SupplierReference =  1234
+                }
+            };
+
+            var result = netoStore.Suppliers.UpdateSupplier(supplier);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(Ack.Success, result.Ack);
+        }
+        #endregion
+
+        #region AddSupplier
+        /// <summary>
+        /// Test add a supplier
+        /// </summary>
+        [Test]
+        public void Should_Add_Supplier()
+        {
+            var netoStore = GetStoreManager();
+
+            Suppliers[] suppliers = new Suppliers[] {
+               GetTestAddSupplier()
+            };
+
+            var result = netoStore.Suppliers.AddSupplier(suppliers);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(Ack.Success, result.Ack);
+            Assert.AreEqual(result.Supplier.Count, 1);
         }
         #endregion
 
