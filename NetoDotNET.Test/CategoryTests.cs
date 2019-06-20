@@ -16,7 +16,7 @@ namespace NetoDotNET.Test
             Random random = new Random();
             return new Category
             {
-                CategoryName = $"NetoDotNET.Test - New Category {random.Next(0, 999).ToString()}",
+                CategoryName = $"NetoDotNET.Test - New Category {random.Next(0, 99999).ToString()}",
                 Description1 = "New category description"
             };
         }

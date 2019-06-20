@@ -14,7 +14,7 @@ namespace NetoDotNET.Test
         private Warehouse GetTestAddWarehouse()
         {
             Random random = new Random();
-            string id = random.Next(1000, 9999).ToString();
+            string id = random.Next(1000, 99999).ToString();
             return new Warehouse
             {
                 WarehouseName = "A New Warehouse - " + id,

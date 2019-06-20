@@ -17,7 +17,7 @@ namespace NetoDotNET.Test
             Random random = new Random();
             return new Content
             {
-                ContentName = $"NetoDotNET.Test - New Content {random.Next(0, 999).ToString()}",
+                ContentName = $"NetoDotNET.Test - New Content {random.Next(0, 99999).ToString()}",
                 ContentType = "Category",
                 Description1 = "New category description"
             };

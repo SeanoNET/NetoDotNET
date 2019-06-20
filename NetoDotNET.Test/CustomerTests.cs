@@ -17,8 +17,8 @@ namespace NetoDotNET.Test
             Random random = new Random();
             return new Customer
             {
-                Username = $"NetoDotNET_Test_{random.Next(0, 999).ToString()}",
-                EmailAddress = $"noemail{random.Next(0, 999).ToString()}@noemail.com"
+                Username = $"NetoDotNET_Test_{random.Next(0, 99999).ToString()}",
+                EmailAddress = $"noemail{random.Next(0, 99999).ToString()}@noemail.com"
             };
         }
 

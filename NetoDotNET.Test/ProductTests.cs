@@ -16,7 +16,7 @@ namespace NetoDotNET.Test
             return new Item
             {
                 Name = "NetoDotNET.Test - Test Add Item",
-                SKU = random.Next(1000, 9999).ToString(),
+                SKU = random.Next(1000, 99999).ToString(),
                 DefaultPrice = 1.00m
             };
         }

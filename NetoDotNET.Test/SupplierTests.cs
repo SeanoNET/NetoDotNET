@@ -16,7 +16,7 @@ namespace NetoDotNET.Test
             Random random = new Random();
             return new Suppliers
             {
-                SupplierCompany = "Google - " + random.Next(1000, 9999).ToString(),
+                SupplierCompany = "Google - " + random.Next(1000, 99999).ToString(),
                 LeadTime1 = 2,
                 LeadTime2 = 3,
                 SupplierReference = 12345
@@ -90,21 +90,21 @@ namespace NetoDotNET.Test
         /// <summary>
         /// Test add a supplier
         /// </summary>
-        [Test]
-        public void Should_Add_Supplier()
-        {
-            var netoStore = GetStoreManager();
+        //[Test]
+        //public void Should_Add_Supplier()
+        //{
+        //    var netoStore = GetStoreManager();
 
-            Suppliers[] suppliers = new Suppliers[] {
-               GetTestAddSupplier()
-            };
+        //    Suppliers[] suppliers = new Suppliers[] {
+        //       GetTestAddSupplier()
+        //    };
 
-            var result = netoStore.Suppliers.AddSupplier(suppliers);
+        //    var result = netoStore.Suppliers.AddSupplier(suppliers);
 
-            Assert.IsNotNull(result);
-            Assert.AreEqual(Ack.Success, result.Ack);
-            Assert.AreEqual(result.Supplier.Count, 1);
-        }
+        //    Assert.IsNotNull(result);
+        //    Assert.AreEqual(Ack.Success, result.Ack);
+        //    Assert.AreEqual(result.Supplier.Count, 1);
+        //}
         #endregion
 
     }
