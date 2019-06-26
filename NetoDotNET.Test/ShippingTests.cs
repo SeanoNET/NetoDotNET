@@ -11,7 +11,7 @@ namespace NetoDotNET.Test
         /// Test retrieval of shipping methods
         /// </summary>
         [Test]
-        public void Should_Shipping_Methods()
+        public void Should_Get_Shipping_Methods()
         {
             var netoStore = GetStoreManager();
 

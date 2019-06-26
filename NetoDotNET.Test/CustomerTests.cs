@@ -52,7 +52,7 @@ namespace NetoDotNET.Test
         /// </summary>
         /// <param name = "username" ></ param >
         [Test]
-        [TestCase("SAMPLE_John")]
+        [TestCase("test")]
         public void Should_Get_Single_Customer_From_Username(string username)
         {
             var netoStore = GetStoreManager();

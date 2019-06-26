@@ -101,7 +101,7 @@ namespace NetoDotNET.Examples
             #region Suppliers
             //GetSuppliers(neto);
             //UpdateSupplier(neto);
-            AddSupplier(neto);
+            //AddSupplier(neto);
             #endregion
         }
         static void AddSupplier(StoreManager neto)

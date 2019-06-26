@@ -126,7 +126,7 @@ namespace NetoDotNET.Test
         /// </summary>
         /// <param name="categoryID"></param>
         [Test]
-        [TestCase(105)]
+        [TestCase(100)]
         public void Should_Update_Category(int categoryID)
         {
             var netoStore = GetStoreManager();

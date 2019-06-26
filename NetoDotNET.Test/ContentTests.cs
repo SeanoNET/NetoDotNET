@@ -130,7 +130,7 @@ namespace NetoDotNET.Test
         /// </summary>
         /// <param name="contentID"></param>
         [Test]
-        [TestCase(105)]
+        [TestCase(101)]
         public void Should_Update_Content_Page(int contentID)
         {
             var netoStore = GetStoreManager();
