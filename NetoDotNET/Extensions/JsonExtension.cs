@@ -56,9 +56,9 @@ namespace NetoDotNET.Extensions
             DateTime value;
             if (DateTime.TryParse(token.ToString(), out value))
             {
-                return null;
+                return value;
             }
-            return value;
+            return null;
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
