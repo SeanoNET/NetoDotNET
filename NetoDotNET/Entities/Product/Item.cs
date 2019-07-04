@@ -15,7 +15,7 @@ namespace NetoDotNET.Entities
 
         public string SKU { get; set; }
 
-        public string InventoryID { get; set; }
+        public int InventoryID { get; set; }
 
         public string ParentSKU { get; set; }
 
