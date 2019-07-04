@@ -1,7 +1,9 @@
 ﻿using NetoDotNET.Extensions;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace NetoDotNET.Entities
@@ -466,9 +468,20 @@ namespace NetoDotNET.Entities
     public class WarehouseQuantity
     {
         public string WarehouseID { get; set; }
+        public WarehouseQuantityAction Action { get; set; }
         public string Quantity { get; set; }
     }
 
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum WarehouseQuantityAction
+    {
+        [EnumMember(Value = "increment")]
+        Increment,
+        [EnumMember(Value = "decrement")]
+        Decrement,
+        [EnumMember(Value = "set")]
+        Set
+    }
     public class SalesChannels
     {
         public SalesChannel[] SalesChannel { get; set; }
