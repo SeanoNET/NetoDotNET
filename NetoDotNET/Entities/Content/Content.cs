@@ -19,15 +19,15 @@ namespace NetoDotNET.Entities
 
         public string ParentContentID { get; set; }
 
-        public bool Active { get; set; }
+        public bool? Active { get; set; }
 
         public string SortOrder { get; set; }
 
-        public bool OnSiteMap { get; set; }
+        public bool? OnSiteMap { get; set; }
 
-        public bool OnMenu { get; set; }
+        public bool? OnMenu { get; set; }
 
-        public bool AllowReviews { get; set; }
+        public bool? AllowReviews { get; set; }
 
         public string RequireLogin { get; set; }
 

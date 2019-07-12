@@ -8,22 +8,20 @@ namespace NetoDotNET.Entities
 {
     public class Category
     {
-        public string ID { get; set; }
-
         public int CategoryID { get; set; }
 
         public string CategoryName { get; set; }
 
         public string ParentCategoryID { get; set; }
 
-        public bool Active { get; set; }
+        public bool? Active { get; set; }
 
         public string SortOrder { get; set; }
-        public bool OnSiteMap { get; set; }
+        public bool? OnSiteMap { get; set; }
 
-        public bool OnMenu { get; set; }
+        public bool? OnMenu { get; set; }
 
-        public bool AllowReviews { get; set; }
+        public bool? AllowReviews { get; set; }
 
         public string RequireLogin { get; set; }
 
