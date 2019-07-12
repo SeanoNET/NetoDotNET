@@ -23,8 +23,6 @@ namespace NetoDotNET.Entities
 
         public bool Virtual { get; set; }
 
-        public bool VirtualSpecified { get; set; }
-
         public string Brand { get; set; }
 
         public string Name { get; set; }
@@ -37,67 +35,41 @@ namespace NetoDotNET.Entities
 
         public decimal RRP { get; set; }
 
-        public bool RRPSpecified { get; set; }
-
         public decimal DefaultPrice { get; set; }
 
-        public bool DefaultPriceSpecified { get; set; }
-
         public decimal PromotionPrice { get; set; }
-
-        public bool PromotionPriceSpecified { get; set; }
 
         [JsonConverter(typeof(NetoDateNullConverter<DateTime>))]
         public DateTime? PromotionStartDate { get; set; }
 
-        public bool PromotionStartDateSpecified { get; set; }
-
         [JsonConverter(typeof(NetoDateNullConverter<DateTime>))]
         public DateTime? PromotionStartDateLocal { get; set; }
-
-        public bool PromotionStartDateLocalSpecified { get; set; }
 
         [JsonConverter(typeof(NetoDateNullConverter<DateTime>))]
         public DateTime? PromotionStartDateUTC { get; set; }
 
-        public bool PromotionStartDateUTCSpecified { get; set; }
-
         [JsonConverter(typeof(NetoDateNullConverter<DateTime>))]
         public DateTime? PromotionExpiryDate { get; set; }
-
-        public bool PromotionExpiryDateSpecified { get; set; }
 
         [JsonConverter(typeof(NetoDateNullConverter<DateTime>))]
         public DateTime? PromotionExpiryDateLocal { get; set; }
 
-        public bool PromotionExpiryDateLocalSpecified { get; set; }
-
         [JsonConverter(typeof(NetoDateNullConverter<DateTime>))]
         public DateTime? PromotionExpiryDateUTC { get; set; }
-
-        public bool PromotionExpiryDateUTCSpecified { get; set; }
 
         [JsonConverter(typeof(NetoDateNullConverter<DateTime>))]
         public DateTime? DateArrival { get; set; }
 
-        public bool DateArrivalSpecified { get; set; }
-
         [JsonConverter(typeof(NetoDateNullConverter<DateTime>))]
         public DateTime? DateArrivalUTC { get; set; }
 
-        public bool DateArrivalUTCSpecified { get; set; }
-
         public decimal CostPrice { get; set; }
-
-        public bool CostPriceSpecified { get; set; }
 
         public string UnitOfMeasure { get; set; }
 
         public string BaseUnitOfMeasure { get; set; }
 
         public decimal BaseUnitPerQuantity { get; set; }
-
-        public bool BaseUnitPerQuantitySpecified { get; set; }
 
         public string BuyUnitQuantity { get; set; }
 
@@ -113,31 +85,17 @@ namespace NetoDotNET.Entities
 
         public bool Approved { get; set; }
 
-        public bool ApprovedSpecified { get; set; }
-
         public bool IsActive { get; set; }
-
-        public bool IsActiveSpecified { get; set; }
 
         public bool Visible { get; set; }
 
-        public bool VisibleSpecified { get; set; }
-
         public bool TaxFreeItem { get; set; }
-
-        public bool TaxFreeItemSpecified { get; set; }
 
         public bool TaxInclusive { get; set; }
 
-        public bool TaxInclusiveSpecified { get; set; }
-
         public bool ApprovedForPOS { get; set; }
 
-        public bool ApprovedForPOSSpecified { get; set; }
-
         public bool ApprovedForMobileStore { get; set; }
-
-        public bool ApprovedForMobileStoreSpecified { get; set; }
 
         public string SearchKeywords { get; set; }
 
@@ -178,32 +136,23 @@ namespace NetoDotNET.Entities
         [JsonConverter(typeof(NetoDateNullConverter<DateTime>))]
         public DateTime? DateAdded { get; set; }
 
-        public bool DateAddedSpecified { get; set; }
-
         [JsonConverter(typeof(NetoDateNullConverter<DateTime>))]
         public DateTime? DateAddedLocal { get; set; }
-
-        public bool DateAddedLocalSpecified { get; set; }
 
         [JsonConverter(typeof(NetoDateNullConverter<DateTime>))]
         public DateTime? DateAddedUTC { get; set; }
 
-        public bool DateAddedUTCSpecified { get; set; }
 
         [JsonConverter(typeof(NetoDateNullConverter<DateTime>))]
         public DateTime? DateUpdated { get; set; }
 
-        public bool DateUpdatedSpecified { get; set; }
 
         [JsonConverter(typeof(NetoDateNullConverter<DateTime>))]
         public DateTime? DateUpdatedLocal { get; set; }
 
-        public bool DateUpdatedLocalSpecified { get; set; }
 
         [JsonConverter(typeof(NetoDateNullConverter<DateTime>))]
         public DateTime? DateUpdatedUTC { get; set; }
-
-        public bool DateUpdatedUTCSpecified { get; set; }
 
         public string UPC { get; set; }
 
@@ -243,35 +192,18 @@ namespace NetoDotNET.Entities
 
         public decimal ItemHeight { get; set; }
 
-        public bool ItemHeightSpecified { get; set; }
-
         public decimal ItemLength { get; set; }
-
-        public bool ItemLengthSpecified { get; set; }
 
         public decimal ItemWidth { get; set; }
 
-        public bool ItemWidthSpecified { get; set; }
-
         public decimal ShippingHeight { get; set; }
-
-        public bool ShippingHeightSpecified { get; set; }
-
         public decimal ShippingLength { get; set; }
-
-        public bool ShippingLengthSpecified { get; set; }
 
         public decimal ShippingWidth { get; set; }
 
-        public bool ShippingWidthSpecified { get; set; }
-
         public decimal ShippingWeight { get; set; }
 
-        public bool ShippingWeightSpecified { get; set; }
-
         public decimal CubicWeight { get; set; }
-
-        public bool CubicWeightSpecified { get; set; }
 
         public string SupplierItemCode { get; set; }
 
@@ -285,11 +217,7 @@ namespace NetoDotNET.Entities
 
         public bool EditableKitBundle { get; set; }
 
-        public bool EditableKitBundleSpecified { get; set; }
-
         public bool RequiresPackaging { get; set; }
-
-        public bool RequiresPackagingSpecified { get; set; }
 
         public string SEOPageTitle { get; set; }
 
@@ -303,13 +231,9 @@ namespace NetoDotNET.Entities
 
         public bool IsAsset { get; set; }
 
-        public bool IsAssetSpecified { get; set; }
-
         public string WhenToRepeatOnStandingOrders { get; set; }
 
         public bool SerialTracking { get; set; }
-
-        public bool SerialTrackingSpecified { get; set; }
 
         public string Group { get; set; }
 
@@ -319,15 +243,11 @@ namespace NetoDotNET.Entities
 
         public decimal MonthlySpendRequirement { get; set; }
 
-        public bool MonthlySpendRequirementSpecified { get; set; }
-
         public string RestrictedToUserGroup { get; set; }
 
         public string ItemURL { get; set; }
 
         public bool AutomaticURL { get; set; }
-
-        public bool AutomaticURLSpecified { get; set; }
 
         public string CommittedQuantity { get; set; }
 
