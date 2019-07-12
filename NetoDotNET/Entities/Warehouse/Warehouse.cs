@@ -32,9 +32,9 @@ namespace NetoDotNET.Entities
 
         public string ShowQuantity { get; set; }
 
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
 
-        public bool IsPrimary { get; set; }
+        public bool? IsPrimary { get; set; }
 
 
     }

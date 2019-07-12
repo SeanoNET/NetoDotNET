@@ -50,7 +50,7 @@ namespace NetoDotNET.Entities
 
         public string WebsiteURL { get; set; }
 
-        public decimal CreditLimit { get; set; }
+        public decimal? CreditLimit { get; set; }
 
         public string DefaultInvoiceTerms { get; set; }
 

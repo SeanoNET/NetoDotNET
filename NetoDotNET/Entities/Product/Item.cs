@@ -15,13 +15,13 @@ namespace NetoDotNET.Entities
 
         public string SKU { get; set; }
 
-        public int InventoryID { get; set; }
+        public int? InventoryID { get; set; }
 
         public string ParentSKU { get; set; }
 
         public string AccountingCode { get; set; }
 
-        public bool Virtual { get; set; }
+        public bool? Virtual { get; set; }
 
         public string Brand { get; set; }
 
@@ -33,11 +33,11 @@ namespace NetoDotNET.Entities
 
         public string SortOrder2 { get; set; }
 
-        public decimal RRP { get; set; }
+        public decimal? RRP { get; set; }
 
-        public decimal DefaultPrice { get; set; }
+        public decimal? DefaultPrice { get; set; }
 
-        public decimal PromotionPrice { get; set; }
+        public decimal? PromotionPrice { get; set; }
 
         [JsonConverter(typeof(NetoDateNullConverter<DateTime>))]
         public DateTime? PromotionStartDate { get; set; }
@@ -63,13 +63,13 @@ namespace NetoDotNET.Entities
         [JsonConverter(typeof(NetoDateNullConverter<DateTime>))]
         public DateTime? DateArrivalUTC { get; set; }
 
-        public decimal CostPrice { get; set; }
+        public decimal? CostPrice { get; set; }
 
         public string UnitOfMeasure { get; set; }
 
         public string BaseUnitOfMeasure { get; set; }
 
-        public decimal BaseUnitPerQuantity { get; set; }
+        public decimal? BaseUnitPerQuantity { get; set; }
 
         public string BuyUnitQuantity { get; set; }
 
@@ -83,19 +83,19 @@ namespace NetoDotNET.Entities
 
         public string PickZone { get; set; }
 
-        public bool Approved { get; set; }
+        public bool? Approved { get; set; }
 
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
 
-        public bool Visible { get; set; }
+        public bool? Visible { get; set; }
 
-        public bool TaxFreeItem { get; set; }
+        public bool? TaxFreeItem { get; set; }
 
-        public bool TaxInclusive { get; set; }
+        public bool? TaxInclusive { get; set; }
 
-        public bool ApprovedForPOS { get; set; }
+        public bool? ApprovedForPOS { get; set; }
 
-        public bool ApprovedForMobileStore { get; set; }
+        public bool? ApprovedForMobileStore { get; set; }
 
         public string SearchKeywords { get; set; }
 
@@ -190,20 +190,20 @@ namespace NetoDotNET.Entities
 
         public string AssetAccount { get; set; }
 
-        public decimal ItemHeight { get; set; }
+        public decimal? ItemHeight { get; set; }
 
-        public decimal ItemLength { get; set; }
+        public decimal? ItemLength { get; set; }
 
-        public decimal ItemWidth { get; set; }
+        public decimal? ItemWidth { get; set; }
 
-        public decimal ShippingHeight { get; set; }
-        public decimal ShippingLength { get; set; }
+        public decimal? ShippingHeight { get; set; }
+        public decimal? ShippingLength { get; set; }
 
-        public decimal ShippingWidth { get; set; }
+        public decimal? ShippingWidth { get; set; }
 
-        public decimal ShippingWeight { get; set; }
+        public decimal? ShippingWeight { get; set; }
 
-        public decimal CubicWeight { get; set; }
+        public decimal? CubicWeight { get; set; }
 
         public string SupplierItemCode { get; set; }
 
@@ -215,9 +215,9 @@ namespace NetoDotNET.Entities
 
         public string DisplayTemplate { get; set; }
 
-        public bool EditableKitBundle { get; set; }
+        public bool? EditableKitBundle { get; set; }
 
-        public bool RequiresPackaging { get; set; }
+        public bool? RequiresPackaging { get; set; }
 
         public string SEOPageTitle { get; set; }
 
@@ -229,11 +229,11 @@ namespace NetoDotNET.Entities
 
         public string SEOCanonicalURL { get; set; }
 
-        public bool IsAsset { get; set; }
+        public bool? IsAsset { get; set; }
 
         public string WhenToRepeatOnStandingOrders { get; set; }
 
-        public bool SerialTracking { get; set; }
+        public bool? SerialTracking { get; set; }
 
         public string Group { get; set; }
 
@@ -241,13 +241,13 @@ namespace NetoDotNET.Entities
 
         public string Job { get; set; }
 
-        public decimal MonthlySpendRequirement { get; set; }
+        public decimal? MonthlySpendRequirement { get; set; }
 
         public string RestrictedToUserGroup { get; set; }
 
         public string ItemURL { get; set; }
 
-        public bool AutomaticURL { get; set; }
+        public bool? AutomaticURL { get; set; }
 
         public string CommittedQuantity { get; set; }
 
@@ -423,12 +423,12 @@ namespace NetoDotNET.Entities
     {
         public string GroupID { get; set; }
         public string Group { get; set; }
-        public decimal Price { get; set; }
-        public decimal PromotionPrice { get; set; }
-        public int MinimumQuantity { get; set; }
-        public int MaximumQuantity { get; set; }
-        public int Multiple { get; set; }
-        public int MultipleStartQuantity { get; set; }
+        public decimal? Price { get; set; }
+        public decimal? PromotionPrice { get; set; }
+        public int? MinimumQuantity { get; set; }
+        public int? MaximumQuantity { get; set; }
+        public int? Multiple { get; set; }
+        public int? MultipleStartQuantity { get; set; }
     }
 
     public class ItemSpecifics
@@ -476,7 +476,7 @@ namespace NetoDotNET.Entities
         public string LocationID { get; set; }
         public string WarehouseID { get; set; }
         public string Type { get; set; }
-        public int Priority { get; set; }
+        public int? Priority { get; set; }
     }
 
     public class KitComponents
@@ -487,10 +487,10 @@ namespace NetoDotNET.Entities
     {
         public string ComponentSKU { get; set; }
         public string ComponentValue { get; set; }
-        public int AssembleQuantity { get; set; }
-        public int MinimumQuantity { get; set; }
-        public int MaximumQuantity { get; set; }
-        public int SortOrder { get; set; }
+        public int? AssembleQuantity { get; set; }
+        public int? MinimumQuantity { get; set; }
+        public int? MaximumQuantity { get; set; }
+        public int? SortOrder { get; set; }
     }
 
     public class FreeGift
@@ -509,7 +509,7 @@ namespace NetoDotNET.Entities
     
     public class RelatedContents
     {
-        public int ContentID { get; set; }
+        public int? ContentID { get; set; }
         public string ContentName { get; set; }
         public string ContentTypeName { get; set; }
     }

@@ -32,17 +32,17 @@ namespace NetoDotNET.Entities
 
         public bool TaxInclusive { get; set; }
 
-        public decimal OrderTax { get; set; }
+        public decimal? OrderTax { get; set; }
 
-        public decimal SurchargeTotal { get; set; }
+        public decimal? SurchargeTotal { get; set; }
 
-        public decimal SurchargeTaxable { get; set; }
+        public decimal? SurchargeTaxable { get; set; }
 
-        public decimal ShippingTotal { get; set; }
+        public decimal? ShippingTotal { get; set; }
 
-        public decimal ShippingTax { get; set; }
+        public decimal? ShippingTax { get; set; }
 
-        public decimal ShippingDiscount { get; set; }
+        public decimal? ShippingDiscount { get; set; }
 
         [JsonConverter(typeof(NetoDateNullConverter<DateTime>))]
         public DateTime? DateRequired { get; set; }
@@ -143,13 +143,13 @@ namespace NetoDotNET.Entities
 
         public string BillFax { get; set; }
 
-        public decimal ProductSubtotal { get; set; }
+        public decimal? ProductSubtotal { get; set; }
 
         public string PurchaseOrderNumber { get; set; }
 
         public string CouponCode { get; set; }
 
-        public decimal CouponDiscount { get; set; }
+        public decimal? CouponDiscount { get; set; }
 
         public string CompleteStatus { get; set; }
 
@@ -178,9 +178,9 @@ namespace NetoDotNET.Entities
 
         public int BackorderQuantity { get; set; }
 
-        public decimal UnitPrice { get; set; }
+        public decimal? UnitPrice { get; set; }
 
-        public decimal Tax { get; set; }
+        public decimal? Tax { get; set; }
 
         public string TaxCode { get; set; }
 
@@ -190,21 +190,21 @@ namespace NetoDotNET.Entities
 
         public string WarehouseReference { get; set; }
 
-        public decimal PercentDiscount { get; set; }
+        public decimal? PercentDiscount { get; set; }
 
-        public decimal ProductDiscount { get; set; }
+        public decimal? ProductDiscount { get; set; }
 
-        public decimal CostPrice { get; set; }
+        public decimal? CostPrice { get; set; }
 
         public string ShippingMethod { get; set; }
 
         public string ShippingTracking { get; set; }
 
-        public decimal Shipping { get; set; }
+        public decimal? Shipping { get; set; }
 
-        public decimal Weight { get; set; }
+        public decimal? Weight { get; set; }
 
-        public decimal Cubic { get; set; }
+        public decimal? Cubic { get; set; }
 
         public string Extra { get; set; }
 
@@ -215,7 +215,7 @@ namespace NetoDotNET.Entities
 
         public int QuantityShipped { get; set; }
 
-        public decimal CouponDiscount { get; set; }
+        public decimal? CouponDiscount { get; set; }
 
         public OrderLineEBay eBay { get; set; }
     }
@@ -229,7 +229,7 @@ namespace NetoDotNET.Entities
     public class OrderPayment
     {
         public string OrderPaymentID { get; set; }
-        public decimal OrderPaymentAmount { get; set; }
+        public decimal? OrderPaymentAmount { get; set; }
         public string PaymentType { get; set; }
     }
 
@@ -426,7 +426,7 @@ public class AddOrder
 
     public string ShippingMethod { get; set; }
 
-    public decimal ShippingCost { get; set; }
+    public decimal? ShippingCost { get; set; }
 
     public bool SignatureRequired { get; set; }
 
@@ -434,7 +434,7 @@ public class AddOrder
 
     public AddOrderLine[] orderLine { get; set; }
 
-    public decimal OrderRounding { get; set; }
+    public decimal? OrderRounding { get; set; }
 
 }
 
@@ -460,19 +460,19 @@ public class AddOrderLine
 
     public string Quantity { get; set; }
 
-    public decimal UnitPrice { get; set; }
+    public decimal? UnitPrice { get; set; }
 
-    public decimal UnitCost { get; set; }
+    public decimal? UnitCost { get; set; }
 
-    public decimal ShippingWeight { get; set; }
+    public decimal? ShippingWeight { get; set; }
 
     public string QuantityShipped { get; set; }
 
-    public decimal DiscountPercent { get; set; }
+    public decimal? DiscountPercent { get; set; }
 
-    public decimal DiscountAmount { get; set; }
+    public decimal? DiscountAmount { get; set; }
 
-    public decimal Cubic { get; set; }
+    public decimal? Cubic { get; set; }
 
     public OrderLineKitComponents[] kitComponents { get; set; }
 
@@ -485,7 +485,7 @@ public class OrderLineKitComponents
 {
     public string ComponentSKU { get; set; }
 
-    public decimal ComponentValue { get; set; }
+    public decimal? ComponentValue { get; set; }
 
     public string AssembleQuantity { get; set; }
 

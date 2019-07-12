@@ -40,7 +40,7 @@ namespace NetoDotNET.Examples
             //GetItems(neto);
             //GetItemsFromDate(neto);
 
-            //AddItems(neto);
+            AddItems(neto);
             //AddVariableItems(neto);
 
             //UpdateItems(neto);
@@ -749,7 +749,7 @@ namespace NetoDotNET.Examples
                 case Ack.Success:
                     foreach (var i in result.Item)
                     {
-                        Console.WriteLine($"Updated ID:{i.InventoryID} SKU: {i.SKU} at {result.CurrentTime}");
+                        Console.WriteLine($"Updated SKU: {i.SKU} at {result.CurrentTime}");
                     }
                     break;
 
@@ -767,9 +767,11 @@ namespace NetoDotNET.Examples
         {
             Item[] item = new Item[] {
                 new Item {
-                    Name = "My New Item",
-                    SKU = "1234",
-                    DefaultPrice = 1.00m
+                    Name = "Price test",
+                    SKU = "1111",
+                    DefaultPrice = 1.00m,
+                    IsActive = false,
+                    Approved = false
                 }
             };
 

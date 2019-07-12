@@ -18,7 +18,7 @@ namespace NetoDotNET.Resources
         {
             var settings = new JsonSerializerSettings();
             settings.NullValueHandling = NullValueHandling.Ignore;
-            settings.DefaultValueHandling = DefaultValueHandling.Ignore;
+            //settings.DefaultValueHandling = DefaultValueHandling.Ignore;
 
             return JsonConvert.SerializeObject(Filter, settings: settings);
         }
