@@ -48,7 +48,5 @@ namespace NetoDotNET
             this._username = username;
             this._baseEndpoint = baseEndpoint;
         }
-
-     
     }
 }

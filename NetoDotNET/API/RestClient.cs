@@ -46,6 +46,8 @@ namespace NetoDotNET
             requestMessage.Headers.Add("Accept", "application/json");
             requestMessage.Content = new StringContent(body, Encoding.UTF8, "application/json");
 
+            requestMessage.Headers.Add("User-Agent", "NetoDotNET");
+
             requestMessage.RequestUri = _url;
             requestMessage.Method = method;
             return requestMessage;

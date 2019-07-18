@@ -32,6 +32,7 @@ namespace NetoDotNET.Resources
                 throw new ArgumentException("Resource base endpoint not found", nameof(resourceEndpoint));
             }
 
+            // TODO: Add support for store dns name
             return new Uri($"https://{_storeConfiguration.StoreName}.neto.com.au{_storeConfiguration.BaseEndpoint}");
         }
 
