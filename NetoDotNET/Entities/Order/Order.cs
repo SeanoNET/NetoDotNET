@@ -157,7 +157,8 @@ namespace NetoDotNET.Entities
 
         public OrderPayment[] OrderPayment { get; set; }
 
-        public StickyNotes[] StickyNotes { get; set; }
+        [JsonConverter(typeof(SingleOrArrayConverter<StickyNotes>))]
+        public List<StickyNotes> StickyNotes { get; set; }
     }
 
     public class OrderLine
