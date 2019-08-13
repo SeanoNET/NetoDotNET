@@ -12,7 +12,7 @@ namespace NetoDotNET.Helpers
             var jsonSettings = new JsonSerializerSettings();
             jsonSettings.NullValueHandling = NullValueHandling.Ignore;
             jsonSettings.DefaultValueHandling = DefaultValueHandling.Ignore;
-
+           
             return JsonConvert.DeserializeObject<T>(content, settings: settings ?? jsonSettings);
         }
 

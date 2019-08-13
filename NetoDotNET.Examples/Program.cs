@@ -37,10 +37,10 @@ namespace NetoDotNET.Examples
             var neto = new StoreManager(config.GetSection("NETO_STORENAME").Value, config.GetSection("NETO_API_KEY").Value, config.GetSection("NETO_USERNAME").Value);
 
             #region Products
-            //GetItems(neto);
+            GetItems(neto);
             //GetItemsFromDate(neto);
 
-            AddItems(neto);
+           // AddItems(neto);
             //AddVariableItems(neto);
 
             //UpdateItems(neto);
@@ -765,8 +765,8 @@ namespace NetoDotNET.Examples
         }
         static void AddItems(StoreManager neto)
         {
-            Item[] item = new Item[] {
-                new Item {
+            NewItem[] item = new NewItem[] {
+                new NewItem {
                     Name = "Price test",
                     SKU = "1111",
                     DefaultPrice = 1.00m,
@@ -796,19 +796,19 @@ namespace NetoDotNET.Examples
         }
         static void AddVariableItems(StoreManager neto)
         {
-            Item[] variableProduct = new Item[] {
-                new Item {
+            NewItem[] variableProduct = new NewItem[] {
+                new NewItem {
                     Name = "Variable Item",
                     SKU = "VAR",
                     DefaultPrice = 1.00m,
                 },
-                new Item {
+                new NewItem {
                     Name = "Variable Item",
                     SKU = "VAR1",
                     DefaultPrice = 1.00m,
                     ParentSKU = "VAR"
                 },
-                new Item {
+                new NewItem {
                     Name = "Variable Item",
                     SKU = "VAR2",
                     DefaultPrice = 1.00m,

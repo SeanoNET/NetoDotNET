@@ -7,9 +7,9 @@ namespace NetoDotNET.Resources.Products
     [JsonObject(Title = "AddItem")]
     public class AddItemFilter : NetoAddResourceFilter
     {
-        public Item[] Item { get; set; }
+        public NewItem[] Item { get; set; }
 
-        public AddItemFilter(Item[] item)
+        public AddItemFilter(NewItem[] item)
         {
             this.Item = item;
         }

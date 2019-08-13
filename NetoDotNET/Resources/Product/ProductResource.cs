@@ -26,7 +26,7 @@ namespace NetoDotNET.Resources.Products
         }
 
 
-        public AddItemResponse AddItem(Item[] item)
+        public AddItemResponse AddItem(NewItem[] item)
         {
             AddItemFilter addItemFilter = new AddItemFilter(item);
 
