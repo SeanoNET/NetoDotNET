@@ -6,9 +6,14 @@ using System.Text;
 
 namespace NetoDotNET.Entities
 {
-    public class Item : ItemBase
+    public class NewItem : ItemBase
+    {
+        public Images Images { get; set; }
+    }
+
+    public class Images
     {
         [JsonConverter(typeof(SingleOrArrayConverter<Image>))]
-        public List<Image> Images { get; set; }
+        public List<Image> Image { get; set; }
     }
 }

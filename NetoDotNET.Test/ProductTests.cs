@@ -3,6 +3,7 @@ using NetoDotNET.Exceptions;
 using NetoDotNET.Resources.Products;
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 
 namespace NetoDotNET.Test
 {
@@ -10,10 +11,10 @@ namespace NetoDotNET.Test
     {
        
 
-        private Item GetTestAddProduct()
+        private NewItem GetTestAddProduct()
         {
             Random random = new Random();
-            return new Item
+            return new NewItem
             {
                 Name = "NetoDotNET.Test - Test Add Item",
                 SKU = random.Next(1000, 99999).ToString(),
@@ -21,24 +22,39 @@ namespace NetoDotNET.Test
             };
         }
 
-        private Item[] GetTestAddVariableProduct()
+        private NewItem GetTestAddProductWithImages()
+        {
+            NewItem item = GetTestAddProduct();
+            item.Images = new Images
+            {
+                Image = new List<Image> {
+                    new Image { Name = "Main", URL = "https://dummyimage.com/600x400/000/fff" },
+                    new Image { Name = "Alt 1", URL = "https://dummyimage.com/600x400/000/fff" },
+                    new Image { Name = "Alt 2", URL = "https://dummyimage.com/600x400/000/fff" }
+                }
+            };
+
+            return item;
+        }
+
+        private NewItem[] GetTestAddVariableProduct()
         {
             Random random = new Random();
             string parentSKU = random.Next(10000, 99999).ToString();
 
-            return new Item[] {
-                new Item {
+            return new NewItem[] {
+                new NewItem {
                     Name = "NetoDotNET.Test - Test Add Variable Item",
                     SKU = parentSKU,
                     DefaultPrice = 1.00m,
                 },
-                new Item {
+                new NewItem {
                     Name = "NetoDotNET.Test - Test Add Variable Item",
                     SKU = random.Next(1000, 9999).ToString(),
                     DefaultPrice = 1.00m,
                     ParentSKU = parentSKU
                 },
-                new Item {
+                new NewItem {
                     Name = "NetoDotNET.Test - Test Add Variable Item",
                     SKU = random.Next(1000, 9999).ToString(),
                     DefaultPrice = 1.00m,
@@ -113,7 +129,7 @@ namespace NetoDotNET.Test
         {
             var netoStore = GetStoreManager();
 
-            Item[] item = new Item[] {
+            NewItem[] item = new NewItem[] {
                GetTestAddProduct()
             };
 
@@ -125,6 +141,33 @@ namespace NetoDotNET.Test
         }
 
         /// <summary>
+        /// Test add a product with 3 images
+        /// </summary>
+        [Test]
+        public void Should_Add_Product_With_Images()
+        {
+            var netoStore = GetStoreManager();
+
+            NewItem[] item = new NewItem[] {
+               GetTestAddProductWithImages()
+            };
+
+            var result = netoStore.Products.AddItem(item);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(Ack.Success, result.Ack);
+            Assert.AreEqual(result.Item.Count, 1);
+
+
+            // Check for 3 images
+            var filter = new GetItemFilter(Convert.ToInt32(result.Item[0].InventoryID));
+
+            Item[] imageResult = netoStore.Products.GetItem(filter);
+            Assert.AreEqual(imageResult.Length, 1);
+            Assert.AreEqual(imageResult[0].Images.Count, 3);
+        }
+
+        /// <summary>
         /// Test add multiple products
         /// </summary>
         [Test]
@@ -132,7 +175,7 @@ namespace NetoDotNET.Test
         {
             var netoStore = GetStoreManager();
 
-            Item[] item = new Item[] {
+            NewItem[] item = new NewItem[] {
                GetTestAddProduct(),
                GetTestAddProduct(),
                GetTestAddProduct()
@@ -153,7 +196,7 @@ namespace NetoDotNET.Test
         {
             var netoStore = GetStoreManager();
 
-            Item[] item = GetTestAddVariableProduct();
+            NewItem[] item = GetTestAddVariableProduct();
 
             var result = netoStore.Products.AddItem(item);
 

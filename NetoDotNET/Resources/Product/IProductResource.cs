@@ -20,7 +20,7 @@ namespace NetoDotNET.Resources.Products
         /// <typeparam name="Item">
         /// </typeparam>
         /// <returns>returns the unique identifier (SKU) for the product, and the date and time the product was added (CurrentTime) <see cref="AddItemResponse"/></returns>
-        AddItemResponse AddItem(Item[] item);
+        AddItemResponse AddItem(NewItem[] item);
 
         /// <summary>
         /// Use this method to update a product.

@@ -100,8 +100,8 @@ foreach (Item i in result)
 Add a new product.
 
 ```csharp
-Item[] item = new Item[] {
-    new Item {
+NewItem[] item = new NewItem[] {
+    new NewItem {
         Name = "My New Item",
         SKU = "1234",
         DefaultPrice = 1.00m
