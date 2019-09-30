@@ -32,7 +32,7 @@ namespace NetoDotNET.Resources
                 throw new ArgumentException("Resource base endpoint not found", nameof(resourceEndpoint));
             }
 
-            return new Uri($"https://{_storeConfiguration.StoreName}.neto.com.au{_storeConfiguration.BaseEndpoint}");
+            return new Uri($"{_storeConfiguration.StoreUrl}{_storeConfiguration.BaseEndpoint}");
         }
 
 
