@@ -14,17 +14,17 @@ Install the [NuGet package](https://www.nuget.org/packages/NetoDotNET.Core/)
 ### Configure StoreManager
 
 ```csharp
-var neto = new StoreManager("STORE_NAME", "NETO_API_KEY", "NETO_USERNAME");
+var neto = new StoreManager("NETO_STORE_URL", "NETO_API_KEY", "NETO_USERNAME");
 ```
 
 #### Using appsettings
 
 1. Copy `appsettings.example.json` and rename it to `appsettings.json`
-2. Set your `NETO_STORENAME`, `NETO_API_KEY`, `NETO_USERNAME`
+2. Set your `NETO_STORE_URL`, `NETO_API_KEY`, `NETO_USERNAME`
 
 ```JSON
 {
-  "NETO_STORENAME": "<YOUR_NETO_STORE_NAME>",
+  "NETO_STORE_URL": "<YOUR_NETO_STORE_URL>",
   "NETO_API_KEY": "<YOUR_NETO_API_KEY>",
   "NETO_USERNAME": "<YOUR_NETO_USERNAME>"
 }
@@ -45,7 +45,7 @@ var configBuilder = new ConfigurationBuilder()
 
 var config = configBuilder.Build();
 
-var neto = new StoreManager(config.GetSection("NETO_STORENAME").Value, config.GetSection("NETO_API_KEY").Value, config.GetSection("NETO_USERNAME").Value);
+var neto = new StoreManager(config.GetSection("NETO_STORE_URL").Value, config.GetSection("NETO_API_KEY").Value, config.GetSection("NETO_USERNAME").Value);
 ```
 
 See [Microsoft.Extensions.Configuration](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration?view=aspnetcore-2.2)

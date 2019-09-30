@@ -30,11 +30,11 @@ namespace NetoDotNET.Examples
             var config = configBuilder.Build();
 
             Console.WriteLine($"Loaded Configuration:" + Environment.NewLine +
-                $"Neto Store Name: {config.GetSection("NETO_STORENAME").Value}" + Environment.NewLine +
+                $"Neto Store Url: {config.GetSection("NETO_STORE_URL").Value}" + Environment.NewLine +
                 $"Neto API Key: {config.GetSection("NETO_API_KEY").Value}" + Environment.NewLine +
                 $"Neto Username: {config.GetSection("NETO_USERNAME").Value}");
 
-            var neto = new StoreManager(config.GetSection("NETO_STORENAME").Value, config.GetSection("NETO_API_KEY").Value, config.GetSection("NETO_USERNAME").Value);
+            var neto = new StoreManager(config.GetSection("NETO_STORE_URL").Value, config.GetSection("NETO_API_KEY").Value, config.GetSection("NETO_USERNAME").Value);
 
             #region Products
             GetItems(neto);
