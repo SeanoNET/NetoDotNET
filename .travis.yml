@@ -4,7 +4,7 @@ dotnet: 2.1.502
 script:
   - dotnet restore
   - dotnet build -c Release
-  - dotnet test
+#  - dotnet test
 before_deploy:
   - dotnet pack NetoDotNET/NetoDotNET.csproj --output ../package/ -c Release 
   - dotnet nuget push package/*.nupkg -k $NUGET_API_KEY -s $NUGET_SOURCE
