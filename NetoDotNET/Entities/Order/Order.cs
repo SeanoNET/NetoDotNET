@@ -237,6 +237,8 @@ namespace NetoDotNET.Entities
     public class OrderEBay
     {
         public string eBayUsername { get; set; }
+        public string eBayStoreName { get; set; }
+
     }
 
     public class OrderLineEBay
