@@ -240,6 +240,10 @@ namespace NetoDotNET.Resources.Orders
             [EnumMember(Value = "OrderLine.QuantityShipped")]
             OrderLineQuantityShipped,
             ShippingSignature,
+            [EnumMember(Value = "eBay.eBayUsername")]
+            eBayUsername,
+            [EnumMember(Value = "eBay.eBayStoreName")]
+            eBayStoreName,
             RealtimeConfirmation,
             InternalOrderNotes,
             [EnumMember(Value = "OrderLine.eBay.eBayUsername")]
