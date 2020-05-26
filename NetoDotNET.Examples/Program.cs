@@ -40,7 +40,7 @@ namespace NetoDotNET.Examples
             //GetItems(neto);
             //GetItemsFromDate(neto);
 
-           // AddItems(neto);
+           //AddItems(neto);
             AddVariableItems(neto);
 
             //UpdateItems(neto);
@@ -796,6 +796,8 @@ namespace NetoDotNET.Examples
         }
         static void AddVariableItems(StoreManager neto)
         {
+
+    
             NewItem[] variableProduct = new NewItem[] {
                 new NewItem {
                     Name = "Variable Item",
@@ -807,10 +809,12 @@ namespace NetoDotNET.Examples
                     SKU = "VAR1",
                     DefaultPrice = 1.00m,
                     ParentSKU = "VAR",
-                    ItemSpecifics = new ItemSpecifics
+                    ItemSpecifics = new List<ItemSpecifics>
                     {
-                       ItemSpecific = new List<ItemSpecific>
-                       {
+                     new ItemSpecifics
+                     {
+                         ItemSpecific = new List<ItemSpecific>
+                         {
                             new ItemSpecific()
                             {
                                 Name = "Size",
@@ -821,7 +825,8 @@ namespace NetoDotNET.Examples
                                 Name = "Colour",
                                 Value = "RED"
                             }
-                       }
+                         }
+                     } 
                     }
                 },
                 new NewItem {
@@ -829,10 +834,12 @@ namespace NetoDotNET.Examples
                     SKU = "VAR2",
                     DefaultPrice = 1.00m,
                     ParentSKU = "VAR",
-                     ItemSpecifics = new ItemSpecifics
+                     ItemSpecifics = new List<ItemSpecifics>
                     {
-                       ItemSpecific = new List<ItemSpecific>
-                       {
+                     new ItemSpecifics
+                     {
+                         ItemSpecific = new List<ItemSpecific>
+                         {
                             new ItemSpecific()
                             {
                                 Name = "Size",
@@ -843,7 +850,8 @@ namespace NetoDotNET.Examples
                                 Name = "Colour",
                                 Value = "RED"
                             }
-                       }
+                         }
+                     }
                     }
                 }
             };
@@ -869,7 +877,7 @@ namespace NetoDotNET.Examples
         }
         static void GetItems(StoreManager neto)
         {
-            var filter = new GetItemFilter(new int[] { 1, 2, 3, 50 });
+            var filter = new GetItemFilter(new int[] { 15107 });
 
             Item[] result = neto.Products.GetItem(filter);
 

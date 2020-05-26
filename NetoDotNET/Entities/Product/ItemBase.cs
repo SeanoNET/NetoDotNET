@@ -370,7 +370,8 @@ namespace NetoDotNET.Entities
         [JsonConverter(typeof(SingleOrArrayConverter<CategoryProduct>))]
         public List<CategoryProduct> Categories { get; set; }
 
-        public ItemSpecifics ItemSpecifics { get; set; }
+        [JsonConverter(typeof(SingleOrArrayConverter<ItemSpecifics>))]
+        public List<ItemSpecifics>  ItemSpecifics { get; set; }
 
         [JsonConverter(typeof(SingleOrArrayConverter<WarehouseQuantity>))]
         public List<WarehouseQuantity> WarehouseQuantity { get; set; }
