@@ -370,8 +370,8 @@ namespace NetoDotNET.Entities
         [JsonConverter(typeof(SingleOrArrayConverter<CategoryProduct>))]
         public List<CategoryProduct> Categories { get; set; }
 
-        [JsonConverter(typeof(SingleOrArrayConverter<ItemSpecific>))]
-        public List<ItemSpecific> ItemSpecifics { get; set; }
+        public ItemSpecifics ItemSpecifics { get; set; }
+
         [JsonConverter(typeof(SingleOrArrayConverter<WarehouseQuantity>))]
         public List<WarehouseQuantity> WarehouseQuantity { get; set; }
 
@@ -381,6 +381,8 @@ namespace NetoDotNET.Entities
         [JsonConverter(typeof(SingleOrArrayConverter<RelatedContents>))]
         public List<RelatedContents> RelatedContents { get; set; }
     }
+
+
 
     public class WarehouseQuantity
     {
@@ -430,13 +432,15 @@ namespace NetoDotNET.Entities
 
     public class ItemSpecifics
     {
-        public ItemSpecific ItemSpecific { get; set; }
+        [JsonConverter(typeof(SingleOrArrayConverter<ItemSpecific>))]
+        public List<ItemSpecific> ItemSpecific { get; set; }
     }
 
     public class ItemSpecific
     {
         public string Name { get; set; }
         public string Value { get; set; }
+        public int SortOrder { get; set; }
 
     }
 

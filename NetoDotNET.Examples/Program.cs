@@ -37,11 +37,11 @@ namespace NetoDotNET.Examples
             var neto = new StoreManager(config.GetSection("NETO_STORE_URL").Value, config.GetSection("NETO_API_KEY").Value, config.GetSection("NETO_USERNAME").Value);
 
             #region Products
-            GetItems(neto);
+            //GetItems(neto);
             //GetItemsFromDate(neto);
 
            // AddItems(neto);
-            //AddVariableItems(neto);
+            AddVariableItems(neto);
 
             //UpdateItems(neto);
             #endregion
@@ -800,19 +800,51 @@ namespace NetoDotNET.Examples
                 new NewItem {
                     Name = "Variable Item",
                     SKU = "VAR",
-                    DefaultPrice = 1.00m,
+                    DefaultPrice = 1.00m                  
                 },
                 new NewItem {
                     Name = "Variable Item",
                     SKU = "VAR1",
                     DefaultPrice = 1.00m,
-                    ParentSKU = "VAR"
+                    ParentSKU = "VAR",
+                    ItemSpecifics = new ItemSpecifics
+                    {
+                       ItemSpecific = new List<ItemSpecific>
+                       {
+                            new ItemSpecific()
+                            {
+                                Name = "Size",
+                                Value = "1"
+                            },
+                             new ItemSpecific()
+                            {
+                                Name = "Colour",
+                                Value = "RED"
+                            }
+                       }
+                    }
                 },
                 new NewItem {
                     Name = "Variable Item",
                     SKU = "VAR2",
                     DefaultPrice = 1.00m,
-                    ParentSKU = "VAR"
+                    ParentSKU = "VAR",
+                     ItemSpecifics = new ItemSpecifics
+                    {
+                       ItemSpecific = new List<ItemSpecific>
+                       {
+                            new ItemSpecific()
+                            {
+                                Name = "Size",
+                                Value = "2"
+                            },
+                             new ItemSpecific()
+                            {
+                                Name = "Colour",
+                                Value = "RED"
+                            }
+                       }
+                    }
                 }
             };
 
