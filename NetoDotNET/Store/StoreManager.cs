@@ -12,6 +12,7 @@ using NetoDotNET.Resources.Payments;
 using NetoDotNET.Resources.Currency;
 using NetoDotNET.Resources.Shippings;
 using NetoDotNET.Resources.Supplier;
+using System.Net.Http;
 
 namespace NetoDotNET
 {
@@ -84,9 +85,9 @@ namespace NetoDotNET
         /// <param name="storeName">The name of the Neto store https://www.*storeName*.com.au</param>
         /// <param name="APIKey">Your Neto API Secure Key (generate this in your Neto control panel).</param>
         /// <param name="username">Your Neto API username (managed under Staff Users in the Neto control panel). Not required if using a key.</param>
-        public StoreManager(string storeName, string APIKey, string username)
+        public StoreManager(string storeName, string APIKey, string username, Action<HttpRequestMessage> requestFilter = null, Action<HttpResponseMessage> responseFilter = null)
         {                
-            this._configuration = new StoreConfiguration(storeName, APIKey, username, _baseEndpoint);
+            this._configuration = new StoreConfiguration(storeName, APIKey, username, _baseEndpoint, requestFilter, responseFilter);
 
             this.Products = new ProductResource(this._configuration, null);
             this.Categories = new CategoryResource(this._configuration, null);

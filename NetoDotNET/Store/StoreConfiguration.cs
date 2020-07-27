@@ -25,7 +25,7 @@ namespace NetoDotNET
         /// <param name="APIKey">Your Neto API Secure Key (generate this in your Neto control panel).</param>
         /// <param name="username">Your Neto API username (managed under Staff Users in the Neto control panel). Not required if using a key.</param>
         /// <param name="baseEndpoint">API base endpoint e.g /do/WS/NetoAPI</param>
-        public StoreConfiguration(string storeUrl, string APIKey, string username, string baseEndpoint, Action<HttpRequestMessage> requestFilter = null, Action<HttpResponseMessage> responseFilter = null)
+        public StoreConfiguration(string storeUrl, string APIKey, string username, string baseEndpoint, Action<HttpRequestMessage> requestFilter, Action<HttpResponseMessage> responseFilter)
         {
             if (string.IsNullOrEmpty(storeUrl))
             {
