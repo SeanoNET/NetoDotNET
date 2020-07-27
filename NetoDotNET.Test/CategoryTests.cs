@@ -65,7 +65,7 @@ namespace NetoDotNET.Test
             var netoStore = GetStoreManager();
 
             var filter = new GetCategoryFilter();
-            filter.DateUpdatedFrom = DateTime.Now.Add(-TimeSpan.FromDays(100));
+            filter.DateUpdatedFrom = DateTime.Now.Add(-TimeSpan.FromDays(1000));
             filter.Limit = limit;
 
             Category[] result = netoStore.Categories.GetCategory(filter);

@@ -11,8 +11,12 @@ namespace NetoDotNET
         private readonly Uri _url;
         private readonly string _APIKey;
         private readonly string _username;
+        private readonly Action<HttpRequestMessage> requestFilter;
+        private readonly Action<HttpResponseMessage> responseFilter;
 
-        public RestClient(HttpClient httpClient, Uri url, string APIKey, string username)
+
+
+        public RestClient(HttpClient httpClient, Uri url, string APIKey, string username, Action<HttpRequestMessage> requestFilter, Action<HttpResponseMessage> responseFilter)
         {
             if (url == null)
                 throw new ArgumentException("URL not specified");
@@ -31,6 +35,8 @@ namespace NetoDotNET
             this._url = url;
             this._APIKey = APIKey;
             this._username = username;
+            this.requestFilter = requestFilter;
+            this.responseFilter = responseFilter;
         }
         /// <summary>
         /// Prepares the HTTP request for sending, authentication, URI and parameters 
@@ -59,7 +65,15 @@ namespace NetoDotNET
         /// <returns></returns>
         public HttpResponseMessage ExecuteRequestAsync(HttpRequestMessage requestMessage)
         {
-            return  _httpClient.SendAsync(requestMessage).Result;
+            if (requestFilter != null)
+                requestFilter.Invoke(requestMessage);
+
+            var response = _httpClient.SendAsync(requestMessage).Result;
+
+            if (responseFilter != null)
+                responseFilter.Invoke(response);
+
+            return response;
         }
     }
 }

@@ -22,7 +22,7 @@ namespace NetoDotNET.Resources
             this._storeConfiguration = storeConfiguration;
 
             if (restClient == null)
-                _restClient = new RestClient(null, BuildURI(resourceEndpoint), storeConfiguration.APIkey, storeConfiguration.Username);
+                _restClient = new RestClient(null, BuildURI(resourceEndpoint), storeConfiguration.APIkey, storeConfiguration.Username, storeConfiguration.RequestFilter, storeConfiguration.ResponseFilter);
         }
 
         protected Uri BuildURI(string resourceEndpoint)

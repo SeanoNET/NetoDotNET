@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http;
 
 namespace NetoDotNET
 {
@@ -14,6 +15,9 @@ namespace NetoDotNET
         public string Username => _username;
         public string BaseEndpoint => _baseEndpoint;
 
+        public Action<HttpRequestMessage> RequestFilter { get; }
+        public Action<HttpResponseMessage> ResponseFilter { get; }
+
         /// <summary>
         /// Your Neto store details <see cref="StoreConfiguration" />.
         /// </summary>
@@ -21,7 +25,7 @@ namespace NetoDotNET
         /// <param name="APIKey">Your Neto API Secure Key (generate this in your Neto control panel).</param>
         /// <param name="username">Your Neto API username (managed under Staff Users in the Neto control panel). Not required if using a key.</param>
         /// <param name="baseEndpoint">API base endpoint e.g /do/WS/NetoAPI</param>
-        public StoreConfiguration(string storeUrl, string APIKey, string username, string baseEndpoint)
+        public StoreConfiguration(string storeUrl, string APIKey, string username, string baseEndpoint, Action<HttpRequestMessage> requestFilter = null, Action<HttpResponseMessage> responseFilter = null)
         {
             if (string.IsNullOrEmpty(storeUrl))
             {
@@ -51,6 +55,8 @@ namespace NetoDotNET
             this._APIkey = APIKey;
             this._username = username;
             this._baseEndpoint = baseEndpoint;
+            RequestFilter = requestFilter;
+            ResponseFilter = responseFilter;
         }
     }
 }
