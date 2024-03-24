@@ -1,0 +1,22 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: NetDotNet
+  description: A .NET Client wrapper for the Neto API
+  labels:
+    example.com/custom: custom_label_value
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: SeanoNET/NetoDotNET
+  tags:
+    - dotnet
+    - library
+  links:
+    - url: https://admin.example-org.com
+      title: Admin Dashboard
+      icon: dashboard
+      type: admin-dashboard
+spec:
+  type: library
+  lifecycle: production
+  owner: "group:default/guests"
